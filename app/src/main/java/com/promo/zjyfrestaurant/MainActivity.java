@@ -40,7 +40,5 @@ public class MainActivity extends FragmentActivity implements RadioGroup.OnCheck
     public void onCheckedChanged(RadioGroup group, int checkedId) {
 
 
-
-
     }
 }
