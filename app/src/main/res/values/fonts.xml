@@ -4,5 +4,7 @@
     <dimen name="font_22">22sp</dimen>
     <dimen name="font_21">21sp</dimen>
     <dimen name="font_15">15sp</dimen>
+    <dimen name="font_14">14sp</dimen>
+    <dimen name="font_12">12sp</dimen>
 
 </resources>

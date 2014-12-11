@@ -1,0 +1,68 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent"
+    tools:context="com.promo.zjyfrestaurant.home.HomeFragment">
+
+    <com.jch.lib.view.PagerScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:scaleType="centerCrop"
+                android:layout_width="match_parent"
+                android:src="@drawable/home_banner"
+                android:layout_height="wrap_content" />
+
+            <com.jch.lib.view.ScrollGridView
+                android:id="@+id/home_sup_gv"
+                android:numColumns="2"
+                android:padding="@dimen/home_item_pad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </com.jch.lib.view.ScrollGridView>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:padding="@dimen/common_pad"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:src="@drawable/home_specialty"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    style="@style/font_gray2_15"
+                    android:layout_marginLeft="@dimen/home_item_pad"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/home_specialty"
+                    android:layout_height="wrap_content" />
+
+
+            </LinearLayout>
+
+            <com.jch.lib.view.ScrollListView
+                android:id="@+id/home_specialty_lv"
+                android:padding="@dimen/common_pad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></com.jch.lib.view.ScrollListView>
+
+
+        </LinearLayout>
+
+
+    </com.jch.lib.view.PagerScrollView>
+
+
+</LinearLayout>

@@ -6,19 +6,25 @@
     </style>
 
     <style name="gray_divide_line_style">
+        <item name="android:background">@color/div_gray</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">1sp</item>
-        <item name="android:background">@color/div_gray</item>
+    </style>
+
+    <style name="font_gray2_15">
+        <item name="android:textSize">15dp</item>
+        <item name="android:textColor">@color/gray2</item>
     </style>
 
     <style name="tab_btn">
-        <item name="android:background">@color/white</item>
+        <item name="android:textSize">@dimen/font_14</item>
+        <item name="android:background">@color/black</item>
         <item name="android:layout_width">0dp</item>
-        <item name="android:paddingTop">-5dp</item>
+        <item name="android:paddingTop">-10dp</item>
         <item name="android:layout_weight">1</item>
         <item name="android:gravity">center_horizontal</item>
         <item name="android:button">@null</item>
-        <item name="android:drawablePadding">-10dp</item>
+        <item name="android:drawablePadding">-5dp</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
 </resources>

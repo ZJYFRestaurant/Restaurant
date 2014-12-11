@@ -1,44 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
+    tools:context="com.promo.zjyfrestaurant.MainActivity"
     android:layout_height="match_parent">
 
 
     <FrameLayout
-        android:id="@+id/content_fl"
+        android:id="@+id/main_content_fl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"></FrameLayout>
 
-    <view style="@style/gray_divide_line_style" />
+    <LinearLayout style="@style/gray_divide_line_style"></LinearLayout>
 
     <RadioGroup
         android:id="@+id/main_rg"
-        android:background="@color/white"
+        android:background="@color/black"
         android:orientation="horizontal"
         android:paddingTop="3dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <RadioButton
-            android:id="@+id/main_rb"
+            android:id="@+id/home_rb"
             style="@style/tab_btn"
             android:checked="true"
             android:drawableTop="@drawable/home_tb" />
 
         <RadioButton
-            android:id="@+id/find_rb"
+            android:id="@+id/book_rb"
             style="@style/tab_btn"
             android:drawableTop="@drawable/book_tb" />
 
         <RadioButton
-            android:id="@+id/publish_rb"
+            android:id="@+id/map_rb"
             style="@style/tab_btn"
             android:drawableTop="@drawable/map_tb" />
 
         <RadioButton
-            android:id="@+id/center_rb"
+            android:id="@+id/personal_rb"
             style="@style/tab_btn"
             android:drawableTop="@drawable/personal_tb" />
     </RadioGroup>

@@ -78,6 +78,7 @@ public abstract class BaseActivity extends Activity {
             params.addRule(RelativeLayout.CENTER_VERTICAL);
             params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
             rightItem.setLayoutParams(params);
+            title_rl.addView(rightItem);
         }
     }
 

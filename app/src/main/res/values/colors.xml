@@ -5,5 +5,8 @@
     <color name="black">#0E0E0F</color>
     <color name="white">#ffffff</color>
     <color name="div_gray">#d5d5d5</color>
+    <color name="gray2">#605e5f</color>
+    <color name="tab_white">#f5efef</color>
+    <color name="tab_green">#56b001</color>
 
 </resources>

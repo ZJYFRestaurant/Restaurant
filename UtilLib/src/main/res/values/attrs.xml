@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="pagerindicator">
+        <attr name="nomal_icon" format="color|reference"></attr>
+        <attr name="cur_icon" format="color|reference"></attr>
+        <attr name="imgBackground" format="color|reference"></attr>
+    </declare-styleable>
+
+    <declare-styleable name="PagerSlidingTabStrip">
+        <attr name="indicatorColor" format="color" />
+        <attr name="underlineColor" format="color" />
+        <attr name="dividerColor" format="color|reference" />
+        <attr name="tabtextColor" format="color|reference" />
+        <attr name="curTabtextColor" format="color|reference" />
+        <attr name="tabtextSize" format="dimension" />
+        <attr name="curTabtextSize" format="dimension" />
+        <attr name="indicatorHeight" format="dimension" />
+        <attr name="underlineHeight" format="dimension" />
+        <attr name="tabdividerPadding" format="dimension" />
+        <attr name="tabPaddingLeftRight" format="dimension" />
+        <attr name="scrollOffset" format="dimension" />
+        <attr name="tabBackground" format="reference" />
+        <attr name="shouldExpand" format="boolean" />
+        <attr name="tabtextAllCaps" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="SlideGridView">
+        <attr name="columNum" format="integer" />
+        <attr name="subViewBg" format="color|reference" />
+        <attr name="subColumNum" format="integer" />
+        <attr name="divideColor" format="color|reference"></attr>
+        <attr name="divideHeight" format="dimension" />
+        <attr name="checked_index" format="reference" />
+        <attr name="checked_namal" format="reference" />
+    </declare-styleable>
+
+</resources>

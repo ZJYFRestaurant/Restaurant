@@ -1,0 +1,12 @@
+<resources>
+    <declare-styleable name="HomeStartView">
+        <attr name="start_num" format="integer" />
+        <attr name="start_drawable" format="reference|color" />
+        <attr name="start_pading" format="dimension" />
+
+        <attr name="exampleString" format="string" />
+        <attr name="exampleDimension" format="dimension" />
+        <attr name="exampleColor" format="color" />
+        <attr name="exampleDrawable" format="color|reference" />
+    </declare-styleable>
+</resources>
