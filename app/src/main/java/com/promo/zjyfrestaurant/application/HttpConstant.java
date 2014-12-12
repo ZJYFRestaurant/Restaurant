@@ -25,15 +25,15 @@ public class HttpConstant {
      * @return
      */
     private static String getRootUrl() {
-        String rootUrl = null;
+        StringBuilder rootUrl = new StringBuilder();
         if (HOSTLOCALABLE) {
-            rootUrl += HOST_LOCAL;
+            rootUrl.append(HOST_LOCAL);
         } else
-            rootUrl += HOST_REMOTE;
-        rootUrl += PORT;
-        rootUrl += ROOT_URL;
+            rootUrl.append(HOST_REMOTE);
+        rootUrl.append(PORT);
+        rootUrl.append(ROOT_URL);
 
-        return rootUrl;
+        return rootUrl.toString();
     }
 
 

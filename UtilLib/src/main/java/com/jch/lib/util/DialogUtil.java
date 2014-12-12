@@ -9,6 +9,7 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.jch.lib.R;
 import com.jch.lib.view.MyMsgAlertDialog;
@@ -64,6 +65,10 @@ public class DialogUtil {
         dialog.setCancelable(true);
         dialog.show();
         return dialog;
+    }
+
+    public static void toastMsg(Context context, String msg) {
+        Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
     }
 
 //    public static AlertDialog myMsgDialog(Context )

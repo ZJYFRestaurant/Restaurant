@@ -8,7 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 
+import com.jch.lib.util.DialogUtil;
 import com.jch.lib.view.ScrollGridView;
+import com.jch.lib.view.ScrollListView;
 import com.promo.zjyfrestaurant.BaseFragment;
 import com.promo.zjyfrestaurant.R;
 import com.promo.zjyfrestaurant.application.HttpConstant;
@@ -27,6 +29,8 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
     private static HomeFragment fragment;
     private ScrollGridView homeGv = null;
     private HomeSupAdapter homeSupAdapter = null;
+    private HomeSpecialtyAdapter specialtyAdapter = null;
+    private ScrollListView listView = null;
 
     private IndexDataBean mIndexData;
 
@@ -79,11 +83,16 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
     private void init(View view) {
 
         homeGv = (ScrollGridView) view.findViewById(R.id.home_sup_gv);
+        listView = (ScrollListView) view.findViewById(R.id.home_specialty_lv);
 
         homeGv.setSelector(new BitmapDrawable());
         homeSupAdapter = new HomeSupAdapter(getActivity(), supDrawables);
         homeGv.setAdapter(homeSupAdapter);
         homeGv.setOnItemClickListener(this);
+
+        specialtyAdapter = new HomeSpecialtyAdapter(getActivity(), null);
+        listView.setAdapter(specialtyAdapter);
+
         getData();
 
     }
@@ -103,20 +112,22 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
         ShowMenuRequset.getData(getActivity(), urlStr, parmater, IndexDataBean.class, new RequestCallback<IndexDataBean>() {
             @Override
             public void onfailed(String msg) {
-
-
+                DialogUtil.toastMsg(getActivity().getApplicationContext(), msg);
             }
 
             @Override
             public void onSuccess(IndexDataBean data) {
-
                 if (data != null) {
                     mIndexData = data;
+                    specialtyAdapter.notifyDataSetChanged(mIndexData.getHotProductList());
                 }
 
             }
         });
     }
+
+    //http://192.168.1.112/restaurant/index.php?s=/Home/Api/getIndex
+    //version=1&os=android&secret=8ac97c154f3ff89dd45de192b858ffc3&uuid=990003109238541&time=1418382048287
 
 
 }
