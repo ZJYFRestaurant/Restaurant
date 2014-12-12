@@ -13,6 +13,7 @@ public class ZJYFRequestParmater extends RequestParams {
     public ZJYFRequestParmater(Context context) {
 
         super();
+        put("os", "android");
         put("time", DeviceInfo.getmCurTimeToken());
         put("uuid", DeviceInfo.getImei(context));
         put("secret", DeviceInfo.getAuth(context));
