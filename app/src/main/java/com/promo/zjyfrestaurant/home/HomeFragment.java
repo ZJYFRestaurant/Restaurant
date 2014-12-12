@@ -11,6 +11,11 @@ import android.widget.AdapterView;
 import com.jch.lib.view.ScrollGridView;
 import com.promo.zjyfrestaurant.BaseFragment;
 import com.promo.zjyfrestaurant.R;
+import com.promo.zjyfrestaurant.application.HttpConstant;
+import com.promo.zjyfrestaurant.bean.IndexDataBean;
+import com.promo.zjyfrestaurant.impl.RequestCallback;
+import com.promo.zjyfrestaurant.impl.ShowMenuRequset;
+import com.promo.zjyfrestaurant.impl.ZJYFRequestParmater;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -22,6 +27,8 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
     private static HomeFragment fragment;
     private ScrollGridView homeGv = null;
     private HomeSupAdapter homeSupAdapter = null;
+
+    private IndexDataBean mIndexData;
 
     private int[] supDrawables = new int[]{
             R.drawable.home_sup_recommand_sel,
@@ -77,7 +84,7 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
         homeSupAdapter = new HomeSupAdapter(getActivity(), supDrawables);
         homeGv.setAdapter(homeSupAdapter);
         homeGv.setOnItemClickListener(this);
-
+        getData();
 
     }
 
@@ -85,4 +92,31 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
     }
+
+    /**
+     * 获取网络数据。
+     */
+    private void getData() {
+
+        String urlStr = HttpConstant.getIndex;
+        ZJYFRequestParmater parmater = new ZJYFRequestParmater(getActivity().getApplicationContext());
+        ShowMenuRequset.getData(getActivity(), urlStr, parmater, IndexDataBean.class, new RequestCallback<IndexDataBean>() {
+            @Override
+            public void onfailed(String msg) {
+
+
+            }
+
+            @Override
+            public void onSuccess(IndexDataBean data) {
+
+                if (data != null) {
+                    mIndexData = data;
+                }
+
+            }
+        });
+    }
+
+
 }
