@@ -1,6 +1,7 @@
 package com.promo.zjyfrestaurant;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -78,5 +79,13 @@ public abstract class BaseFragment extends Fragment {
             mHeadView.addView(rightItem);
 
         }
+    }
+
+    /**
+     * @param intent
+     */
+    protected void transNextPage(Intent intent) {
+        startActivity(intent);
+        getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.static_anim);
     }
 }

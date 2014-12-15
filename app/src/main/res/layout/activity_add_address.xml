@@ -1,0 +1,19 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/bg_gray"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout style="@style/common_marg_white_item">
+
+        <EditText
+            android:drawableRight="@drawable/addr_edit"
+            android:layout_width="match_parent"
+            android:background="@null"
+            style="@style/font_black_15"
+            android:textColorHint="@color/div_gray"
+            android:layout_height="50dp" />
+
+    </LinearLayout>
+
+</RelativeLayout>

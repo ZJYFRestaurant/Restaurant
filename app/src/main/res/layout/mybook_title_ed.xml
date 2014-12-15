@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    style="@style/common_list_title_item_style">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/time_ed" />
+
+    <TextView
+        android:id="@+id/book_pre_tv"
+        android:text="@string/book_ed"
+        android:layout_marginLeft="5dp"
+        style="@style/font_black_18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

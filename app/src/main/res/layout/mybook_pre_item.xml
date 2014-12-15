@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        style="@style/my_book_item_img_style"
+        android:id="@+id/mybook_item_img" />
+
+    <LinearLayout
+        android:padding="10dp"
+        android:orientation="vertical"
+        android:layout_gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="@string/type"
+                style="@style/font_black_13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/mybook_type_tv"
+                android:layout_width="wrap_content"
+                style="@style/font_black_13"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                style="@style/font_black_13"
+                android:layout_width="wrap_content"
+                android:text="@string/custome_num"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                style="@style/font_black_13"
+                android:id="@+id/custome_num_tv"
+                android:text="5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                style="@style/font_black_13"
+                android:layout_width="wrap_content"
+                android:text="@string/time"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/mybook_time_tv"
+                style="@style/font_black_13"
+                android:text="2015.02.13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

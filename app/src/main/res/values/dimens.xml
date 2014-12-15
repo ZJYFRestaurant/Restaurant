@@ -1,7 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
     <dimen name="title_height">48dp</dimen>
     <dimen name="home_item_pad">5dp</dimen>
     <dimen name="common_pad">10dp</dimen>
+    <dimen name="common_top_marg">10dp</dimen>
+    <dimen name="common_pad_top">10dp</dimen>
+    <dimen name="common_pad_right">20dp</dimen>
+    <dimen name="add_btn_width">50dp</dimen>
+    <dimen name="personal_head_img_size">70dp</dimen>
+    <dimen name="personal_item_pad_t">10dp</dimen>
+    <dimen name="personal_item_pad_r">20dp</dimen>
+    <dimen name="personal_item_img_mar_r">15dp</dimen>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
 
 </resources>

@@ -1,0 +1,52 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg_gray"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:background="@drawable/personal_head_bg"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/head_img"
+            android:scaleType="centerCrop"
+            android:layout_gravity="center"
+            android:background="@drawable/personal_head_img_bg_layer"
+            android:layout_width="@dimen/personal_head_img_size"
+            android:layout_height="@dimen/personal_head_img_size" />
+
+    </FrameLayout>
+
+
+    <LinearLayout
+        style="@style/common_marg_white_item"
+        android:padding="15dp"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/font_black_18"
+            android:layout_width="wrap_content"
+            android:text="@string/app_name"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            style="@style/about_us_tv_style"
+            android:text="@string/about_us_row1" />
+
+        <TextView
+            style="@style/about_us_tv_style"
+            android:text="@string/about_us_row2" />
+
+        <TextView
+            style="@style/about_us_tv_style"
+            android:text="@string/about_us_row3" />
+
+        <TextView
+            style="@style/about_us_tv_style"
+            android:text="@string/about_us_row4" />
+
+    </LinearLayout>
+
+</LinearLayout>

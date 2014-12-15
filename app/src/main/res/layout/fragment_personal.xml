@@ -2,12 +2,217 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bg_gray"
     tools:context="com.promo.zjyfrestaurant.personal.PersonalFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="personal" />
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:background="@drawable/personal_head_bg"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/personal_head_img"
+                    android:scaleType="centerCrop"
+                    android:layout_gravity="center"
+                    android:background="@drawable/personal_head_img_bg_layer"
+                    android:layout_width="@dimen/personal_head_img_size"
+                    android:layout_height="@dimen/personal_head_img_size" />
+
+            </FrameLayout>
+
+            <TableLayout
+                android:layout_marginTop="@dimen/common_top_marg"
+                android:layout_width="match_parent"
+                android:background="@color/white"
+                android:stretchColumns="3"
+                android:layout_height="wrap_content">
+
+                <LinearLayout style="@style/gray_divide_line_style"></LinearLayout>
+
+                <TableRow
+                    style="@style/personal_item_style"
+                    android:id="@+id/person_book">
+
+                    <ImageView
+                        style="@style/personal_item_tv_style"
+                        android:background="@drawable/personal_book" />
+
+                    <TextView
+                        style="@style/text_15_style"
+                        android:text="@string/personal_book" />
+
+                    <RelativeLayout style="@style/weight_1_style">
+
+                        <ImageView style="@style/person_arro_iv" />
+                    </RelativeLayout>
+
+
+                </TableRow>
+
+                <LinearLayout style="@style/gray_divide_line_style"></LinearLayout>
+
+                <TableRow
+                    style="@style/personal_item_style"
+                    android:id="@+id/person_order">
+
+                    <ImageView
+                        style="@style/personal_item_tv_style"
+                        android:background="@drawable/personal_order" />
+
+                    <TextView
+                        style="@style/text_15_style"
+                        android:text="@string/personal_order" />
+
+                    <RelativeLayout style="@style/weight_1_style">
+
+                        <ImageView style="@style/person_arro_iv" />
+                    </RelativeLayout>
+
+
+                </TableRow>
+
+                <LinearLayout style="@style/gray_divide_line_style"></LinearLayout>
+
+                <TableRow
+                    style="@style/personal_item_style"
+                    android:id="@+id/person_address">
+
+                    <ImageView
+                        style="@style/personal_item_tv_style"
+                        android:background="@drawable/personal_address" />
+
+                    <TextView
+                        style="@style/text_15_style"
+                        android:text="@string/personal_address" />
+
+                    <RelativeLayout style="@style/weight_1_style">
+
+                        <ImageView style="@style/person_arro_iv" />
+                    </RelativeLayout>
+
+                </TableRow>
+
+            </TableLayout>
+
+            <LinearLayout style="@style/gray_divide_line_style"></LinearLayout>
+
+            <TableLayout
+                android:layout_marginTop="@dimen/common_top_marg"
+                android:layout_width="match_parent"
+                android:background="@color/white"
+                android:stretchColumns="3"
+                android:layout_height="wrap_content">
+
+                <LinearLayout style="@style/gray_divide_line_style"></LinearLayout>
+
+                <TableRow
+                    style="@style/personal_item_style"
+                    android:id="@+id/person_share">
+
+                    <ImageView
+                        style="@style/personal_item_tv_style"
+                        android:background="@drawable/personal_house" />
+
+                    <TextView
+                        style="@style/text_15_style"
+                        android:text="@string/personal_share" />
+
+                    <RelativeLayout style="@style/weight_1_style">
+
+                        <ImageView style="@style/person_arro_iv" />
+                    </RelativeLayout>
+
+
+                </TableRow>
+
+                <LinearLayout style="@style/gray_divide_line_style"></LinearLayout>
+
+                <TableRow
+                    style="@style/personal_item_style"
+                    android:id="@+id/person_feedback">
+
+                    <ImageView
+                        style="@style/personal_item_tv_style"
+                        android:background="@drawable/personal_feedback" />
+
+                    <TextView
+                        style="@style/text_15_style"
+                        android:text="@string/personal_feedback" />
+
+                    <RelativeLayout style="@style/weight_1_style">
+
+                        <ImageView style="@style/person_arro_iv" />
+                    </RelativeLayout>
+
+
+                </TableRow>
+
+                <LinearLayout style="@style/gray_divide_line_style"></LinearLayout>
+
+                <TableRow
+                    style="@style/personal_item_style"
+                    android:id="@+id/person_about">
+
+                    <ImageView
+                        style="@style/personal_item_tv_style"
+                        android:background="@drawable/personal_about" />
+
+                    <TextView
+                        style="@style/text_15_style"
+                        android:text="@string/personal_about" />
+
+                    <RelativeLayout style="@style/weight_1_style">
+
+                        <ImageView style="@style/person_arro_iv" />
+                    </RelativeLayout>
+
+                </TableRow>
+
+                <LinearLayout style="@style/gray_divide_line_style"></LinearLayout>
+
+                <TableRow
+                    style="@style/personal_item_style"
+                    android:id="@+id/person_update">
+
+                    <ImageView
+                        style="@style/personal_item_tv_style"
+                        android:background="@drawable/personal_update" />
+
+                    <TextView
+                        style="@style/text_15_style"
+                        android:text="@string/personal_update" />
+
+                    <RelativeLayout style="@style/weight_1_style">
+
+                        <TextView
+                            android:id="@+id/personal_version_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:text="当前版本"
+                            android:singleLine="true"
+                            android:ellipsize="end"
+                            android:drawableRight="@drawable/personal_arro"
+                            style="@style/font_gray_12" />
+                    </RelativeLayout>
+
+                </TableRow>
+
+                <LinearLayout style="@style/gray_divide_line_style"></LinearLayout>
+
+            </TableLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
 
 </FrameLayout>

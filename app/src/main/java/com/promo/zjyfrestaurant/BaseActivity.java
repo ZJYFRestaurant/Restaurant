@@ -43,10 +43,21 @@ public abstract class BaseActivity extends Activity {
         title_rl = (RelativeLayout) findViewById(R.id.title_rl);
 
         View contentView = initContentView();
+        if (contentView == null)
+            return;
         contentView.setLayoutParams(new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         contentfl.addView(contentView);
 
+        backbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+                finish();
+            }
+        });
+
     }
+
 
     /**
      * 隐藏标题栏.
@@ -74,11 +85,14 @@ public abstract class BaseActivity extends Activity {
     protected void addRightItem(View rightItem) {
 
         if (rightItem != null) {
-            RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             params.addRule(RelativeLayout.CENTER_VERTICAL);
             params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+            params.width = (int) getResources().getDimension(R.dimen.add_btn_width);
+
             rightItem.setLayoutParams(params);
             title_rl.addView(rightItem);
+
         }
     }
 

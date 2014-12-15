@@ -3,14 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/title_height"
     android:id="@+id/title_rl"
-    android:background="@color/title_bg">
+    android:background="@color/title_green">
 
     <Button
         android:id="@+id/back_btn"
-        android:text="@string/back"
+        android:drawableRight="@drawable/back_btn_s"
         android:layout_alignParentLeft="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:background="@null"
+        android:layout_centerVertical="true"
+        android:layout_width="@dimen/add_btn_width"
+        android:layout_height="match_parent" />
 
     <TextView
         android:id="@+id/title_tv"

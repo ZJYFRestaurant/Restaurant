@@ -1,16 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">ZJYFRestaurant</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+    <string name="app_name">紫金渔府</string>
 
     <!-- common -->
     <string name="back">返回</string>
     <string name="yuan">元</string>
 
-    <!--home-->
+    <!-- home -->
     <string name="home_specialty">招牌美食</string>
     <string name="home_today">今天价：</string>
+
+    <!-- personal -->
+    <string name="personal_book">我的预约</string>
+    <string name="personal_order">我的点餐</string>
+    <string name="personal_address">地址管理</string>
+    <string name="personal_share">分享渔府</string>
+    <string name="personal_feedback">意见反馈</string>
+    <string name="personal_about">关于我们</string>
+    <string name="personal_update">检查更新</string>
+    <string name="title_activity_my_book">MyBookActivity</string>
+    <string name="type">类型：</string>
+
+    <string-array name="book_bypes">
+        <item name="to_rest_consume">到店消费</item>
+        <item name="to_rest_get">到店取菜</item>
+        <item name="sent_home">外送到家</item>
+    </string-array>
+
+    <string name="custome_num">就餐人数：</string>
+    <string name="time">时间：</string>
+    <string name="book_pre">未到期预约</string>
+    <string name="book_ed">已过期预约</string>
+    <string name="about_us_row1">人均： ￥200</string>
+    <string name="about_us_row2">营业时间：10:00-23:00</string>
+    <string name="about_us_row3">地址： 江苏省 南京市 秦淮区 洪武路街道</string>
+    <string name="about_us_row4">电话： 025-687133254</string>
+
+    <string name="add_name">请输入联系人姓名</string>
 
 </resources>

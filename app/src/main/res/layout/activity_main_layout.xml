@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"></FrameLayout>
 
-    <LinearLayout style="@style/gray_divide_line_style"></LinearLayout>
+    <!--<LinearLayout style="@style/gray_divide_line_style"></LinearLayout>-->
 
     <RadioGroup
         android:id="@+id/main_rg"

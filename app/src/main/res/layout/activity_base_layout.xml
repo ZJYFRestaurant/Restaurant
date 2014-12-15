@@ -4,10 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include
-        layout="@layout/title_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+    <include layout="@layout/title_layout" />
 
     <FrameLayout
         android:id="@+id/content_fl"

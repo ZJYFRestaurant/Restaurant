@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    style="@style/common_item_pad_15_width"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <ImageView
+        android:id="@+id/item_del_btn"
+        android:layout_centerVertical="true"
+        android:layout_width="wrap_content"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/item_del_btn"
+        android:layout_height="wrap_content" />
+
+
+    <LinearLayout
+        android:layout_toLeftOf="@id/item_del_btn"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_marginRight="5dp"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/addr_item_name_tv"
+                style="@style/font_black_15"
+                android:layout_weight="4"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/addr_item_phone_tv"
+                style="@style/font_black_15"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:layout_weight="6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/addr_item_tv"
+            android:lines="2"
+            android:layout_marginTop="5dp"
+            android:ellipsize="end"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+
+</RelativeLayout>
