@@ -76,40 +76,43 @@ public class HomeSpecialtyAdapter extends BaseAdapter {
         int viewType = position % 2;    //两种ViewType。
 
         if (convertView == null) {
-            getView(convertView, viewHolder, viewType, position);
-
+            convertView = getView(convertView, viewHolder, viewType, position);
+            viewHolder = (ViewHolder) convertView.getTag();
         } else {
 
             int convertType = convertView.getId() % 2;
             if (viewType == convertType) {      //是需要的layout类型
                 viewHolder = (ViewHolder) convertView.getTag();
             } else {
-                getView(convertView, viewHolder, viewType, position);
+                convertView = getView(convertView, viewHolder, viewType, position);
+                viewHolder = (ViewHolder) convertView.getTag();
             }
-
         }
+
 
         HotProductBean hotProductBean = hotProductBeans.get(position);
 
         if (hotProductBean != null) {
             ImageManager.load(hotProductBean.getCover(), viewHolder.img, ContextUtil.getRectangleImgOptions());
             viewHolder.nameTv.setText(hotProductBean.getName() == null ? "" : hotProductBean.getName());
-            viewHolder.priceTv.setText(String.valueOf(hotProductBean.getPrice()));
-            viewHolder.levelView.setStartNum(hotProductBean.getStart());
+            viewHolder.priceTv.setText(String.valueOf(hotProductBean.getNew_price()));
+            viewHolder.levelView.setStartNum(hotProductBean.getStar());
         }
 
         return convertView;
     }
 
-    private void getView(View convertview, ViewHolder viewHolder, int viewType, int position) {
+    private View getView(View convertview, ViewHolder viewHolder, int viewType, int position) {
         convertview = getViewByType(viewType);
         viewHolder = new ViewHolder();
         viewHolder.img = (ImageView) convertview.findViewById(R.id.home_specialty_item_img);
-        viewHolder.levelView = (HomeStartView) convertview.findViewById(R.id.home_specialty_lv);
+        viewHolder.levelView = (HomeStartView) convertview.findViewById(R.id.home_specialty_item_star);
         viewHolder.nameTv = (TextView) convertview.findViewById(R.id.home_specialty_item_name);
         viewHolder.priceTv = (TextView) convertview.findViewById(R.id.home_specialty_item_price);
         convertview.setId(BASEINDEX + position);
         convertview.setTag(viewHolder);
+
+        return convertview;
     }
 
 

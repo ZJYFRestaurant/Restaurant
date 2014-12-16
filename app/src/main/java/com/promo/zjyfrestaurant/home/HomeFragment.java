@@ -126,8 +126,5 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
         });
     }
 
-    //http://192.168.1.112/restaurant/index.php?s=/Home/Api/getIndex
-    //version=1&os=android&secret=8ac97c154f3ff89dd45de192b858ffc3&uuid=990003109238541&time=1418382048287
-
 
 }

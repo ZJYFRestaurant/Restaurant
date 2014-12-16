@@ -11,7 +11,7 @@ public class HttpConstant {
 
     private static final boolean HOSTLOCALABLE = true;
 
-    private static final String HOST_LOCAL = "http://192.168.1.112";
+    private static final String HOST_LOCAL = "http://192.168.0.126";
 
     private static final String HOST_REMOTE = "";
 

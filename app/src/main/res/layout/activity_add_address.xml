@@ -4,15 +4,29 @@
     android:layout_height="match_parent">
 
 
-    <LinearLayout style="@style/common_marg_white_item">
+    <LinearLayout
+        style="@style/common_marg_white_item"
+        android:orientation="vertical">
 
         <EditText
-            android:drawableRight="@drawable/addr_edit"
-            android:layout_width="match_parent"
-            android:background="@null"
-            style="@style/font_black_15"
-            android:textColorHint="@color/div_gray"
-            android:layout_height="50dp" />
+            android:id="@+id/add__addr_name_et"
+            style="@style/addr_manager_item"
+            android:hint="@string/add_name" />
+
+        <LinearLayout style="@style/gray_divide_line_style"></LinearLayout>
+
+        <EditText
+            android:id="@+id/add_addr_phone_et"
+            android:inputType="phone"
+            style="@style/addr_manager_item"
+            android:hint="@string/add_phone" />
+
+        <LinearLayout style="@style/gray_divide_line_style"></LinearLayout>
+
+        <EditText
+            android:id="@+id/add_addr_et"
+            style="@style/addr_manager_item"
+            android:hint="@string/add_addr" />
 
     </LinearLayout>
 

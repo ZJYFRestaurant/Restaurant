@@ -1,90 +1,97 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="horizontal"
-    android:gravity="center_vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_weight="1"
+    <LinearLayout
+        android:orientation="horizontal"
+        style="@style/common_white_item"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="@dimen/home_list_div_height"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/home_specialty_tiem_riv"
-            android:src="@drawable/home_specalty_item_riv"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="@dimen/common_pad"
-            android:layout_marginTop="@dimen/common_pad"
-            android:layout_alignParentTop="true"
+        <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_alignParentLeft="true"
-            android:orientation="vertical"
-            android:paddingTop="@dimen/common_pad"
-            android:paddingBottom="@dimen/common_pad"
-            android:paddingLeft="@dimen/common_pad"
-            android:layout_toLeftOf="@id/home_specialty_tiem_riv"
+            android:layout_weight="1"
             android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/home_specialty_item_name"
-                style="@style/font_gray2_15"
-                android:text="及自住房的"
-                android:paddingTop="@dimen/home_item_pad"
-                android:paddingBottom="@dimen/home_item_pad"
+            <ImageView
+                android:id="@+id/home_specialty_tiem_riv"
+                android:src="@drawable/home_specalty_item_riv"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/common_pad"
+                android:layout_marginTop="@dimen/common_pad"
+                android:layout_alignParentTop="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:orientation="vertical"
+                android:paddingTop="@dimen/common_pad"
+                android:paddingBottom="@dimen/common_pad"
+                android:paddingLeft="@dimen/common_pad"
+                android:layout_toLeftOf="@id/home_specialty_tiem_riv"
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/home_specialty_today"
+                    android:id="@+id/home_specialty_item_name"
+                    style="@style/font_gray2_15"
+                    android:text="及自住房的"
+                    android:paddingTop="@dimen/home_item_pad"
+                    android:paddingBottom="@dimen/home_item_pad"
                     android:layout_width="wrap_content"
-                    style="@style/font_gray_12"
-                    android:text="@string/home_today"
                     android:layout_height="wrap_content" />
 
-                <TextView
-                    android:id="@+id/home_specialty_item_price"
+                <LinearLayout
+                    android:orientation="horizontal"
                     android:layout_width="wrap_content"
-                    style="@style/font_greent_14"
-                    android:text="288"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content">
 
-                <TextView
-                    style="@style/font_gray_12"
-                    android:text="@string/yuan"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/home_specialty_today"
+                        android:layout_width="wrap_content"
+                        style="@style/font_gray_12"
+                        android:text="@string/home_today"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/home_specialty_item_price"
+                        android:layout_width="wrap_content"
+                        style="@style/font_greent_14"
+                        android:text="288"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        style="@style/font_gray_12"
+                        android:text="@string/yuan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+                <com.promo.zjyfrestaurant.home.HomeStartView
+                    android:id="@+id/home_specialty_item_star"
+                    android:layout_width="100dp"
+                    android:layout_height="25dp"
+                    android:padding="5dp"
+                    app:start_drawable="@drawable/home_stars"
+                    app:start_num="5"
+                    app:start_pading="1dp" />
+
 
             </LinearLayout>
 
-            <com.promo.zjyfrestaurant.home.HomeStartView
-                android:layout_width="100dp"
-                android:layout_height="25dp"
-                android:padding="5dp"
-                app:start_drawable="@drawable/home_stars"
-                app:start_num="5"
-                app:start_pading="1dp" />
+        </RelativeLayout>
 
-
-        </LinearLayout>
-
-    </RelativeLayout>
-
-    <ImageView
-        android:id="@+id/home_specialty_item_img"
-        android:scaleType="centerCrop"
-        android:src="@drawable/home_sup_menu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/home_specialty_item_img"
+            android:scaleType="centerCrop"
+            android:src="@drawable/home_sup_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 </LinearLayout>

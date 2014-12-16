@@ -1,7 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/white"
+    android:background="@color/bg_gray"
     android:layout_height="match_parent"
     tools:context="com.promo.zjyfrestaurant.home.HomeFragment">
 
@@ -12,7 +12,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:orientation="vertical"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:scaleType="centerCrop"
@@ -54,7 +54,8 @@
 
             <com.jch.lib.view.ScrollListView
                 android:id="@+id/home_specialty_lv"
-                android:padding="@dimen/common_pad"
+                android:divider="@null"
+                android:padding="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"></com.jch.lib.view.ScrollListView>
 

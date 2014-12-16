@@ -1,14 +1,15 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="android:Theme">
+    <style name="AppTheme" parent="android:Theme.Black">
         <item name="android:windowNoTitle">true</item>
+
     </style>
 
     <style name="gray_divide_line_style">
         <item name="android:background">@color/div_gray</item>
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">1sp</item>
+        <item name="android:layout_height">1px</item>
     </style>
 
     <style name="text_15_style">
@@ -83,10 +84,14 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 
-    <style name="common_item_pad_15_width">
+    <style name="common_white_item">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:background">@drawable/white_shape</item>
+    </style>
+
+    <style name="common_item_pad_15_width" parent="common_white_item">
+
         <item name="android:padding">15dp</item>
     </style>
 
@@ -100,6 +105,10 @@
         <item name="android:background">@drawable/white_shape</item>
     </style>
 
+    <style name="cmmon_pad_white_item" parent="common_white_item">
+        <item name="android:padding">10dp</item>
+    </style>
+
     <style name="black_15_tv_stlye" parent="font_black_15">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
@@ -108,4 +117,18 @@
     <style name="about_us_tv_style" parent="black_15_tv_stlye">
         <item name="android:layout_marginTop">8dp</item>
     </style>
+
+    <style name="addr_manager_item" parent="font_black_15">
+        <item name="android:drawableRight">@drawable/addr_edit</item>
+        <item name="android:background">@null</item>
+        <item name="android:padding">14dp</item>
+        <item name="android:textCursorDrawable">@null</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
+    <style name="modify_add_style">
+
+    </style>
+
 </resources>

@@ -37,6 +37,16 @@
     <string name="about_us_row3">地址： 江苏省 南京市 秦淮区 洪武路街道</string>
     <string name="about_us_row4">电话： 025-687133254</string>
 
+    <string name="add_address">新增地址</string>
     <string name="add_name">请输入联系人姓名</string>
+    <string name="add_phone">请输入联系电话</string>
+    <string name="add_addr">请输入详细地址</string>
+    <string name="add_name_warning">联系人姓名不能为空</string>
+    <string name="add_addr_warning">地址不能为空</string>
+    <string name="modify_addr">修改地址</string>
+
+    <string name="constant_name">联系人姓名</string>
+    <string name="constant_phone">联系电话</string>
+    <string name="constant_addr">详细地址</string>
 
 </resources>
