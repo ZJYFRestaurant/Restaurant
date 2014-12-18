@@ -1,0 +1,65 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/bg_gray"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:scaleType="centerCrop"
+            android:layout_marginBottom="35dp"
+            android:src="@drawable/personal_head_bg"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/personal_head_img"
+            android:scaleType="centerCrop"
+            android:layout_gravity="bottom|center_horizontal"
+            android:background="@drawable/personal_head_img_bg_layer"
+            android:layout_width="@dimen/personal_head_img_size"
+            android:layout_height="@dimen/personal_head_img_size" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="@dimen/login_text_mar_top"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/login_sign"
+            style="@style/font_black_15" />
+
+        <ImageView
+            android:id="@+id/taobao_login_btn"
+            android:background="@drawable/taobao"
+            android:layout_marginTop="@dimen/login_item_mar_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/qq_login_btn"
+            android:background="@drawable/qq"
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/login_item_mar_top"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/sina_login_btn"
+            android:background="@drawable/sina"
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/login_item_mar_top"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

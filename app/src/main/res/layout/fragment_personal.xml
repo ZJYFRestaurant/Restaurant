@@ -211,6 +211,15 @@
 
             </TableLayout>
 
+            <Button
+                android:id="@+id/logout_btn"
+                android:layout_margin="20dp"
+                android:background="@drawable/green_bg_sel"
+                android:text="@string/logout"
+                style="@style/font_white_18"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
         </LinearLayout>
     </ScrollView>
 

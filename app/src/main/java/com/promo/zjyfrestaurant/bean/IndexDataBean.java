@@ -26,4 +26,6 @@ public class IndexDataBean {
     public void setHotProductList(ArrayList<HotProductBean> hotProductList) {
         this.hotProductList = hotProductList;
     }
+
+
 }

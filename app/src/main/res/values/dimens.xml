@@ -15,5 +15,7 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
+    <dimen name="login_text_mar_top">40dp</dimen>
+    <dimen name="login_item_mar_top">20dp</dimen>
 
 </resources>

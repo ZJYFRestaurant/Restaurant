@@ -2,6 +2,7 @@ package com.promo.zjyfrestaurant.application;
 
 import android.app.Application;
 
+import com.baidu.mapapi.SDKInitializer;
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiscCache;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.cache.memory.impl.LruMemoryCache;
@@ -20,6 +21,7 @@ public class ZjyfApplication extends Application {
     public void onCreate() {
         super.onCreate();
         initImageLoaderConfiguration();
+        SDKInitializer.initialize(getApplicationContext());
     }
 
     /**

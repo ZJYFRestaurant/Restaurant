@@ -11,6 +11,11 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
+    <style name="font_white_18">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
     <style name="font_black_15">
         <item name="android:textSize">@dimen/font_15</item>
         <item name="android:textColor">@color/black</item>

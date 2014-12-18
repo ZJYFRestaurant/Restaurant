@@ -63,7 +63,7 @@ public abstract class BaseActivity extends Activity {
      * 隐藏标题栏.
      */
     protected void hideTitle() {
-        contentfl.setVisibility(View.GONE);
+        title_rl.setVisibility(View.GONE);
     }
 
     /**

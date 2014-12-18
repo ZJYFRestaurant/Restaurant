@@ -1,0 +1,32 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/bg_gray"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:scaleType="fitCenter"
+        android:layout_margin="15dp"
+        android:src="@drawable/feedback_banner"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:gravity="top"
+        android:layout_margin="15dp"
+        android:id="@+id/feedback_et"
+        android:scrollbars="vertical"
+        android:hint="@string/feedback_hint"
+        style="@style/edit_white_style" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:id="@+id/feedback_smt_btn"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/submit_fb_sel"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

@@ -109,6 +109,11 @@
         <item name="android:padding">10dp</item>
     </style>
 
+    <style name="edit_white_style" parent="cmmon_pad_white_item">
+        <item name="android:textSize">@dimen/font_15</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
     <style name="black_15_tv_stlye" parent="font_black_15">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
@@ -127,8 +132,5 @@
         <item name="android:layout_width">match_parent</item>
     </style>
 
-    <style name="modify_add_style">
-
-    </style>
 
 </resources>

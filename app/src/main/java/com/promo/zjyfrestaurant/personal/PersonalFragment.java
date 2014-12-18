@@ -2,16 +2,19 @@ package com.promo.zjyfrestaurant.personal;
 
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.promo.zjyfrestaurant.BaseFragment;
 import com.promo.zjyfrestaurant.R;
+import com.promo.zjyfrestaurant.personal.login.LoginActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -32,6 +35,7 @@ public class PersonalFragment extends BaseFragment implements View.OnClickListen
     private TableRow mPersonAboutTr = null;
     private TableRow mPersonUpdateTr = null;
     private TextView mPersonVersonTv = null;
+    private Button mLogoutBtn = null;
 
     /**
      * Use this factory method to create a new instance of
@@ -80,6 +84,9 @@ public class PersonalFragment extends BaseFragment implements View.OnClickListen
         mPersonFeedbackTr = (TableRow) containerView.findViewById(R.id.person_feedback);
         mPersonUpdateTr = (TableRow) containerView.findViewById(R.id.person_update);
         mPersonVersonTv = (TextView) containerView.findViewById(R.id.personal_version_tv);
+        mLogoutBtn = (Button) containerView.findViewById(R.id.logout_btn);
+
+        mPersonVersonTv.append(getVersion());
 
         mHeadIv.setOnClickListener(this);
         mPersonAboutTr.setOnClickListener(this);
@@ -92,6 +99,22 @@ public class PersonalFragment extends BaseFragment implements View.OnClickListen
 
     }
 
+    /**
+     * 获取当前版本号。
+     *
+     * @return
+     */
+    private String getVersion() {
+        String versionName = "1.0";
+        try {
+            versionName = getActivity().getPackageManager().getPackageInfo(getActivity().getPackageName(), 0).versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return versionName;
+    }
+
     @Override
     public void onClick(View v) {
 
@@ -99,6 +122,8 @@ public class PersonalFragment extends BaseFragment implements View.OnClickListen
         switch (id) {
 
             case R.id.personal_head_img: {
+
+                login();
 
                 break;
             }
@@ -126,19 +151,54 @@ public class PersonalFragment extends BaseFragment implements View.OnClickListen
                 break;
             }
             case R.id.person_share: {
+
+                Intent intent = new Intent(Intent.ACTION_SEND); // 启动分享发送的属性
+                intent.setType("text/plain"); // 分享发送的数据类型
+                intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.share_subject)); // 分享的主题
+                intent.putExtra(Intent.EXTRA_TEXT, getString(R.string.share_content)); // 分享的内容
+                startActivity(Intent.createChooser(intent, "选择分享"));
+
                 break;
             }
             case R.id.person_feedback: {
+
+                Intent intent = new Intent(getActivity(), FeedBackActivity.class);
+                transNextPage(intent);
+
                 break;
             }
             case R.id.person_update: {
+                updata();
+
                 break;
             }
-            case R.id.personal_version_tv: {
+
+            case R.id.logout_btn: {
+
+
                 break;
+            }
+            default: {
+
             }
 
         }
 
     }
+
+    /**
+     * 检查版本更新。
+     */
+    private void updata() {
+//        VersionManager.
+    }
+
+    /**
+     *
+     */
+    private void login() {
+        Intent intent = new Intent(getActivity(), LoginActivity.class);
+        transNextPage(intent);
+    }
+
 }

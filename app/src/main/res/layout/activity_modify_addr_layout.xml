@@ -51,6 +51,7 @@
             <LinearLayout style="@style/gray_divide_line_style"></LinearLayout>
 
             <TableRow
+
                 android:layout_width="match_parent"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
