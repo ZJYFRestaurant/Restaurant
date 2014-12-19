@@ -17,5 +17,6 @@
 
     <dimen name="login_text_mar_top">40dp</dimen>
     <dimen name="login_item_mar_top">20dp</dimen>
+    <dimen name="star_padding">5dp</dimen>
 
 </resources>

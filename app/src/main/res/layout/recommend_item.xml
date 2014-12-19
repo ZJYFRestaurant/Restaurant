@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="2dp"
+    style="@style/common_white_item">
+
+    <ImageView
+        android:scaleType="centerCrop"
+        android:id="@+id/recmd_item_img"
+        android:background="@drawable/home_banner"
+        android:src="@drawable/book_item_img_shape"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <RelativeLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.promo.zjyfrestaurant.view.AddDealPicker
+            android:id="@+id/rcmd_deal_picker"
+            style="@style/deal_picker_style"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_alignParentRight="true"
+            app:left_img="@drawable/reduce"
+            app:right_img="@drawable/plus"
+            app:text_size="@dimen/font_15"
+            app:text_color="@color/black"
+            app:text="0"
+            app:img_size="35dp"
+            app:drawable_padding="8dp"></com.promo.zjyfrestaurant.view.AddDealPicker>
+
+        <LinearLayout
+            android:layout_alignParentLeft="true"
+            android:layout_toLeftOf="@id/rcmd_deal_picker"
+            android:orientation="vertical"
+            android:padding="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/rcmd_name_tv"
+                android:layout_width="wrap_content"
+                android:text="泡椒凤爪"
+                android:layout_height="wrap_content"
+                style="@style/font_black_15" />
+
+            <com.promo.zjyfrestaurant.home.HomeStartView
+                style="@style/star_stlye"
+                android:id="@+id/rcmd_star"
+                app:start_num="4"
+                app:start_drawable="@drawable/home_stars"
+                app:start_pading="@dimen/star_padding" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/font_black_12"
+                    android:text="@string/home_today"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/rcmd_price_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/font_greent_14"
+                    android:paddingLeft="2dp"
+                    android:text="52"
+                    android:paddingRight="2dp" />
+
+                <TextView
+                    style="@style/font_black_12"
+                    android:layout_width="wrap_content"
+                    android:text="@string/yuan"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

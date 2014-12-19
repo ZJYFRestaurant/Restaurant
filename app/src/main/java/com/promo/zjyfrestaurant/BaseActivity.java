@@ -77,6 +77,10 @@ public abstract class BaseActivity extends Activity {
         }
     }
 
+    protected void hideBackBtn() {
+        backbtn.setVisibility(View.GONE);
+    }
+
     /**
      * 添加title右边的组件.
      *

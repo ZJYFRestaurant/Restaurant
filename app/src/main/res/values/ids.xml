@@ -2,4 +2,6 @@
 <resources>
 
     <item type="id" name="addBtn">false</item>
+    <item type="id" name="dealPickleftImgId">false</item>
+    <item type="id" name="dealPickrightImgId">false</item>
 </resources>

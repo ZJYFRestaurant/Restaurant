@@ -1,0 +1,16 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.promo.zjyfrestaurant.view.AddDealPicker
+        android:background="#ccc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:left_img="@drawable/reduce"
+        app:right_img="@drawable/plus"
+        app:text="552"
+        app:text_size="20sp"
+        app:text_color="@color/tab_green" />
+
+</FrameLayout>

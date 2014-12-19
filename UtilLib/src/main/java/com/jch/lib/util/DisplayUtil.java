@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Point;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.util.Log;
 import android.view.Display;
@@ -20,6 +21,22 @@ import android.widget.LinearLayout;
  */
 public class DisplayUtil {
 
+
+    /**
+     * 兼容版本的背景设置。
+     *
+     * @param view
+     * @param drawable
+     */
+    public static void setBackground(View view, Drawable drawable) {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            view.setBackground(drawable);
+        } else {
+            view.setBackgroundDrawable(drawable);
+        }
+
+    }
 
     @SuppressLint("NewApi")
     public static void getSize(Display display, Point outSize) {

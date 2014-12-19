@@ -1,6 +1,7 @@
 package com.promo.zjyfrestaurant.home;
 
 
+import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -15,6 +16,7 @@ import com.promo.zjyfrestaurant.BaseFragment;
 import com.promo.zjyfrestaurant.R;
 import com.promo.zjyfrestaurant.application.HttpConstant;
 import com.promo.zjyfrestaurant.bean.IndexDataBean;
+import com.promo.zjyfrestaurant.home.recommendPager.RecommendActivity;
 import com.promo.zjyfrestaurant.impl.RequestCallback;
 import com.promo.zjyfrestaurant.impl.ShowMenuRequset;
 import com.promo.zjyfrestaurant.impl.ZJYFRequestParmater;
@@ -100,6 +102,30 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+        Class newClz = null;
+
+        switch (position) {
+            case 0: {
+
+                newClz = RecommendActivity.class;
+                break;
+            }
+            case 1: {
+                break;
+            }
+            case 2: {
+                break;
+            }
+            case 3: {
+                break;
+            }
+            default: {
+
+            }
+        }
+
+        Intent intent = new Intent(getActivity(), newClz);
+        transNextPage(intent);
     }
 
     /**
