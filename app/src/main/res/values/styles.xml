@@ -143,5 +143,16 @@
         <item name="android:padding">5dp</item>
     </style>
 
+    <style name="mid_item_img_size">
+        <item name="android:layout_width">140dp</item>
+        <item name="android:layout_height">80dp</item>
+    </style>
+
+    <style name="number_line_style">
+        <item name="android:background">@color/gray2</item>
+        <item name="android:layout_width">1px</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+    </style>
 
 </resources>

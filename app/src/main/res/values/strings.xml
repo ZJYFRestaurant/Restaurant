@@ -19,7 +19,6 @@
     <string name="personal_feedback">意见反馈</string>
     <string name="personal_about">关于我们</string>
     <string name="personal_update">检查更新</string>
-    <string name="title_activity_my_book">MyBookActivity</string>
     <string name="type">类型：</string>
 
     <string-array name="book_bypes">
@@ -51,7 +50,17 @@
     <string name="share_content">分享内容</string>
     <string name="logout">退出登录</string>
     <string name="login_sign">使用一下账号登录</string>
-
     <string name="recommend_dish">菜品推荐</string>
+    <string name="privilage">优惠活动</string>
+    <string name="menu_title">飘香菜单</string>
+    <string name="shopping_cart">点餐车</string>
+    <string name="book">预约</string>
+
+    <string-array name="book_tab">
+        <item name="book_tab">亲临渔府</item>
+        <item name="to_rest_get">外带取餐</item>
+        <item name="sent_home">外卖服务</item>
+    </string-array>
+
 
 </resources>

@@ -54,6 +54,17 @@ public abstract class BaseFragment extends Fragment {
         mHeadView = (RelativeLayout) view.findViewById(R.id.title_rl);
     }
 
+    /**
+     * 设置标题。
+     *
+     * @param title
+     */
+    protected void setTitle(String title) {
+        if (title != null && !title.equals("")) {
+            titleTv.setText(title);
+        }
+    }
+
     protected void hideHeadView() {
         mHeadView.setVisibility(View.GONE);
     }
@@ -72,9 +83,11 @@ public abstract class BaseFragment extends Fragment {
     protected void addRightItem(View rightItem) {
 
         if (rightItem != null) {
-            RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             params.addRule(RelativeLayout.CENTER_VERTICAL);
             params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+            params.width = (int) getResources().getDimension(R.dimen.add_btn_width);
+
             rightItem.setLayoutParams(params);
             mHeadView.addView(rightItem);
 

@@ -1,12 +1,27 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/view_container"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.promo.zjyfrestaurant.book.BookFragment">
+    android:layout_height="match_parent">
 
-    <TextView
+    <com.jch.lib.view.PagerSlidingTabStrip
+        android:id="@+id/book_slide_tab"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="book" />
+        android:layout_height="@dimen/slide_tab_height"
+        app:curTabtextColor="@color/gray3"
+        app:curTabtextSize="@dimen/font_15"
+        app:indicatorColor="@color/tab_green"
+        app:indicatorHeight="2dp"
+        app:tabtextAllCaps="false"
+        app:tabtextColor="@color/gray3"
+        app:tabtextSize="@dimen/font_15"
+        app:underlineColor="@color/title_green"
+        app:underlineHeight="1dp" />
 
-</FrameLayout>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/book_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

@@ -19,6 +19,7 @@ import com.jch.lib.util.DisplayUtil;
 import com.promo.zjyfrestaurant.R;
 
 /**
+ * 菜品添加组件。
  * TODO: document your custom view class.
  */
 public class AddDealPicker extends LinearLayout implements View.OnClickListener {

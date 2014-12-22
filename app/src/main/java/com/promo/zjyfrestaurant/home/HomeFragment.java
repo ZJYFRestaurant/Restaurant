@@ -16,6 +16,9 @@ import com.promo.zjyfrestaurant.BaseFragment;
 import com.promo.zjyfrestaurant.R;
 import com.promo.zjyfrestaurant.application.HttpConstant;
 import com.promo.zjyfrestaurant.bean.IndexDataBean;
+import com.promo.zjyfrestaurant.home.recommendPager.MenuActivity;
+import com.promo.zjyfrestaurant.home.recommendPager.MienActivity;
+import com.promo.zjyfrestaurant.home.recommendPager.PrivilegeActivity;
 import com.promo.zjyfrestaurant.home.recommendPager.RecommendActivity;
 import com.promo.zjyfrestaurant.impl.RequestCallback;
 import com.promo.zjyfrestaurant.impl.ShowMenuRequset;
@@ -111,21 +114,26 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
                 break;
             }
             case 1: {
+                newClz = PrivilegeActivity.class;
                 break;
             }
             case 2: {
+                newClz = MenuActivity.class;
                 break;
             }
             case 3: {
+
+                newClz = MienActivity.class;
                 break;
             }
             default: {
 
             }
         }
-
-        Intent intent = new Intent(getActivity(), newClz);
-        transNextPage(intent);
+        if (newClz != null) {
+            Intent intent = new Intent(getActivity(), newClz);
+            transNextPage(intent);
+        }
     }
 
     /**

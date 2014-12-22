@@ -5,7 +5,9 @@
     <color name="white">#ffffff</color>
     <color name="bg_gray">#EEEEEE</color>
     <color name="div_gray">#CACACA</color>
+    <color name="gray1">#d8d8d8</color>
     <color name="gray2">#605e5f</color>
+    <color name="gray3">#615F60</color>
     <color name="hint_gray">#A5A5A5</color>
     <color name="tab_white">#f5efef</color>
     <color name="tab_green">#56b001</color>
