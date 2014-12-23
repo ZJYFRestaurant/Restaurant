@@ -9,5 +9,6 @@
         <attr name="num_line_cur_color" format="color|reference" />
         <attr name="num_tv_text" format="string|reference"></attr>
         <attr name="num_tv_cur" format="boolean"></attr>
+        <attr name="num_tv_end" format="boolean"></attr>
     </declare-styleable>
 </resources>

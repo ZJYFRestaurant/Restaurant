@@ -23,4 +23,5 @@
     <dimen name="slide_tab_height">40dp</dimen>
     <dimen name="num_tv_size">15dp</dimen>
 
+    <dimen name="book_input_height">50dp</dimen>
 </resources>

@@ -3,7 +3,7 @@
 
     <corners android:radius="@dimen/num_tv_size" />
     <gradient
-        android:startColor="@color/gray1"
-        android:centerColor="@color/gray1"
-        android:endColor="@color/gray1" />
+        android:startColor="@color/hint_gray"
+        android:centerColor="@color/hint_gray"
+        android:endColor="@color/hint_gray" />
 </shape>

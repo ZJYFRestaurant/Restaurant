@@ -14,7 +14,7 @@ import com.promo.zjyfrestaurant.R;
  * Use the {@link ToRestFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ToRestFragment extends Fragment {
+public class ToRestFragment extends BookBaseFragment {
 
 
     /**

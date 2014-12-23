@@ -3,7 +3,12 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="android:Theme.Black">
         <item name="android:windowNoTitle">true</item>
+    </style>
 
+    <style name="fill_space">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_weight">1</item>
     </style>
 
     <style name="gray_divide_line_style">
@@ -150,9 +155,64 @@
 
     <style name="number_line_style">
         <item name="android:background">@color/gray2</item>
-        <item name="android:layout_width">1px</item>
+        <item name="android:layout_width">1dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_weight">1</item>
+    </style>
+
+    <style name="book_content_style">
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:paddingLeft">10dp</item>
+    </style>
+
+    <style name="book_tb_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">5dp</item>
+    </style>
+
+    <!--android:orientation="horizontal"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:gravity="center_vertical"-->
+
+    <style name="book_tr_style">
+        <item name="android:orientation">horizontal</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="input_edit_style" parent="font_gray2_15">
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:drawablePadding">5dp</item>
+        <item name="android:layout_height">@dimen/book_input_height</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:layout_marginBottom">5dp</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:layout_marginLeft">15dp</item>
+        <item name="android:background">@drawable/input_bg_sel</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="book_input_num_style">
+        <item name="android:layout_width">20dp</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="book_submit_btn_style" parent="font_white_18">
+        <item name="android:button">@null</item>
+        <item name="android:layout_marginTop">30dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:text">@string/submit_book</item>
+        <item name="android:background">@drawable/green_bg_sel</item>
     </style>
 
 </resources>

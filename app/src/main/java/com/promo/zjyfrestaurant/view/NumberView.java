@@ -35,6 +35,10 @@ public class NumberView extends LinearLayout {
     private int mCurLineColor;
     private String mTvStr;
     /**
+     * 是否为最后一个。
+     */
+    private boolean mEnd = false;
+    /**
      * 当前图标。
      */
     private boolean curflag = false;
@@ -112,6 +116,11 @@ public class NumberView extends LinearLayout {
                     break;
                 }
 
+                case R.styleable.NumberView_num_tv_end: {
+                    mEnd = a.getBoolean(attr, false);
+                    break;
+                }
+
             }
         }
 
@@ -123,6 +132,8 @@ public class NumberView extends LinearLayout {
         if (mTvStr != null) {
             numTv.setText(mTvStr);
         }
+
+
         addView(mContentView);
 
     }
@@ -130,6 +141,10 @@ public class NumberView extends LinearLayout {
     private void initView() {
         numTv = (TextView) mContentView.findViewById(R.id.num_tv);
         numTv.setTextSize(mTvSize);
+
+        if (mEnd) {
+            mBtmLine.setVisibility(INVISIBLE);
+        }
 
         if (curflag) {
             mTopLine.setBackgroundColor(mCurLineColor);

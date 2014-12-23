@@ -61,6 +61,11 @@
         <item name="to_rest_get">外带取餐</item>
         <item name="sent_home">外卖服务</item>
     </string-array>
-
+    <string name="book_constant">联系人</string>
+    <string name="book_phone">联系电话</string>
+    <string name="book_time">取餐时间</string>
+    <string name="book_other">其他就餐要求(选填)</string>
+    <string name="book_number">就餐人数</string>
+    <string name="submit_book">提交预约</string>
 
 </resources>
