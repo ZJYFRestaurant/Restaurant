@@ -5,6 +5,9 @@ import android.view.View;
 import com.promo.zjyfrestaurant.BaseActivity;
 import com.promo.zjyfrestaurant.R;
 
+/**
+ * 外带
+ */
 public class MienActivity extends BaseActivity {
 
 
@@ -24,11 +27,4 @@ public class MienActivity extends BaseActivity {
 //        addShoppingCart();
     }
 
-//    private void addShoppingCart() {
-//
-//        ShoppingCartView shoppingCartView = new ShoppingCartView(getApplicationContext());
-//        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-//        addRightItem(shoppingCartView);
-//
-//    }
 }

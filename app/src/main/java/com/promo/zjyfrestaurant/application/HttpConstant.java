@@ -11,13 +11,13 @@ public class HttpConstant {
 
     private static final boolean HOSTLOCALABLE = true;
 
-    private static final String HOST_LOCAL = "http://192.168.0.126";
+    private static final String HOST_LOCAL = "http://fish.ebingoo.com";
 
     private static final String HOST_REMOTE = "";
 
     private static final String PORT = "";
 
-    private static final String ROOT_URL = "/restaurant/index.php?s=/Home/Api/";
+    private static final String ROOT_URL = "/index.php?s=/Home/Api/";
 
     /**
      * 获取基本连接

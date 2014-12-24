@@ -11,11 +11,8 @@ import com.promo.zjyfrestaurant.R;
 import com.promo.zjyfrestaurant.view.NumberView;
 
 /**
- * A simple {@link android.support.v4.app.Fragment} subclass.
- * Activities that contain this fragment must implement the
- * to handle interaction events.
- * Use the {@link com.promo.zjyfrestaurant.book.subFragment.SendFragment#newInstance} factory method to
  * create an instance of this fragment.
+ * 亲临渔府
  */
 public class SendFragment extends BookBaseFragment {
 

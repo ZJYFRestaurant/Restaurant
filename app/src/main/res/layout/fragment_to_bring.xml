@@ -1,12 +1,110 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.promo.zjyfrestaurant.book.subFragment.ToBringFragment">
+    tools:context="com.promo.zjyfrestaurant.book.subFragment.SendFragment">
 
-    <TextView
-        style="@style/font_black_15"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="to_bring" />
-</FrameLayout>
+    <LinearLayout style="@style/book_content_style">
+
+        <TableLayout style="@style/book_tb_style">
+
+            <TableRow style="@style/book_tr_style">
+
+                <com.promo.zjyfrestaurant.view.NumberView
+                    android:id="@+id/book_contact_num"
+                    style="@style/book_input_num_style"
+                    app:num_line_color="@color/gray1"
+                    app:num_line_cur_color="@color/gray1"
+                    app:num_tv_bg="@drawable/num_gray_shape"
+                    app:num_tv_cur_bg="@drawable/num_green_shape"
+                    app:num_tv_text="1"
+                    app:num_tv_text_color="@color/white"
+                    app:num_tv_text_size="5sp"
+                    app:num_tv_text_cur_color="@color/white" />
+
+                <EditText
+                    android:id="@+id/book_contact_et"
+                    android:drawableLeft="@drawable/book_contacts"
+                    android:hint="@string/book_constant"
+                    style="@style/input_edit_style" />
+
+            </TableRow>
+
+            <TableRow style="@style/book_tr_style">
+
+                <com.promo.zjyfrestaurant.view.NumberView
+                    android:id="@+id/book_phone_num"
+                    style="@style/book_input_num_style"
+                    app:num_line_color="@color/gray1"
+                    app:num_line_cur_color="@color/gray1"
+                    app:num_tv_bg="@drawable/num_gray_shape"
+                    app:num_tv_cur_bg="@drawable/num_green_shape"
+                    app:num_tv_text="2"
+                    app:num_tv_text_color="@color/white"
+                    app:num_tv_text_size="5sp"
+                    app:num_tv_text_cur_color="@color/white" />
+
+                <EditText
+                    android:id="@+id/book_phone_et"
+                    android:drawableLeft="@drawable/book_phone"
+                    style="@style/input_edit_style"
+                    android:hint="@string/book_phone" />
+
+            </TableRow>
+
+            <TableRow style="@style/book_tr_style">
+
+                <com.promo.zjyfrestaurant.view.NumberView
+                    android:id="@+id/book_time_num"
+                    style="@style/book_input_num_style"
+                    app:num_line_color="@color/gray1"
+                    app:num_line_cur_color="@color/gray1"
+                    app:num_tv_bg="@drawable/num_gray_shape"
+                    app:num_tv_cur_bg="@drawable/num_green_shape"
+                    app:num_tv_text="3"
+                    app:num_tv_text_color="@color/white"
+                    app:num_tv_text_size="5sp"
+                    app:num_tv_text_cur_color="@color/white" />
+
+                <EditText
+                    android:id="@+id/book_time_et"
+                    android:drawableLeft="@drawable/book_time"
+                    android:hint="@string/book_time"
+                    style="@style/input_edit_style" />
+
+            </TableRow>
+
+            <TableRow style="@style/book_tr_style">
+
+                <com.promo.zjyfrestaurant.view.NumberView
+                    android:id="@+id/book_other_num"
+                    style="@style/book_input_num_style"
+                    app:num_line_color="@color/gray1"
+                    app:num_line_cur_color="@color/gray1"
+                    app:num_tv_bg="@drawable/num_gray_shape"
+                    app:num_tv_cur_bg="@drawable/num_green_shape"
+                    app:num_tv_text="4"
+                    app:num_tv_text_color="@color/white"
+                    app:num_tv_text_size="5sp"
+                    app:num_tv_end="true"
+                    app:num_tv_text_cur_color="@color/white" />
+
+                <EditText
+                    android:id="@+id/book_other_et"
+                    android:hint="@string/book_other"
+                    android:drawableLeft="@drawable/book_remark"
+                    style="@style/input_edit_style" />
+
+            </TableRow>
+        </TableLayout>
+
+
+        <Button
+            android:id="@+id/book_submit_btn"
+            style="@style/book_submit_btn_style" />
+
+    </LinearLayout>
+
+
+</ScrollView>

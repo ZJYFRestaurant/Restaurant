@@ -191,7 +191,7 @@
         <item name="android:ellipsize">end</item>
         <item name="android:drawablePadding">5dp</item>
         <item name="android:layout_height">@dimen/book_input_height</item>
-        <item name="android:paddingLeft">20dp</item>
+        <item name="android:paddingLeft">@dimen/book_draw_pad_left</item>
         <item name="android:layout_marginBottom">5dp</item>
         <item name="android:layout_marginTop">5dp</item>
         <item name="android:layout_marginLeft">15dp</item>
@@ -206,13 +206,24 @@
         <item name="android:layout_height">match_parent</item>
     </style>
 
-    <style name="book_submit_btn_style" parent="font_white_18">
+    <style name="green_btn_style" parent="font_white_18">
         <item name="android:button">@null</item>
         <item name="android:layout_marginTop">30dp</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">50dp</item>
-        <item name="android:text">@string/submit_book</item>
         <item name="android:background">@drawable/green_bg_sel</item>
+    </style>
+
+    <style name="book_submit_btn_style" parent="green_btn_style">
+        <item name="android:text">@string/submit_book</item>
+    </style>
+
+
+    <style name="book_detail_tr_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">bottom</item>
+        <item name="android:layout_marginTop">@dimen/book_detail_between_line</item>
     </style>
 
 </resources>

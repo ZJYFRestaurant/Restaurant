@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 
 import com.jch.lib.util.DialogUtil;
+import com.jch.lib.view.PagerScrollView;
 import com.jch.lib.view.ScrollGridView;
 import com.jch.lib.view.ScrollListView;
 import com.promo.zjyfrestaurant.BaseFragment;
@@ -36,6 +37,7 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
     private HomeSupAdapter homeSupAdapter = null;
     private HomeSpecialtyAdapter specialtyAdapter = null;
     private ScrollListView listView = null;
+    private PagerScrollView pagerScrollView = null;
 
     private IndexDataBean mIndexData;
 
@@ -86,9 +88,10 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
     }
 
     private void init(View view) {
-
+        pagerScrollView = (PagerScrollView) view.findViewById(R.id.home_sv);
         homeGv = (ScrollGridView) view.findViewById(R.id.home_sup_gv);
         listView = (ScrollListView) view.findViewById(R.id.home_specialty_lv);
+        listView.setParentScrollView(pagerScrollView);
 
         homeGv.setSelector(new BitmapDrawable());
         homeSupAdapter = new HomeSupAdapter(getActivity(), supDrawables);

@@ -21,8 +21,18 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
+    <style name="font_gray2_14">
+        <item name="android:textSize">@dimen/font_14</item>
+        <item name="android:textColor">@color/gray2</item>
+    </style>
+
     <style name="font_gray2_15">
         <item name="android:textSize">15dp</item>
+        <item name="android:textColor">@color/gray2</item>
+    </style>
+
+    <style name="font_gray2_17">
+        <item name="android:textSize">17dp</item>
         <item name="android:textColor">@color/gray2</item>
     </style>
 
@@ -65,5 +75,10 @@
     <style name="font_black_12">
         <item name="android:textSize">@dimen/font_12</item>
         <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="font_green3_18">
+        <item name="android:textSize">@dimen/font_18</item>
+        <item name="android:textColor">@color/green3</item>
     </style>
 </resources>

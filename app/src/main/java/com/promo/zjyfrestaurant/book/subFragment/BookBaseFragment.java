@@ -1,11 +1,13 @@
 package com.promo.zjyfrestaurant.book.subFragment;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.view.View;
 import android.widget.EditText;
 
 import com.jch.lib.util.DisplayUtil;
 import com.promo.zjyfrestaurant.R;
+import com.promo.zjyfrestaurant.book.ConfirmBookActivity;
 import com.promo.zjyfrestaurant.view.NumberView;
 
 import java.util.Hashtable;
@@ -38,6 +40,7 @@ public class BookBaseFragment extends Fragment implements View.OnFocusChangeList
                 DisplayUtil.setBackground(editText, getResources().getDrawable(R.drawable.book_enter));
             }
         }
+        editText.setPadding((int) getResources().getDimension(R.dimen.book_draw_pad_left), 0, 0, 0);
     }
 
     /**
@@ -55,7 +58,8 @@ public class BookBaseFragment extends Fragment implements View.OnFocusChangeList
      * 提交预约。
      */
     protected void submit() {
-
+        Intent intent = new Intent(getActivity(), ConfirmBookActivity.class);
+        startActivity(intent);
     }
 
 }

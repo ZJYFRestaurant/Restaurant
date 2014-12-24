@@ -1,5 +1,6 @@
 package com.promo.zjyfrestaurant;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
@@ -121,5 +122,12 @@ public class MainActivity extends FragmentActivity implements RadioGroup.OnCheck
             }
 
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        mCurFragment.onActivityResult(requestCode, resultCode, data);
+
     }
 }

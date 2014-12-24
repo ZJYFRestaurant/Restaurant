@@ -3,6 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusable="true"
+
     tools:context="com.promo.zjyfrestaurant.book.subFragment.SendFragment">
 
     <LinearLayout style="@style/book_content_style">
@@ -69,7 +71,7 @@
 
                 <EditText
                     android:id="@+id/book_num_et"
-                    android:drawableLeft="@drawable/book_address"
+                    android:drawableLeft="@drawable/book_num"
                     android:hint="@string/book_number"
                     style="@style/input_edit_style" />
 

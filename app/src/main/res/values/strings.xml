@@ -61,11 +61,23 @@
         <item name="to_rest_get">外带取餐</item>
         <item name="sent_home">外卖服务</item>
     </string-array>
+
     <string name="book_constant">联系人</string>
     <string name="book_phone">联系电话</string>
     <string name="book_time">取餐时间</string>
     <string name="book_other">其他就餐要求(选填)</string>
     <string name="book_number">就餐人数</string>
     <string name="submit_book">提交预约</string>
+    <string name="comfirm_book">确认预约</string>
+    <string name="book_detail">订单详情</string>
+    <string name="book_seled">已选菜品</string>
+    <string name="book_money">订单金额：</string>
+    <string name="book_contact">联系人：</string>
+    <string name="book_detail_num">就餐人数：</string>
+    <string name="book_detail_time">就餐时间：</string>
+    <string name="book_detail_prompt">温馨提示：为了您的方便请在预定时间到达就餐，若超过10分钟未到达，我们将另行安排。</string>
+    <string name="submit_order">提交订单</string>
+
+    <string name="menu_detail">菜品详情</string>
 
 </resources>
