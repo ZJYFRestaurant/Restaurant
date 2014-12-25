@@ -226,4 +226,28 @@
         <item name="android:layout_marginTop">@dimen/book_detail_between_line</item>
     </style>
 
+    <style name="home_item_base_tv_style" parent="font_gray_12">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="home_item_price_tv_style" parent="home_item_base_tv_style">
+        <item name="android:text">@string/home_today</item>
+        <item name="android:layout_alignParentBottom">true</item>
+    </style>
+
+    <style name="home_item_price_yuan_tv_style" parent="home_item_base_tv_style">
+        <item name="android:text">@string/yuan</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_alignParentRight">true</item>
+    </style>
+
+    <style name="home_item_price_green_tv_style" parent="font_greent_14">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
 </resources>

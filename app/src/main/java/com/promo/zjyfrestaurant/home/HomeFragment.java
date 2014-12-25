@@ -30,7 +30,7 @@ import com.promo.zjyfrestaurant.impl.ZJYFRequestParmater;
  * Use the {@link HomeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HomeFragment extends BaseFragment implements AdapterView.OnItemClickListener {
+public class HomeFragment extends BaseFragment {
 
     private static HomeFragment fragment;
     private ScrollGridView homeGv = null;
@@ -96,45 +96,67 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
         homeGv.setSelector(new BitmapDrawable());
         homeSupAdapter = new HomeSupAdapter(getActivity(), supDrawables);
         homeGv.setAdapter(homeSupAdapter);
-        homeGv.setOnItemClickListener(this);
+        homeGv.setOnItemClickListener(new GridItemClickLSN());
 
         specialtyAdapter = new HomeSpecialtyAdapter(getActivity(), null);
         listView.setAdapter(specialtyAdapter);
+        listView.setOnItemClickListener(new ListItemClk());
 
         getData();
 
     }
 
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+    /**
+     * 四大分类。
+     */
+    private class GridItemClickLSN implements AdapterView.OnItemClickListener {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-        Class newClz = null;
+            Class newClz = null;
 
-        switch (position) {
-            case 0: {
+            switch (position) {
+                case 0: {
 
-                newClz = RecommendActivity.class;
-                break;
+                    newClz = RecommendActivity.class;
+                    break;
+                }
+                case 1: {
+                    newClz = PrivilegeActivity.class;
+                    break;
+                }
+                case 2: {
+                    newClz = MenuActivity.class;
+                    break;
+                }
+                case 3: {
+
+                    newClz = MienActivity.class;
+                    break;
+                }
+                default: {
+
+                }
             }
-            case 1: {
-                newClz = PrivilegeActivity.class;
-                break;
-            }
-            case 2: {
-                newClz = MenuActivity.class;
-                break;
-            }
-            case 3: {
-
-                newClz = MienActivity.class;
-                break;
-            }
-            default: {
-
+            if (newClz != null) {
+                Intent intent = new Intent(getActivity(), newClz);
+                transNextPage(intent);
             }
         }
-        if (newClz != null) {
-            Intent intent = new Intent(getActivity(), newClz);
+
+    }
+
+    private class ListItemClk implements AdapterView.OnItemClickListener {
+
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+            Intent intent = new Intent(getActivity(), MenuDetailActivity.class);
+            int pro_id = mIndexData.getHotProductList().get(position).getId();
+
+            Bundle bundle = new Bundle();
+            bundle.putString(MenuDetailActivity.PRO_ID_KEY, String.valueOf(pro_id));
+            intent.putExtras(bundle);
             transNextPage(intent);
         }
     }

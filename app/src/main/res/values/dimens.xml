@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="home_list_div_height">10dp</dimen>
+    <dimen name="home_list_item_margin_r_l">10dp</dimen>
+    <dimen name="home_list_item_pad_r_l">10dp</dimen>
+    <dimen name="img_circle_corner">5dp</dimen>
+
     <dimen name="title_height">48dp</dimen>
     <dimen name="home_item_pad">5dp</dimen>
     <dimen name="common_pad">10dp</dimen>
@@ -26,5 +30,4 @@
     <dimen name="book_input_height">50dp</dimen>
     <dimen name="book_draw_pad_left">20dp</dimen>
     <dimen name="book_detail_between_line">10dp</dimen>
-
 </resources>

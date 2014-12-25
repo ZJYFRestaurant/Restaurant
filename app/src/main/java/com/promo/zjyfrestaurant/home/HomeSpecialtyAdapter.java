@@ -7,8 +7,10 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.jch.lib.util.DisplayUtil;
 import com.jch.lib.util.ImageManager;
 import com.promo.zjyfrestaurant.R;
+import com.promo.zjyfrestaurant.application.Constant;
 import com.promo.zjyfrestaurant.bean.HotProductBean;
 import com.promo.zjyfrestaurant.util.ContextUtil;
 
@@ -20,6 +22,7 @@ import java.util.ArrayList;
 public class HomeSpecialtyAdapter extends BaseAdapter {
 
     private Activity mContext;
+    private static final float IMGWIDTHPERCENT = 0.55f;
 
     private final static int BASEINDEX = 0x1000;
 
@@ -93,9 +96,9 @@ public class HomeSpecialtyAdapter extends BaseAdapter {
         HotProductBean hotProductBean = hotProductBeans.get(position);
 
         if (hotProductBean != null) {
-            ImageManager.load(hotProductBean.getCover(), viewHolder.img, ContextUtil.getRectangleImgOptions());
+            ImageManager.load(hotProductBean.getCover(), viewHolder.img, ContextUtil.getRectangleImgOptions(), (int) mContext.getResources().getDimension(R.dimen.img_circle_corner));
             viewHolder.nameTv.setText(hotProductBean.getName() == null ? "" : hotProductBean.getName());
-            viewHolder.priceTv.setText(String.valueOf(hotProductBean.getNew_price()));
+            viewHolder.priceTv.setText(String.valueOf((int) hotProductBean.getNew_price()));
             viewHolder.levelView.setStartNum(hotProductBean.getStar());
         }
 
@@ -106,6 +109,8 @@ public class HomeSpecialtyAdapter extends BaseAdapter {
         convertview = getViewByType(viewType);
         viewHolder = new ViewHolder();
         viewHolder.img = (ImageView) convertview.findViewById(R.id.home_specialty_item_img);
+        int exceptWidth = (int) (mContext.getResources().getDimension(R.dimen.home_list_item_margin_r_l) * 2 + mContext.getResources().getDimension(R.dimen.home_list_item_pad_r_l) * 2);
+        DisplayUtil.resizeViewByScreenWidth(viewHolder.img, Constant.HOME_IMG_POINT.x, Constant.HOME_IMG_POINT.y, exceptWidth, mContext, IMGWIDTHPERCENT);
         viewHolder.levelView = (HomeStartView) convertview.findViewById(R.id.home_specialty_item_star);
         viewHolder.nameTv = (TextView) convertview.findViewById(R.id.home_specialty_item_name);
         viewHolder.priceTv = (TextView) convertview.findViewById(R.id.home_specialty_item_price);

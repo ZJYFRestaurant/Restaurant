@@ -180,23 +180,46 @@ public class DisplayUtil {
     }
 
     /**
-     * 根据屏幕宽度设置view的大小,(出去给定的widht)
+     * 根据屏幕宽度及要求占屏幕的缩小倍数设置view的大小,(出去给定的widht)
      *
      * @param view
      * @param baseWidth
      * @param baseHeight
-     * @param exceptWidth
+     * @param exceptWidth 除去的屏幕尺寸。
      * @param activity
+     * @param widthNUm    图片按屏幕的放缩倍数。
      */
-    public static void resizeViewByScreenWidth(View view, int baseWidth, int baseHeight, int exceptWidth, Activity activity, int viewNum) {
+    public static void resizeViewByScreenWidth(View view, int baseWidth, int baseHeight, int exceptWidth, Activity activity, int widthNUm) {
         LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) view
                 .getLayoutParams();
         params.height = (int) DisplayUtil.sizeYByX(activity
-                .getWindowManager(), baseHeight, baseWidth, exceptWidth) / viewNum;
+                .getWindowManager(), baseHeight, baseWidth, exceptWidth) / widthNUm;
         params.width = (int) getScaledWidth(activity
-                .getWindowManager(), baseHeight, baseWidth, exceptWidth) / viewNum;
+                .getWindowManager(), baseHeight, baseWidth, exceptWidth) / widthNUm;
         view.setLayoutParams(params);
     }
+
+
+    /**
+     * 根据屏幕宽度及要求占屏幕的百分比设置view的大小,(出去给定的widht)
+     *
+     * @param view
+     * @param baseWidth
+     * @param baseHeight
+     * @param exceptWidth 除去的屏幕尺寸。
+     * @param activity
+     * @param widthPer    需要图片占屏幕宽度的比例。
+     */
+    public static void resizeViewByScreenWidth(View view, int baseWidth, int baseHeight, int exceptWidth, Activity activity, float widthPer) {
+        LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) view
+                .getLayoutParams();
+        params.height = (int) ((int) DisplayUtil.sizeYByX(activity
+                .getWindowManager(), baseHeight, baseWidth, exceptWidth) * widthPer);
+        params.width = (int) ((int) getScaledWidth(activity
+                .getWindowManager(), baseHeight, baseWidth, exceptWidth) * widthPer);
+        view.setLayoutParams(params);
+    }
+
 
     /**
      * 根据屏幕宽度设置view的大小.

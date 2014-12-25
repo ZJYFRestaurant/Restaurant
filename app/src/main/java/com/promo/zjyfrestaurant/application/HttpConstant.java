@@ -36,7 +36,17 @@ public class HttpConstant {
         return rootUrl.toString();
     }
 
-
+    /**
+     * 首页 *
+     */
     public static final String getIndex = getRootUrl() + "getIndex";
+    /**
+     * 菜单详情。
+     */
+    public static final String getProductDetail = getRootUrl() + "getProductDetail";
+    /**
+     * 获取热门推荐产品列表
+     */
+    public static final String getHotProductList = getRootUrl() + "getHotProductList";
 
 }

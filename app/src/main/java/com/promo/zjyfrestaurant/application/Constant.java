@@ -1,5 +1,6 @@
 package com.promo.zjyfrestaurant.application;
 
+import android.graphics.Point;
 import android.os.Environment;
 
 /**
@@ -22,4 +23,6 @@ public class Constant {
      * 圖片緩存路徑. *
      */
     public static final String IMG_DIR = CACHE_DIR + "/images";
+
+    public static final Point HOME_IMG_POINT = new Point(500, 250);
 }

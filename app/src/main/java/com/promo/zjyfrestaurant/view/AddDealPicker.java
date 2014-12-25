@@ -229,7 +229,7 @@ public class AddDealPicker extends LinearLayout implements View.OnClickListener 
         rightParams.height = (int) imgSize;
         reduceImg.setLayoutParams(rightParams);
         reduceImg.setOnClickListener(this);
-        reduceImg.setId(R.id.dealPickrightImgId);
+        reduceImg.setId(R.id.dealPickleftImgId);
         addView(reduceImg);
 
         numTv = new TextView(getContext());
@@ -248,7 +248,7 @@ public class AddDealPicker extends LinearLayout implements View.OnClickListener 
         left_params.height = (int) imgSize;
         plusImg.setLayoutParams(left_params);
         plusImg.setOnClickListener(this);
-        plusImg.setId(R.id.dealPickleftImgId);
+        plusImg.setId(R.id.dealPickrightImgId);
         addView(plusImg);
 
 
@@ -368,7 +368,7 @@ public class AddDealPicker extends LinearLayout implements View.OnClickListener 
     private void additionTv() {
         String numStr = numTv.getText().toString();
         int num = Integer.parseInt(numStr);
-        numTv.setText(++num);
+        numTv.setText(String.valueOf(++num));
     }
 
     /**
@@ -379,6 +379,6 @@ public class AddDealPicker extends LinearLayout implements View.OnClickListener 
         String numStr = numTv.getText().toString();
         int num = Integer.parseInt(numStr);
         if (num > 0)
-            numTv.setText(--num);
+            numTv.setText(String.valueOf(--num));
     }
 }
