@@ -52,7 +52,8 @@ public class RecommendActivity extends BaseActivity implements AdapterView.OnIte
     /**
      * 获取网络数据。
      */
-    private void getData() {
+    @Override
+    protected void getData() {
         String urlStr = HttpConstant.getHotProductList;
         ZJYFRequestParmater parmater = new ZJYFRequestParmater(getApplicationContext());
 

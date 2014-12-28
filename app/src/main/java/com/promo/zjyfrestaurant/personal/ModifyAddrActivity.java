@@ -25,6 +25,11 @@ public class ModifyAddrActivity extends BaseActivity {
         return null;
     }
 
+    @Override
+    protected void getData() {
+
+    }
+
     private void init(View containerView) {
 
         mNameEt = (EditText) containerView.findViewById(R.id.modify_addr_name);

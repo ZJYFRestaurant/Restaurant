@@ -25,4 +25,6 @@ public class Constant {
     public static final String IMG_DIR = CACHE_DIR + "/images";
 
     public static final Point HOME_IMG_POINT = new Point(500, 250);
+
+    public static final Point PRIV_IMG_POINT = new Point(286, 160);
 }

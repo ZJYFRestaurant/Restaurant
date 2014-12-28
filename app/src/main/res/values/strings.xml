@@ -53,6 +53,7 @@
     <string name="recommend_dish">菜品推荐</string>
     <string name="privilage">优惠活动</string>
     <string name="menu_title">飘香菜单</string>
+    <string name="mien_title">渔府风采</string>
     <string name="shopping_cart">点餐车</string>
     <string name="book">预约</string>
 
@@ -77,7 +78,6 @@
     <string name="book_detail_time">就餐时间：</string>
     <string name="book_detail_prompt">温馨提示：为了您的方便请在预定时间到达就餐，若超过10分钟未到达，我们将另行安排。</string>
     <string name="submit_order">提交订单</string>
-
     <string name="menu_detail">菜品详情</string>
 
 </resources>

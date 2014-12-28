@@ -19,6 +19,11 @@ public class ShoppingCartActivity extends BaseActivity {
         return containerView;
     }
 
+    @Override
+    protected void getData() {
+
+    }
+
     private void initView(View containerView) {
 
         setTitle(getResources().getString(R.string.shopping_cart));

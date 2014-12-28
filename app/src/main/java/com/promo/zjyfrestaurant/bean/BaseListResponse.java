@@ -13,6 +13,8 @@ import java.util.ArrayList;
 public class BaseListResponse<T> implements Serializable {
 
     ArrayList<T> data;
+
+    private String msg;
     int code;
 
     public ArrayList<T> getData() {
@@ -61,4 +63,11 @@ public class BaseListResponse<T> implements Serializable {
         };
     }
 
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
 }

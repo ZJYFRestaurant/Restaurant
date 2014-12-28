@@ -85,7 +85,8 @@ public class MenuDetailActivity extends BaseActivity implements View.OnClickList
     /**
      * 获取网络数据。
      */
-    private void getData() {
+    @Override
+    protected void getData() {
         String urlStr = HttpConstant.getProductDetail;
         ZJYFRequestParmater parmater = new ZJYFRequestParmater(getApplicationContext());
 

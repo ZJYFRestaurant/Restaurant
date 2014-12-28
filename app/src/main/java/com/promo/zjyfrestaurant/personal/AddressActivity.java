@@ -23,6 +23,11 @@ public class AddressActivity extends BaseActivity implements View.OnClickListene
         return containerView;
     }
 
+    @Override
+    protected void getData() {
+
+    }
+
     private void init(View containerView) {
 
         setTitle(getResources().getString(R.string.personal_address));

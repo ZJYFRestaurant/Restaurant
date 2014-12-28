@@ -10,6 +10,8 @@ import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.promo.zjyfrestaurant.shoppingcart.ShoppingCartView;
+
 /**
  * activity基类。显示titleBar样式，页面跳转效果.
  * Created by ACER on 2014/12/9.
@@ -32,6 +34,11 @@ public abstract class BaseActivity extends Activity {
 
 
     protected abstract View initContentView();
+
+    /**
+     * 网络访问。
+     */
+    protected abstract void getData();
 
 
     private void initialize() {
@@ -98,6 +105,17 @@ public abstract class BaseActivity extends Activity {
             title_rl.addView(rightItem);
 
         }
+    }
+
+    protected void addRightCart() {
+        addShoppingCart();
+    }
+
+    private void addShoppingCart() {
+
+        ShoppingCartView shoppingCartView = new ShoppingCartView(getApplicationContext());
+        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        addRightItem(shoppingCartView);
     }
 
     /**

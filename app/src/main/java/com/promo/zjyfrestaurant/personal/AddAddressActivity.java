@@ -32,6 +32,11 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
         return containerView;
     }
 
+    @Override
+    protected void getData() {
+
+    }
+
     private void init(View containerView) {
         addOkBtn();
 

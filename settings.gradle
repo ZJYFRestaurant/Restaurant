@@ -1,1 +1,1 @@
-include ':app', ':UtilLib'
+include ':app', ':UtilLib', ':pagertranslatedemo'

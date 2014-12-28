@@ -18,6 +18,11 @@ public class MyBookActivity extends BaseActivity {
         return containerView;
     }
 
+    @Override
+    protected void getData() {
+
+    }
+
 
     private void init(View containerView) {
 

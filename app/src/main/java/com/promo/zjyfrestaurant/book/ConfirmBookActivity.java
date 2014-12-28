@@ -23,6 +23,11 @@ public class ConfirmBookActivity extends BaseActivity {
         return containerView;
     }
 
+    @Override
+    protected void getData() {
+
+    }
+
     private void initView(View containerView) {
 
         setTitle(getResources().getString(R.string.comfirm_book));

@@ -19,6 +19,11 @@ public class MenuActivity extends BaseActivity {
         return containerView;
     }
 
+    @Override
+    protected void getData() {
+
+    }
+
     /**
      * 初始化view。
      *

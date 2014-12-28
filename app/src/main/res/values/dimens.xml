@@ -10,7 +10,7 @@
     <dimen name="common_pad">10dp</dimen>
     <dimen name="common_top_marg">10dp</dimen>
     <dimen name="common_pad_top">10dp</dimen>
-    <dimen name="common_pad_right">20dp</dimen>
+    <dimen name="common_pad_right">10dp</dimen>
     <dimen name="add_btn_width">50dp</dimen>
     <dimen name="personal_head_img_size">70dp</dimen>
     <dimen name="personal_item_pad_t">10dp</dimen>

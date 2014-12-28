@@ -23,6 +23,11 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         return containerView;
     }
 
+    @Override
+    protected void getData() {
+
+    }
+
     private void init(View containerView) {
 
         hideTitle();

@@ -48,5 +48,11 @@ public class HttpConstant {
      * 获取热门推荐产品列表
      */
     public static final String getHotProductList = getRootUrl() + "getHotProductList";
+    /**
+     * 优惠活动。
+     */
+    public static final String getActivities = getRootUrl() + "getActivities";
+
+    public static final String getPhotoList = getRootUrl() + "getPhotoList";
 
 }

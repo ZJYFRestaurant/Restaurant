@@ -21,6 +21,11 @@ public class AboutUsActivity extends BaseActivity {
         return containerView;
     }
 
+    @Override
+    protected void getData() {
+
+    }
+
     /**
      * 初始化view。
      *

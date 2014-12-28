@@ -76,9 +76,6 @@ public class ShowMenuRequset {
                 BaseListResponse<T> baseListResponse = getListResponse(response.toString(), listT);
 
                 if (baseListResponse.getCode() == 100) {    //将data中的jsonStr --》 T
-                    Gson gson = new Gson();
-
-
                     callback.onSuccess(baseListResponse.getData());
                 } else {
                     callback.onfailed("网络数据错误。");

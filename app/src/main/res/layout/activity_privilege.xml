@@ -1,9 +1,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:background="@color/bg_gray"
     android:layout_height="match_parent">
 
     <ListView
         style="@style/common_pad_style"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="5dp"
+        android:listSelector="@android:color/transparent"
         android:id="@+id/privilege_lv"></ListView>
 
 </LinearLayout>
