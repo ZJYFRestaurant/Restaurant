@@ -15,6 +15,11 @@ public class RadioListView extends ScrollView {
 
     private RadioGroup mRadioGroup;
 
+
+    private RadioGroup.OnCheckedChangeListener checkedChangeListener;
+
+    private RadioListManager radioListManager;
+
     private BaseAdapter adapter;
 
     public RadioListView(Context context) {
@@ -32,12 +37,15 @@ public class RadioListView extends ScrollView {
         init();
     }
 
+
     public BaseAdapter getAdapter() {
         return adapter;
     }
 
     public void setAdapter(BaseAdapter adapter) {
         this.adapter = adapter;
+        radioListManager = new RadioListManager(adapter, mRadioGroup);
+        this.adapter.registerDataSetObserver(radioListManager);
     }
 
     /**
@@ -49,7 +57,9 @@ public class RadioListView extends ScrollView {
         RadioGroup.LayoutParams params = new RadioGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         mRadioGroup.setOrientation(LinearLayout.VERTICAL);
         mRadioGroup.setLayoutParams(params);
+
         addView(mRadioGroup);
+
     }
 
     @Override
@@ -58,5 +68,14 @@ public class RadioListView extends ScrollView {
 
     }
 
+    public RadioGroup.OnCheckedChangeListener getCheckedChangeListener() {
+        return checkedChangeListener;
+    }
+
+    public void setCheckedChangeListener(RadioGroup.OnCheckedChangeListener checkedChangeListener) {
+        this.checkedChangeListener = checkedChangeListener;
+        mRadioGroup.setOnCheckedChangeListener(checkedChangeListener);
+
+    }
 
 }

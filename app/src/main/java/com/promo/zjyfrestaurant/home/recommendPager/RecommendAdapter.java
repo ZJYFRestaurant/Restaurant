@@ -7,8 +7,10 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.jch.lib.util.DisplayUtil;
 import com.jch.lib.util.ImageManager;
 import com.promo.zjyfrestaurant.R;
+import com.promo.zjyfrestaurant.application.Constant;
 import com.promo.zjyfrestaurant.bean.ProDetailBean;
 import com.promo.zjyfrestaurant.home.HomeStartView;
 import com.promo.zjyfrestaurant.util.ContextUtil;
@@ -62,6 +64,8 @@ public class RecommendAdapter extends BaseAdapter {
             viewHolder = new ViewHolder();
             viewHolder.addDealPicker = (AddDealPicker) convertView.findViewById(R.id.rcmd_deal_picker);
             viewHolder.img = (ImageView) convertView.findViewById(R.id.recmd_item_img);
+            int exct = (int) ((int) (context.getResources().getDimension(R.dimen.common_pad_right) * 2) + 2 * context.getResources().getDimension(R.dimen.home_item_pad));
+            DisplayUtil.resizeViewByScreenWidth(viewHolder.img, Constant.RECM_IMG_POINT.x, Constant.RECM_IMG_POINT.y, exct, context);
             viewHolder.nameTv = (TextView) convertView.findViewById(R.id.rcmd_name_tv);
             viewHolder.priceTv = (TextView) convertView.findViewById(R.id.rcmd_price_tv);
             viewHolder.startView = (HomeStartView) convertView.findViewById(R.id.rcmd_star);
@@ -72,7 +76,7 @@ public class RecommendAdapter extends BaseAdapter {
         }
 
         ProDetailBean proDetailBean = proDetails.get(position);
-        ImageManager.load(proDetailBean.getCover(), viewHolder.img, ContextUtil.getRectangleImgOptions(), context.getResources().getDimension(R.dimen.img_circle_corner));
+        ImageManager.load(proDetailBean.getCover(), viewHolder.img, ContextUtil.getRectangleImgOptions(), (int) context.getResources().getDimension(R.dimen.img_circle_corner));
         viewHolder.nameTv.setText(proDetailBean.getName());
         viewHolder.startView.setStartNum(proDetailBean.getStar());
         viewHolder.priceTv.setText(proDetailBean.getNew_price());

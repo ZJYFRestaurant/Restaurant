@@ -7,8 +7,8 @@
 
     <ImageView
         android:scaleType="centerCrop"
+        android:layout_gravity="center_horizontal"
         android:id="@+id/recmd_item_img"
-        android:background="@drawable/home_banner"
         android:src="@drawable/book_item_img_shape"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

@@ -6,6 +6,7 @@
     <!-- common -->
     <string name="back">返回</string>
     <string name="yuan">元</string>
+    <string name="yuan_sign">￥</string>
 
     <!-- home -->
     <string name="home_specialty">招牌美食</string>
@@ -79,5 +80,6 @@
     <string name="book_detail_prompt">温馨提示：为了您的方便请在预定时间到达就餐，若超过10分钟未到达，我们将另行安排。</string>
     <string name="submit_order">提交订单</string>
     <string name="menu_detail">菜品详情</string>
+    <string name="menu_item_price_per">/例</string>
 
 </resources>

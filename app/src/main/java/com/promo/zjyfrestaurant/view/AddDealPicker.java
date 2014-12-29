@@ -17,6 +17,8 @@ import android.widget.TextView;
 
 import com.jch.lib.util.DisplayUtil;
 import com.promo.zjyfrestaurant.R;
+import com.promo.zjyfrestaurant.bean.DishBean;
+import com.promo.zjyfrestaurant.shoppingcart.ShoppingCart;
 
 /**
  * 菜品添加组件。
@@ -95,6 +97,12 @@ public class AddDealPicker extends LinearLayout implements View.OnClickListener 
      * 内部组件间距。
      */
     private float between_pad;
+    /**
+     * 对应添加的菜品。 *
+     */
+    private DishBean dishBean = null;
+
+    private ShoppingCart cart = null;
 
 
     public AddDealPicker(Context context) {
@@ -169,10 +177,20 @@ public class AddDealPicker extends LinearLayout implements View.OnClickListener 
             }
         }
 
-
         a.recycle();
 
+        cart = ShoppingCart.newInstance();
+
         addView();
+
+    }
+
+    public DishBean getDishBean() {
+        return dishBean;
+    }
+
+    public void setDishBean(DishBean dishBean) {
+        this.dishBean = dishBean;
     }
 
     private void saveAttributeData(AttributeSet attrs, TypedArray a) {
@@ -220,6 +238,9 @@ public class AddDealPicker extends LinearLayout implements View.OnClickListener 
         return mAttributeMap;
     }
 
+    /**
+     * 添加view。
+     */
     private void addView() {
         reduceImg = new ImageView(getContext());
         DisplayUtil.setBackground(reduceImg, reduceDraw);
@@ -276,6 +297,7 @@ public class AddDealPicker extends LinearLayout implements View.OnClickListener 
         if (numTv != null)
             numTv.setText(numStr);
     }
+
 
     public int getBetween_pad() {
         return (int) between_pad;
@@ -352,11 +374,12 @@ public class AddDealPicker extends LinearLayout implements View.OnClickListener 
         switch (v.getId()) {
             case R.id.dealPickleftImgId: {
 
-                subtractionTv();
+                subtractionTv();    //数据减1
                 break;
             }
             case R.id.dealPickrightImgId: {
-                additionTv();
+                additionTv();    //数据加1
+
                 break;
             }
         }

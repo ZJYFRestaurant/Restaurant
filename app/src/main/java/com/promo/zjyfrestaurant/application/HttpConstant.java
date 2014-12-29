@@ -55,4 +55,8 @@ public class HttpConstant {
 
     public static final String getPhotoList = getRootUrl() + "getPhotoList";
 
+    public static final String getProductCategory = getRootUrl() + "getProductCategory";
+
+    public static final String getProductList = getRootUrl() + "getProductList";
+
 }

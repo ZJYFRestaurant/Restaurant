@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.promo.zjyfrestaurant.R;
 
 /**
- * TODO: document your custom view class.
+ * 购物车。
  */
 public class ShoppingCartView extends FrameLayout implements View.OnClickListener {
 
@@ -55,7 +55,6 @@ public class ShoppingCartView extends FrameLayout implements View.OnClickListene
 
     public void addDish(int id, int num) {
 
-        shoppingCart.addDish(id, num);
         carttv.setText(shoppingCart.getDishNum());
     }
 
@@ -71,7 +70,6 @@ public class ShoppingCartView extends FrameLayout implements View.OnClickListene
     }
 
     public void reduceDish(int id) {
-        shoppingCart.reduceDish(id);
         carttv.setText(shoppingCart.getDishNum());
     }
 

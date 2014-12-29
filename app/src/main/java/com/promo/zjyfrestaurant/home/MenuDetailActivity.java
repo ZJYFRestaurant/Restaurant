@@ -10,9 +10,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.jch.lib.util.DialogUtil;
+import com.jch.lib.util.DisplayUtil;
 import com.jch.lib.util.ImageManager;
 import com.promo.zjyfrestaurant.BaseActivity;
 import com.promo.zjyfrestaurant.R;
+import com.promo.zjyfrestaurant.application.Constant;
 import com.promo.zjyfrestaurant.application.HttpConstant;
 import com.promo.zjyfrestaurant.bean.ProDetailBean;
 import com.promo.zjyfrestaurant.impl.RequestCallback;
@@ -55,6 +57,9 @@ public class MenuDetailActivity extends BaseActivity implements View.OnClickList
         addShoppingCart();
 
         menudetailimg = (ImageView) containerView.findViewById(R.id.menu_detail_img);
+
+        int except = (int) (getResources().getDimension(R.dimen.common_pad) * 2 + getResources().getDimension(R.dimen.home_item_pad) * 2);
+        DisplayUtil.resizeViewByScreenWidth(menudetailimg, Constant.RECM_IMG_POINT.x, Constant.RECM_IMG_POINT.y, except, this);
         menudetailpicker = (AddDealPicker) containerView.findViewById(R.id.menu_detail_picker);
         menudetailnametv = (TextView) containerView.findViewById(R.id.menu_detail_name_tv);
         menudetailstar = (HomeStartView) containerView.findViewById(R.id.menu_detail_star);
@@ -110,7 +115,7 @@ public class MenuDetailActivity extends BaseActivity implements View.OnClickList
     }
 
     private void initData() {
-        ImageManager.load(proDetailBean.getCover(), menudetailimg, ContextUtil.getRectangleImgOptions());
+        ImageManager.load(proDetailBean.getCover(), menudetailimg, ContextUtil.getRectangleImgOptions(), 10);
         menudetailnametv.setText(proDetailBean.getName() == null ? "" : proDetailBean.getName());
         menudetailstar.setStartNum(proDetailBean.getStar());
         menudetailpricetv.setText(proDetailBean.getNew_price());

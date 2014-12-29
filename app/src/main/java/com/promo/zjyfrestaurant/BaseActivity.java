@@ -126,6 +126,6 @@ public abstract class BaseActivity extends Activity {
         if (!backAble) {
             finish();
         }
-        overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.static_anim);
     }
 }

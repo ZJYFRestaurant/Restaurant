@@ -77,7 +77,7 @@ public class PrivilegAdapter extends BaseAdapter {
         PrivilegeActionBean privilege = privileges.get(position);
         int exceptSpace = (int) context.getResources().getDimension(R.dimen.common_pad_right) * 2;
         DisplayUtil.resizeViewByScreenWidth(viewHolder.img, Constant.PRIV_IMG_POINT.x, Constant.PRIV_IMG_POINT.y, exceptSpace, context, point_screen);
-        ImageManager.load(privilege.getCover(), viewHolder.img, ContextUtil.getRectangleImgOptions());
+        ImageManager.load(privilege.getCover(), viewHolder.img, ContextUtil.getRectangleImgOptions(), (int) context.getResources().getDimension(R.dimen.img_circle_corner));
         viewHolder.nameTv.setText(privilege.getTitle());
         viewHolder.desTv.setText(privilege.getContent());
 

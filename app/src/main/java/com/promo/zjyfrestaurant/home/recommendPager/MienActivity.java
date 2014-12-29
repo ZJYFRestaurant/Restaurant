@@ -13,7 +13,7 @@ import com.promo.zjyfrestaurant.impl.ZJYFRequestParmater;
 import java.util.ArrayList;
 
 /**
- * 飘香菜单。
+ * 渔府风采。
  */
 public class MienActivity extends BaseActivity {
 
@@ -42,7 +42,6 @@ public class MienActivity extends BaseActivity {
 
             @Override
             public void onSuccess(ArrayList<String> data) {
-
                 photoes.clear();
                 photoes.addAll(data);
             }

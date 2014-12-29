@@ -3,7 +3,7 @@
     <dimen name="home_list_div_height">10dp</dimen>
     <dimen name="home_list_item_margin_r_l">10dp</dimen>
     <dimen name="home_list_item_pad_r_l">10dp</dimen>
-    <dimen name="img_circle_corner">5dp</dimen>
+    <dimen name="img_circle_corner">10dp</dimen>
 
     <dimen name="title_height">48dp</dimen>
     <dimen name="home_item_pad">5dp</dimen>

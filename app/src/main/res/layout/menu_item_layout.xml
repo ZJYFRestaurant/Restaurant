@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:paddingTop="@dimen/common_pad"
+    android:paddingBottom="@dimen/common_pad"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        style="@style/menu_item_img_size"
+        android:scaleType="centerCrop"
+        android:id="@+id/menu_item_img" />
+
+    <LinearLayout
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_marginLeft="@dimen/home_item_pad"
+        android:gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="@style/font_gray2_15"
+            android:id="@+id/menu_item_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <com.promo.zjyfrestaurant.home.HomeStartView
+            android:id="@+id/menu_item_star"
+            style="@style/star_stlye"
+            app:start_drawable="@drawable/home_stars"
+            app:start_num="5"
+            app:start_pading="1dp" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/font_greent_15"
+                    android:text="@string/yuan_sign" />
+
+                <TextView
+                    android:id="@+id/menu_item_price_tv"
+                    style="@style/font_greent_15"
+                    android:text="56"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    style="@style/font_greent_15"
+                    android:text="@string/menu_item_price_per"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <com.promo.zjyfrestaurant.view.AddDealPicker
+                android:id="@+id/menu_deal_picker"
+                style="@style/deal_picker_style"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_alignParentRight="true"
+                app:left_img="@drawable/reduce"
+                app:right_img="@drawable/plus"
+                app:text_size="@dimen/font_12"
+                app:text_color="@color/black"
+                app:text="0"
+                app:img_size="30dp"
+                app:drawable_padding="8dp"></com.promo.zjyfrestaurant.view.AddDealPicker>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

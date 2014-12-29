@@ -96,6 +96,7 @@ public class HomeSpecialtyAdapter extends BaseAdapter {
         HotProductBean hotProductBean = hotProductBeans.get(position);
 
         if (hotProductBean != null) {
+
             ImageManager.load(hotProductBean.getCover(), viewHolder.img, ContextUtil.getRectangleImgOptions(), (int) mContext.getResources().getDimension(R.dimen.img_circle_corner));
             viewHolder.nameTv.setText(hotProductBean.getName() == null ? "" : hotProductBean.getName());
             viewHolder.priceTv.setText(String.valueOf((int) hotProductBean.getNew_price()));

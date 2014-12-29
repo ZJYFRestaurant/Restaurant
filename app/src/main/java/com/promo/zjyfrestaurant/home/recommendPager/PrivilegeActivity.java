@@ -1,5 +1,7 @@
 package com.promo.zjyfrestaurant.home.recommendPager;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -11,6 +13,7 @@ import com.promo.zjyfrestaurant.BaseActivity;
 import com.promo.zjyfrestaurant.R;
 import com.promo.zjyfrestaurant.application.HttpConstant;
 import com.promo.zjyfrestaurant.bean.PrivilegeActionBean;
+import com.promo.zjyfrestaurant.home.MenuDetailActivity;
 import com.promo.zjyfrestaurant.impl.RequestCallback;
 import com.promo.zjyfrestaurant.impl.ShowMenuRequset;
 import com.promo.zjyfrestaurant.impl.ZJYFRequestParmater;
@@ -84,8 +87,13 @@ public class PrivilegeActivity extends BaseActivity implements AdapterView.OnIte
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Intent intent = new Intent(this, MenuDetailActivity.class);
+        int pro_id = privileges.get(position).getId();
 
-        //TODO 活动详情。
+        Bundle bundle = new Bundle();
+        bundle.putString(MenuDetailActivity.PRO_ID_KEY, String.valueOf(pro_id));
+        intent.putExtras(bundle);
+        transNextPage(intent, true);
     }
 
 

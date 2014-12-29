@@ -15,6 +15,8 @@ public class Constant {
      */
     public static final Boolean RELEASEABLE = false;
 
+    public static final int DB_VERSION = 1;
+
     /**
      * 磁盘缓存路径. *
      */
@@ -27,4 +29,6 @@ public class Constant {
     public static final Point HOME_IMG_POINT = new Point(500, 250);
 
     public static final Point PRIV_IMG_POINT = new Point(286, 160);
+
+    public static final Point RECM_IMG_POINT = new Point(600, 288);
 }

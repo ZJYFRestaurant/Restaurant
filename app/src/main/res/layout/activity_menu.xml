@@ -1,7 +1,23 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:orientation="horizontal"
+    android:background="@color/bg_gray"
     android:layout_height="match_parent">
 
-    
+    <com.promo.zjyfrestaurant.view.RadioListView
+        android:id="@+id/menu_cat_lv"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"></com.promo.zjyfrestaurant.view.RadioListView>
+
+    <ListView
+        android:id="@+id/menu_lv"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:paddingLeft="@dimen/common_pad"
+        android:scrollbars="none"
+        android:dividerHeight="1px"
+        android:divider="@color/bg_gray"
+        android:paddingRight="@dimen/common_pad"
+        android:listSelector="@android:color/transparent"
+        android:layout_height="match_parent"></ListView>
 </LinearLayout>

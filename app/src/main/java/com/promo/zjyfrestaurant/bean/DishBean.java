@@ -3,12 +3,14 @@ package com.promo.zjyfrestaurant.bean;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.io.Serializable;
+
 /**
  * 菜品。
  * <p/>
  * Created by ACER on 2014/12/22.
  */
-public class DishBean implements Parcelable {
+public class DishBean implements Parcelable, Serializable {
 
     private int id;
     private String name;
