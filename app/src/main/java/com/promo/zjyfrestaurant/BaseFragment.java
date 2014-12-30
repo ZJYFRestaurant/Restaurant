@@ -12,6 +12,8 @@ import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.promo.zjyfrestaurant.book.bookActivity.BookFragCallBack;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -25,11 +27,16 @@ public abstract class BaseFragment extends Fragment {
     private FrameLayout mContainerView = null;
     private Button backBtn = null;
     private TextView titleTv = null;
+    private BookFragCallBack fragCallBack;
 
 
     public BaseFragment() {
     }
 
+    public void setFragCallBack(BookFragCallBack fragCallBack) {
+
+        this.fragCallBack = fragCallBack;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -49,9 +56,15 @@ public abstract class BaseFragment extends Fragment {
 
         mContainerView = (FrameLayout) view.findViewById(R.id.base_frag_content);
         backBtn = (Button) view.findViewById(R.id.back_btn);
-        backBtn.setVisibility(View.GONE);
         titleTv = (TextView) view.findViewById(R.id.title_tv);
         mHeadView = (RelativeLayout) view.findViewById(R.id.title_rl);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (fragCallBack != null)
+                    fragCallBack.bookFragcall();
+            }
+        });
     }
 
     /**

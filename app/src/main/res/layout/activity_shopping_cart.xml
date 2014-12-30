@@ -1,6 +1,129 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:background="@color/bg_gray"
     android:layout_height="match_parent">
 
+
+    <RelativeLayout
+        android:id="@+id/cart_btmbar"
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_height="wrap_content">
+
+        <View
+            android:id="@+id/cartbar_top_line"
+            style="@style/gray_divide_line_style"
+            android:layout_alignParentTop="true" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="10dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4">
+
+                <CheckBox
+                    android:id="@+id/cart_btmbar_cb"
+                    android:drawableLeft="@drawable/cart_check_sel"
+                    android:button="@null"
+                    style="@style/font_gray2_17"
+                    android:text="@string/select_all"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_weight="6">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_alignParentRight="true"
+                    style="@style/font_white_18"
+                    android:padding="10dp"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/cartbar_next_btn"
+                    android:layout_marginRight="5dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/next"
+                    android:background="@drawable/green_bg_sel"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@id/cartbar_next_btn"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            style="@style/font_gray2_15"
+                            android:layout_width="wrap_content"
+                            android:text="@string/cart_total"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:id="@+id/cart_total_part_tv"
+                            style="@style/font_gray2_15"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            style="@style/font_gray2_15"
+                            android:text="@string/cart_part"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/font_greent_18"
+                            android:text="@string/yuan_sign" />
+
+                        <TextView
+                            android:id="@+id/cart_total_price_tv"
+                            style="@style/font_greent_18"
+                            android:text="56"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/cart_lv"
+        android:layout_alignParentTop="true"
+        android:layout_above="@id/cart_btmbar"
+        android:dividerHeight="5dp"
+        android:divider="@android:color/transparent"
+        style="@style/common_pad_style"></ListView>
 
 </RelativeLayout>

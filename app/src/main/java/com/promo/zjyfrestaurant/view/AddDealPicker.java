@@ -25,6 +25,18 @@ import com.promo.zjyfrestaurant.shoppingcart.ShoppingCart;
  * TODO: document your custom view class.
  */
 public class AddDealPicker extends LinearLayout implements View.OnClickListener {
+    /**
+     * 更新数据是否通知cart跟新。
+     */
+    private boolean notifyCartFlag = false;
+
+    public boolean isNotifyCartFlag() {
+        return notifyCartFlag;
+    }
+
+    public void setNotifyCartFlag(boolean notifyCartFlag) {
+        this.notifyCartFlag = notifyCartFlag;
+    }
 
     /**
      * Holds pairs of adjacent attribute data: attribute name followed by its value.
@@ -185,12 +197,24 @@ public class AddDealPicker extends LinearLayout implements View.OnClickListener 
 
     }
 
+    /**
+     * 获取菜品实例数据
+     *
+     * @return
+     */
     public DishBean getDishBean() {
         return dishBean;
     }
 
+    /**
+     * 设置菜品实例数据。
+     *
+     * @param dishBean
+     */
     public void setDishBean(DishBean dishBean) {
         this.dishBean = dishBean;
+        if (this.dishBean != null)
+            numTv.setText(String.valueOf(ShoppingCart.newInstance().getDishNum(dishBean.getId())));
     }
 
     private void saveAttributeData(AttributeSet attrs, TypedArray a) {
@@ -389,19 +413,27 @@ public class AddDealPicker extends LinearLayout implements View.OnClickListener 
      * 显示数据加1。
      */
     private void additionTv() {
-        String numStr = numTv.getText().toString();
-        int num = Integer.parseInt(numStr);
-        numTv.setText(String.valueOf(++num));
+        if (dishBean != null) {
+            numTv.setText(String.valueOf(ShoppingCart.newInstance().addDish(dishBean)));
+            if (notifyCartFlag) {
+                dishBean.dataChanged();
+                dishBean.nodifyDataChanged();       //更新购物车订购数据。
+            }
+        }
     }
 
     /**
      * 显示数据减1。
      */
     private void subtractionTv() {
-
-        String numStr = numTv.getText().toString();
-        int num = Integer.parseInt(numStr);
-        if (num > 0)
-            numTv.setText(String.valueOf(--num));
+        if (dishBean != null) {
+            ShoppingCart shoppingCart = ShoppingCart.newInstance();
+            if (shoppingCart.getDishNum(dishBean.getId()) > 0)      //数值不能为负
+                numTv.setText(String.valueOf(shoppingCart.reduceDish(dishBean)));
+            if (notifyCartFlag) {
+                dishBean.dataChanged();
+                dishBean.nodifyDataChanged();       //更新购物车订购数据。
+            }
+        }
     }
 }

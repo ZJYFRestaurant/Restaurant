@@ -74,8 +74,7 @@ public class MenuListAdapter extends BaseAdapter {
         viewHolder.nameTv.setText(productBean.getName());
         viewHolder.startView.setStartNum(productBean.getStar());
         viewHolder.priceTv.setText(String.valueOf(productBean.getNew_price()));
-//        viewHolder.addDealPicker.set
-
+        viewHolder.addDealPicker.setDishBean(productBean);
 
         return convertView;
     }

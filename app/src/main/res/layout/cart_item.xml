@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    style="@style/cmmon_pad_white_item"
+    android:gravity="center_vertical"
+    android:layout_height="wrap_content">
+
+    <CheckBox
+        android:id="@+id/cart_item_cb"
+        android:button="@null"
+        android:layout_width="wrap_content"
+        android:background="@drawable/cart_check_sel"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        style="@style/menu_item_img_size"
+        android:scaleType="centerCrop"
+        android:id="@+id/cart_item_img" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_weight="1"
+        android:layout_height="wrap_content">
+
+        <com.promo.zjyfrestaurant.view.AddDealPicker
+            android:id="@+id/cart_item_addpick"
+            style="@style/deal_picker_style"
+            android:layout_marginRight="5dp"
+            android:layout_alignParentRight="true"
+            app:left_img="@drawable/reduce"
+            app:right_img="@drawable/plus"
+            app:text_size="@dimen/font_14"
+            app:text_color="@color/gray3"
+            app:text="0"
+            app:img_size="35dp"
+            app:drawable_padding="5dp"></com.promo.zjyfrestaurant.view.AddDealPicker>
+
+        <LinearLayout
+            android:layout_toLeftOf="@id/cart_item_addpick"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_height="wrap_content">
+
+            <TextView
+                style="@style/font_gray2_15"
+                android:text="fdsfs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/cart_item_name_tv" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/font_greent_15"
+                    android:text="@string/yuan_sign" />
+
+                <TextView
+                    android:id="@+id/cart_item_price_tv"
+                    style="@style/font_greent_15"
+                    android:text="56"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    style="@style/font_greent_15"
+                    android:text="@string/menu_item_price_per"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

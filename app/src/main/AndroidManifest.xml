@@ -59,6 +59,7 @@
             android:name=".MainActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
+            android:launchMode="singleTask"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -69,42 +70,52 @@
         <activity
             android:name=".personal.MyBookActivity"
             android:label="@string/app_name"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
             android:name=".personal.AboutUsActivity"
             android:label="@string/app_name"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
             android:name=".personal.AddAddressActivity"
             android:label="@string/app_name"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
             android:name=".personal.AddressActivity"
             android:label="@string/app_name"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
             android:name=".personal.FeedBackActivity"
             android:label="@string/app_name"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
             android:name=".personal.login.LoginActivity"
             android:label="@string/app_name"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
             android:name=".home.recommendPager.RecommendActivity"
             android:label="@string/app_name"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
             android:name=".home.recommendPager.PrivilegeActivity"
             android:label="@string/app_name"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
             android:name=".home.recommendPager.MenuActivity"
             android:label="@string/app_name"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
             android:name=".home.recommendPager.MienActivity"
             android:label="@string/app_name"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
             android:name=".shoppingcart.ShoppingCartActivity"
@@ -118,10 +129,17 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".home.MenuDetailActivity"
+            android:launchMode="singleTask"
             android:label="@string/app_name" />
         <activity
             android:name=".home.recommendPager.PrivilegeDetailActivity"
+            android:launchMode="singleInstance"
             android:label="@string/app_name"></activity>
+
+        <activity
+            android:name=".book.bookActivity.BookActivity"
+            android:launchMode="singleTask"
+            android:label="@string/app_name" />
     </application>
 
 </manifest>

@@ -3,6 +3,8 @@ package com.promo.zjyfrestaurant.bean;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.promo.zjyfrestaurant.shoppingcart.DishObservble;
+
 import java.io.Serializable;
 
 /**
@@ -10,19 +12,22 @@ import java.io.Serializable;
  * <p/>
  * Created by ACER on 2014/12/22.
  */
-public class DishBean implements Parcelable, Serializable {
+public class DishBean extends DishObservble implements Parcelable, Serializable {
 
     private int id;
     private String name;
     private int category_id;
-    private float old_price;
-    private float new_price;
+    private int old_price;
+    private int new_price;
     private String cover;
     private String description;
     private int star;
     private int is_hot;
     private int is_show;
-
+    /**
+     * 是否订购被: 0 不订购，1 订购（在点餐车中点餐）。
+     */
+    private int isOrder = 0;
     /**
      * 点餐数量*
      */
@@ -55,8 +60,8 @@ public class DishBean implements Parcelable, Serializable {
         this.id = in.readInt();
         this.name = in.readString();
         this.category_id = in.readInt();
-        this.old_price = in.readFloat();
-        this.new_price = in.readFloat();
+        this.old_price = in.readInt();
+        this.new_price = in.readInt();
         this.cover = in.readString();
         this.description = in.readString();
         this.star = in.readInt();
@@ -106,19 +111,19 @@ public class DishBean implements Parcelable, Serializable {
         this.category_id = category_id;
     }
 
-    public float getOld_price() {
+    public int getOld_price() {
         return old_price;
     }
 
-    public void setOld_price(float old_price) {
+    public void setOld_price(int old_price) {
         this.old_price = old_price;
     }
 
-    public float getNew_price() {
+    public int getNew_price() {
         return new_price;
     }
 
-    public void setNew_price(float new_price) {
+    public void setNew_price(int new_price) {
         this.new_price = new_price;
     }
 
@@ -162,4 +167,11 @@ public class DishBean implements Parcelable, Serializable {
         this.num = num;
     }
 
+    public int getIsOrder() {
+        return isOrder;
+    }
+
+    public void setIsOrder(int isOrder) {
+        this.isOrder = isOrder;
+    }
 }

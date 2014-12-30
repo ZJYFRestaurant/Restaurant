@@ -76,11 +76,11 @@ public class RecommendAdapter extends BaseAdapter {
         }
 
         ProDetailBean proDetailBean = proDetails.get(position);
+        viewHolder.addDealPicker.setDishBean(proDetailBean);
         ImageManager.load(proDetailBean.getCover(), viewHolder.img, ContextUtil.getRectangleImgOptions(), (int) context.getResources().getDimension(R.dimen.img_circle_corner));
         viewHolder.nameTv.setText(proDetailBean.getName());
         viewHolder.startView.setStartNum(proDetailBean.getStar());
-        viewHolder.priceTv.setText(proDetailBean.getNew_price());
-//        viewHolder.addDealPicker.
+        viewHolder.priceTv.setText(String.valueOf(proDetailBean.getNew_price()));
 
         return convertView;
     }

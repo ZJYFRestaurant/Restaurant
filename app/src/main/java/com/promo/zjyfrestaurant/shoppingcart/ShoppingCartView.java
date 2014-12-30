@@ -13,7 +13,7 @@ import com.promo.zjyfrestaurant.R;
 /**
  * 购物车。
  */
-public class ShoppingCartView extends FrameLayout implements View.OnClickListener {
+public class ShoppingCartView extends FrameLayout implements View.OnClickListener, ShoppingCartObserver {
 
     /**
      * 购物车实例。
@@ -40,13 +40,17 @@ public class ShoppingCartView extends FrameLayout implements View.OnClickListene
 
     private void init(AttributeSet attrs, int defStyle) {
 
-        shoppingCart = ShoppingCart.newInstance();
         contentView = View.inflate(getContext(), R.layout.shoppingcat_view, null);
         cartimg = (ImageView) contentView.findViewById(R.id.cart_img);
         carttv = (TextView) contentView.findViewById(R.id.cart_tv);
         addView(contentView);
 
         setOnClickListener(this);
+
+        shoppingCart = ShoppingCart.newInstance();
+        shoppingCart.addObserver(this);         //购物车数据单例中注册监听者。
+
+        carttv.setText(String.valueOf(shoppingCart.getDishNum()));
     }
 
     public void addDish(int id) {
@@ -85,5 +89,11 @@ public class ShoppingCartView extends FrameLayout implements View.OnClickListene
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         getContext().startActivity(intent);
 //        getContext().overridePendingTransition(R.anim.slide_in_right, R.anim.static_anim);
+    }
+
+
+    @Override
+    public void update(ShoppingCartSubject subject, int num) {
+        carttv.setText(String.valueOf(num));
     }
 }

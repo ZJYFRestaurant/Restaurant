@@ -1,6 +1,7 @@
 package com.promo.zjyfrestaurant.book;
 
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.widget.FrameLayout;
 import com.jch.lib.view.PagerSlidingTabStrip;
 import com.promo.zjyfrestaurant.BaseFragment;
 import com.promo.zjyfrestaurant.R;
+import com.promo.zjyfrestaurant.book.bookActivity.BookFragCallBack;
 import com.promo.zjyfrestaurant.shoppingcart.ShoppingCartView;
 
 /**
@@ -20,7 +22,12 @@ import com.promo.zjyfrestaurant.shoppingcart.ShoppingCartView;
  */
 public class BookFragment extends BaseFragment {
 
+    public static final String FROMKEY = "from";
+
     private static BookFragment fragment = null;
+    private boolean isFromActivity = false;
+
+    private BookFragCallBack fragCallBack;
 
     private View mContainerView = null;
     private PagerSlidingTabStrip bookslidetab;
@@ -36,6 +43,7 @@ public class BookFragment extends BaseFragment {
         if (fragment == null) {
             fragment = new BookFragment();
             Bundle args = new Bundle();
+            args.putBoolean(FROMKEY, false);
             fragment.setArguments(args);
         }
 
@@ -44,7 +52,29 @@ public class BookFragment extends BaseFragment {
     }
 
     public BookFragment() {
+    }
 
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        isFromActivity = getArguments().getBoolean(FROMKEY);
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        try {
+            fragCallBack = (BookFragCallBack) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString()
+                    + " must implement OnFragmentInteractionListener");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        fragCallBack = null;
     }
 
     @Override
@@ -57,6 +87,10 @@ public class BookFragment extends BaseFragment {
 
     private void initView(View containerView) {
         addShoppingCart();
+        if (!isFromActivity) {
+            hideBackBtn();
+        }
+        setFragCallBack(fragCallBack);
 
         bookslidetab = (PagerSlidingTabStrip) containerView.findViewById(R.id.book_slide_tab);
         bookpager = (ViewPager) containerView.findViewById(R.id.book_pager);

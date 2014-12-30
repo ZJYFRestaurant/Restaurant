@@ -84,8 +84,13 @@ public class SendFragment extends BookBaseFragment {
         booksubmitbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+
                 submit();
             }
         });
     }
+
+
 }

@@ -30,4 +30,6 @@
     <dimen name="book_input_height">50dp</dimen>
     <dimen name="book_draw_pad_left">20dp</dimen>
     <dimen name="book_detail_between_line">10dp</dimen>
+
+    <dimen name="cart_btmbar_height">60dp</dimen>
 </resources>

@@ -9,6 +9,7 @@ import com.nostra13.universalimageloader.cache.memory.impl.LruMemoryCache;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
+import com.promo.zjyfrestaurant.shoppingcart.ShoppingCart;
 
 import java.io.File;
 
@@ -22,6 +23,7 @@ public class ZjyfApplication extends Application {
         super.onCreate();
         initImageLoaderConfiguration();
         SDKInitializer.initialize(getApplicationContext());
+        ShoppingCart.newInstance().initData(getApplicationContext());
     }
 
     /**

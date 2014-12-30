@@ -8,10 +8,11 @@ import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import com.promo.zjyfrestaurant.book.bookActivity.BookFragCallBack;
 import com.promo.zjyfrestaurant.exception.FragmentException;
 
 
-public class MainActivity extends FragmentActivity implements RadioGroup.OnCheckedChangeListener {
+public class MainActivity extends FragmentActivity implements RadioGroup.OnCheckedChangeListener, BookFragCallBack {
 
 
     private FrameLayout contentfl;
@@ -128,6 +129,11 @@ public class MainActivity extends FragmentActivity implements RadioGroup.OnCheck
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         mCurFragment.onActivityResult(requestCode, resultCode, data);
+
+    }
+
+    @Override
+    public void bookFragcall() {
 
     }
 }

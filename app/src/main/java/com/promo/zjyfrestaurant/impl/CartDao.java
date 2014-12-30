@@ -43,6 +43,7 @@ public class CartDao {
         values.put("is_hot", dish.getIs_hot());
         values.put("is_show", dish.getIs_show());
         values.put("num", dish.getNum());
+        values.put("is_order", dish.getIsOrder());
 
         db.insert(DbOpenHelper.CART_TBL, null, values);
         db.close();
@@ -59,6 +60,7 @@ public class CartDao {
         SQLiteDatabase db = mHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("num", dish.getNum());
+        values.put("is_order", dish.getIsOrder());
 
         String whereStr = "id = ?";
         db.update(DbOpenHelper.CART_TBL, values, whereStr, new String[]{String.valueOf(dish.getId())});
@@ -97,9 +99,10 @@ public class CartDao {
             dishBean.setDescription(cursor.getString(cursor.getColumnIndex("description")));
             dishBean.setIs_hot(cursor.getInt(cursor.getColumnIndex("is_hot")));
             dishBean.setIs_show(cursor.getInt(cursor.getColumnIndex("is_show")));
-            dishBean.setNew_price(cursor.getFloat(cursor.getColumnIndex("new_price")));
-            dishBean.setOld_price(cursor.getFloat(cursor.getColumnIndex("old_price")));
+            dishBean.setNew_price(cursor.getInt(cursor.getColumnIndex("new_price")));
+            dishBean.setOld_price(cursor.getInt(cursor.getColumnIndex("old_price")));
             dishBean.setStar(cursor.getInt(cursor.getColumnIndex("star")));
+            dishBean.setIsOrder(cursor.getInt(cursor.getColumnIndex("is_order")));
             dishBeans.add(dishBean);
         }
 

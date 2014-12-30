@@ -15,7 +15,7 @@ public class Constant {
      */
     public static final Boolean RELEASEABLE = false;
 
-    public static final int DB_VERSION = 1;
+    public static final int DB_VERSION = 7;
 
     /**
      * 磁盘缓存路径. *

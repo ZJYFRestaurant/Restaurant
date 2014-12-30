@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.promo.zjyfrestaurant.application.Constant;
+import com.promo.zjyfrestaurant.util.LogCat;
 
 /**
  * Created by ACER on 2014/12/29.
@@ -22,7 +23,8 @@ public class DbOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String sqlStr = "CREATE TABLE if not exists " + CART_TBL + "(" + "'id' INTEGER PRIMARY KEY, 'name' TEXT, 'category_id' INTEGER, 'old_price' float, 'new_price' float, 'cover' TEXT, 'description' TEXT, 'star' INTEGER, 'is_hot' INTEGER, 'is_show' INTEGER, 'num' INTEGER )";
+        String sqlStr = "CREATE TABLE if not exists " + CART_TBL + "(" + "'id' INTEGER PRIMARY KEY, 'name' TEXT, 'category_id' INTEGER, 'old_price' float, 'new_price' float, 'cover' TEXT, 'description' TEXT, 'star' INTEGER, 'is_hot' INTEGER, 'is_show' INTEGER, 'is_order' INTEGER, 'num' INTEGER);";
+        LogCat.i("create tbl sql:-=----" + sqlStr);
         db.execSQL(sqlStr);
     }
 

@@ -118,9 +118,9 @@ public class MenuDetailActivity extends BaseActivity implements View.OnClickList
         ImageManager.load(proDetailBean.getCover(), menudetailimg, ContextUtil.getRectangleImgOptions(), 10);
         menudetailnametv.setText(proDetailBean.getName() == null ? "" : proDetailBean.getName());
         menudetailstar.setStartNum(proDetailBean.getStar());
-        menudetailpricetv.setText(proDetailBean.getNew_price());
+        menudetailpricetv.setText(String.valueOf(proDetailBean.getNew_price()));
         menudetailpromttv.setText(proDetailBean.getDescription() == null ? "" : proDetailBean.getDescription());
-
+        menudetailpicker.setDishBean(proDetailBean);
     }
 
     @Override

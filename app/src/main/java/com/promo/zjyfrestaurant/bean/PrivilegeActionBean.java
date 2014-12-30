@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 /**
- * Created by ACER on 2014/12/26.
+ *
  */
 public class PrivilegeActionBean implements Parcelable {
 

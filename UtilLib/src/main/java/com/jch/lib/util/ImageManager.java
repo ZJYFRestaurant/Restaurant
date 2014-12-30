@@ -18,10 +18,6 @@ import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 public class ImageManager {
 
 
-    public static void load(String imgUrl, ImageView imgView, DisplayImageOptions rectangleImgOptions, float dimension) {
-        ImageLoader.getInstance().displayImage(imgUrl, imgView);
-    }
-
     public static void load(String imgUrl, ImageView imgView, DisplayImageOptions options) {
         ImageLoader.getInstance().displayImage(imgUrl, imgView, options);
     }
