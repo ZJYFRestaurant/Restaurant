@@ -109,7 +109,7 @@ public class ToRestFragment extends BookBaseFragment implements View.OnClickList
             }
 
             case R.id.book_submit_btn: {
-                submit();
+                submit(null);
                 break;
             }
         }

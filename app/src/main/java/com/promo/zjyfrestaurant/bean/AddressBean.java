@@ -5,39 +5,59 @@ import android.os.Parcelable;
 
 /**
  * Created by ACER on 2014/12/16.
+ * 地址。
  */
 public class AddressBean implements Parcelable {
 
-    private String name;
+    private int id;
 
-    private String phone;
+    private String content;
 
-    private String addr;
+    private String tel;
 
-    public String getName() {
-        return name;
+    private int uid;
+
+    private String contact;
+
+    public int getId() {
+        return id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getContent() {
+        return content;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setContent(String content) {
+        this.content = content;
     }
 
-    public String getAddr() {
-        return addr;
+    public String getTel() {
+        return tel;
     }
 
-    public void setAddr(String addr) {
-        this.addr = addr;
+    public void setTel(String tel) {
+        this.tel = tel;
     }
 
+    public int getUid() {
+        return uid;
+    }
+
+    public void setUid(int uid) {
+        this.uid = uid;
+    }
+
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
+    }
 
     @Override
     public int describeContents() {
@@ -45,34 +65,32 @@ public class AddressBean implements Parcelable {
     }
 
     @Override
-    public void writeToParcel(Parcel out, int flags) {
-
-        out.writeString(name);
-        out.writeString(phone);
-        out.writeString(addr);
-
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(this.id);
+        dest.writeString(this.content);
+        dest.writeString(this.tel);
+        dest.writeInt(this.uid);
+        dest.writeString(this.contact);
     }
 
     public AddressBean() {
     }
 
     private AddressBean(Parcel in) {
-        name = in.readString();
-        phone = in.readString();
-        addr = in.readString();
+        this.id = in.readInt();
+        this.content = in.readString();
+        this.tel = in.readString();
+        this.uid = in.readInt();
+        this.contact = in.readString();
     }
 
-    public static final Creator<AddressBean> CREATOR = new Creator<AddressBean>() {
-
-        @Override
+    public static final Parcelable.Creator<AddressBean> CREATOR = new Parcelable.Creator<AddressBean>() {
         public AddressBean createFromParcel(Parcel source) {
             return new AddressBean(source);
         }
 
-        @Override
         public AddressBean[] newArray(int size) {
             return new AddressBean[size];
         }
     };
-
 }

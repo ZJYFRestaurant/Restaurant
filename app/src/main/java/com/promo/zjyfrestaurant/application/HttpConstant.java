@@ -59,4 +59,27 @@ public class HttpConstant {
 
     public static final String getProductList = getRootUrl() + "getProductList";
 
+    public static final String postOrder = getRootUrl() + "postOrder";
+
+    public static final String login = getRootUrl() + "login";
+    /**
+     * 获得用户id.*
+     */
+    public static final String getId = getRootUrl() + "getId";
+
+    /**
+     * 获得我的订单。
+     */
+    public static final String getOrderList = getRootUrl() + "getOrderList";
+    /**
+     * 我的点餐。
+     */
+    public static final String getFoodList = getRootUrl() + "getFoodList";
+    /**
+     * 获取地理信息。
+     */
+    public static final String getAddressList = getRootUrl() + "getAddressList";
+
+    public static final String addAddress = getRootUrl() + "addAddress";
+
 }

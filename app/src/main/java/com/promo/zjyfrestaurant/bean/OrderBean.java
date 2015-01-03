@@ -1,12 +1,19 @@
 package com.promo.zjyfrestaurant.bean;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import com.jch.lib.util.TextUtil;
+
+import java.text.ParseException;
 import java.util.ArrayList;
 
 /**
  * Created by ACER on 2014/12/30.
  * 订单列表。
  */
-public class OrderBean {
+public class OrderBean implements Parcelable {
+
     /**
      * 地址id. *
      */
@@ -92,6 +99,15 @@ public class OrderBean {
         return use_time;
     }
 
+    public String getUse_UnitTime() {
+        try {
+            return String.valueOf(TextUtil.parse(use_time, "yyyy年MM月dd日 HH:mm").getTime() / 1000);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     public void setUse_time(String use_time) {
         this.use_time = use_time;
     }
@@ -124,11 +140,20 @@ public class OrderBean {
         products.add(dishBean);
     }
 
+    public void addProducts(ArrayList<DishBean> dishBeans) {
+        products.addAll(dishBeans);
+    }
+
+    public ArrayList<DishBean> getProducts() {
+        return products;
+    }
+
     public boolean removeProduct(DishBean dishBean) {
         if (products.contains(dishBean))
             return products.remove(dishBean);
         return false;
     }
+
 
     /**
      * 获得订餐列表。
@@ -141,8 +166,54 @@ public class OrderBean {
         for (DishBean dishBean : products) {
             sb.append(dishBean.getId()).append("*").append(dishBean.getNum()).append(",");
         }
-
-        sb.deleteCharAt(sb.length() - 1);
+        if (sb.length() > 0)
+            sb.deleteCharAt(sb.length() - 1);
         return sb.toString();
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(this.address_id);
+        dest.writeString(this.address_content);
+        dest.writeString(this.contact);
+        dest.writeString(this.tel);
+        dest.writeInt(this.type == null ? -1 : this.type.ordinal());
+        dest.writeString(this.use_time);
+        dest.writeInt(this.people_num);
+        dest.writeString(this.remark);
+        dest.writeInt(this.price);
+        dest.writeSerializable(this.products);
+    }
+
+    public OrderBean() {
+    }
+
+    private OrderBean(Parcel in) {
+        this.address_id = in.readInt();
+        this.address_content = in.readString();
+        this.contact = in.readString();
+        this.tel = in.readString();
+        int tmpType = in.readInt();
+        this.type = tmpType == -1 ? null : OrderType.values()[tmpType];
+        this.use_time = in.readString();
+        this.people_num = in.readInt();
+        this.remark = in.readString();
+        this.price = in.readInt();
+        this.products = (ArrayList<DishBean>) in.readSerializable();
+    }
+
+    public static final Parcelable.Creator<OrderBean> CREATOR = new Parcelable.Creator<OrderBean>() {
+        public OrderBean createFromParcel(Parcel source) {
+            return new OrderBean(source);
+        }
+
+        public OrderBean[] newArray(int size) {
+            return new OrderBean[size];
+        }
+    };
 }

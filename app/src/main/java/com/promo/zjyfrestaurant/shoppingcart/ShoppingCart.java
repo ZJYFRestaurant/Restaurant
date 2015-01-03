@@ -299,4 +299,21 @@ public class ShoppingCart extends ShoppingCartSubject implements CartOberver {
             dishBean.setIsOrder(orderflag);
         }
     }
+
+    /**
+     * 获取所有订购菜品。
+     *
+     * @return
+     */
+    public ArrayList<DishBean> getOrderDishes() {
+
+        ArrayList<DishBean> orders = new ArrayList<DishBean>();
+        for (DishBean dishBean : dishBeans) {
+            if (dishBean.getIsOrder() == 1) {
+                orders.add(dishBean);
+            }
+        }
+        return orders;
+    }
+
 }

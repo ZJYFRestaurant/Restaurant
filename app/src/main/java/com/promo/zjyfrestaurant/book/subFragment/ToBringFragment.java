@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.jch.lib.util.TextUtil;
+import com.jch.lib.util.VaildUtil;
 import com.promo.zjyfrestaurant.R;
 import com.promo.zjyfrestaurant.view.NumberView;
 
@@ -83,8 +85,49 @@ public class ToBringFragment extends BookBaseFragment {
         booksubmitbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                submit();
+                checkOrder();
+                submit(orderBean);
             }
         });
+    }
+
+
+    /**
+     * 检测输入。
+     *
+     * @return
+     */
+    private String checkOrder() {
+        String checkResult = "";
+
+        String contactStr = bookcontactet.getText().toString().trim();     //联系人。
+        if (TextUtil.stringIsNull(contactStr)) {
+            checkResult = getResources().getString(R.string.add_name_warning);
+            return checkResult;
+        } else {
+            orderBean.setContact(contactStr);
+        }
+
+        String phoneStr = bookphoneet.getText().toString().trim();     //联系电话。
+        checkResult = VaildUtil.validPhone(phoneStr);
+        if (!TextUtil.stringIsNull(checkResult)) {
+            return checkResult;
+        }
+
+        orderBean.setTel(phoneStr);
+
+
+        String timeStr = booktimeet.getText().toString().trim();       //取餐时间。
+        if (TextUtil.stringIsNull(timeStr)) {
+            checkResult = getResources().getString(R.string.book_time_warning);
+            return checkResult;
+        } else {
+            orderBean.setUse_time(timeStr);
+        }
+
+        String otherStr = bookotheret.getText().toString().trim();      //备注。
+        orderBean.setRemark(otherStr);
+
+        return checkResult;
     }
 }

@@ -65,6 +65,11 @@ public class ContextUtil {
         mContext = context;
     }
 
+    public static void toast(Context context, String text) {
+        Toast.makeText(context, text, Toast.LENGTH_SHORT).show();
+    }
+
+
     public static void toast(int resId) {
         toast(mContext.getString(resId));
     }

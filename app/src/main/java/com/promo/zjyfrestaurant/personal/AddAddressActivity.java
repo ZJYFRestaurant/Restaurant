@@ -1,5 +1,6 @@
 package com.promo.zjyfrestaurant.personal;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
@@ -10,17 +11,24 @@ import com.jch.lib.util.TextUtil;
 import com.jch.lib.util.VaildUtil;
 import com.promo.zjyfrestaurant.BaseActivity;
 import com.promo.zjyfrestaurant.R;
+import com.promo.zjyfrestaurant.application.HttpConstant;
+import com.promo.zjyfrestaurant.application.ZjyfApplication;
 import com.promo.zjyfrestaurant.bean.AddressBean;
+import com.promo.zjyfrestaurant.impl.RequestCallback;
+import com.promo.zjyfrestaurant.impl.ShowMenuRequset;
+import com.promo.zjyfrestaurant.impl.ZJYFRequestParmater;
+import com.promo.zjyfrestaurant.util.ContextUtil;
 
 public class AddAddressActivity extends BaseActivity implements View.OnClickListener {
 
     private EditText mNameEt = null;
     private EditText mPhoneEt = null;
     private EditText mAddrEt = null;
+    private AddressBean address = new AddressBean();
+
     /**
      * 地址信息。
      */
-    private AddressBean addressBean = null;
 
     @Override
     protected View initContentView() {
@@ -35,6 +43,27 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
     @Override
     protected void getData() {
 
+        ZJYFRequestParmater parma = new ZJYFRequestParmater(getApplicationContext());
+        parma.put("uid", address.getUid());
+        parma.put("content", address.getContent());
+        parma.put("contact", address.getContact());
+        parma.put("tel", address.getTel());
+
+        ShowMenuRequset.getData(AddAddressActivity.this, HttpConstant.addAddress, parma, Integer.class, new RequestCallback<Integer>() {
+            @Override
+            public void onfailed(String msg) {
+                ContextUtil.toast(getApplicationContext(), msg);
+            }
+
+            @Override
+            public void onSuccess(Integer data) {
+                address.setId(data);
+                Intent intent = new Intent();
+                intent.putExtra(AddressActivity.ADDINFO_KEY, address);
+                setResult(Activity.RESULT_OK, intent);
+                AddAddressActivity.this.finish();
+            }
+        });
     }
 
     private void init(View containerView) {
@@ -61,27 +90,28 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
      *
      * @return
      */
-    private AddressBean checkAddrInfo() {
-
+    private boolean checkAddrInfo() {
+        boolean checkResult = true;
         String nameStr = mNameEt.getText().toString().trim();
         String phoneStr = mPhoneEt.getText().toString().trim();
         String phoneStrR = VaildUtil.validPhone(phoneStr).trim();
         String addrStr = mAddrEt.getText().toString();
         if (TextUtil.stringIsNull(nameStr)) {
             DialogUtil.toastMsg(getApplicationContext(), getResources().getString(R.string.add_name_warning));
+            checkResult = false;
         } else if (!phoneStrR.equals("")) {
             DialogUtil.toastMsg(getApplicationContext(), phoneStrR);
+            checkResult = false;
         } else if (TextUtil.stringIsNull(addrStr)) {
             DialogUtil.toastMsg(getApplicationContext(), getResources().getString(R.string.add_addr_warning));
-        } else {
-            addressBean = new AddressBean();
-            addressBean.setName(nameStr);
-            addressBean.setPhone(phoneStr);
-            addressBean.setAddr(addrStr);
-            return addressBean;
+            checkResult = false;
         }
+        address.setContact(nameStr);
+        address.setTel(phoneStr);
+        address.setContent(addrStr);
+        address.setUid(((ZjyfApplication) getApplicationContext()).getUid());
 
-        return null;
+        return checkResult;
     }
 
     @Override
@@ -90,13 +120,8 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
         switch (v.getId()) {
             case R.id.add_addr_ok_btn: {
 
-                AddressBean address = checkAddrInfo();
-                if (address != null) {
-                    Intent intent = new Intent();
-                    intent.putExtra(AddressActivity.ADDINFO_KEY, addressBean);
-                    //TODO 数据网络了连接
-                    setResult(AddressActivity.ADDCODE, intent);
-                    this.finish();
+                if (checkAddrInfo()) {
+                    getData();
                 }
 
                 break;

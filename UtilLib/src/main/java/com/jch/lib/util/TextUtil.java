@@ -9,6 +9,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * 文本工具类
@@ -185,5 +188,17 @@ public class TextUtil {
             return price;
         }
 
+    }
+
+    public static String formatDate(Date date, String parten) throws ParseException {
+//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat sdf = new SimpleDateFormat(parten);
+        return sdf.format(date);
+    }
+
+    public static Date parse(String strDate, String parten) throws ParseException {
+//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat sdf = new SimpleDateFormat(parten);
+        return sdf.parse(strDate);
     }
 }

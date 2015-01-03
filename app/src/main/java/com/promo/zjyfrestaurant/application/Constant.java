@@ -10,6 +10,8 @@ public class Constant {
 
     public static final String PRO_TAG = "ZJYF";
 
+    public static final String UID = "uid";
+
     /**
      * 是否可发行
      */

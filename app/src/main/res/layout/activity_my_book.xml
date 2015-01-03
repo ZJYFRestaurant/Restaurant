@@ -1,6 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/bg_gray"
     android:layout_height="match_parent"
     tools:context="com.promo.zjyfrestaurant.personal.MyBookActivity">
 
@@ -8,7 +9,11 @@
     <ExpandableListView
         android:id="@+id/mybook_elist"
         android:layout_width="match_parent"
-        android:dividerHeight="2dp"
+        android:dividerHeight="5dp"
+        android:groupIndicator="@null"
+        android:listSelector="@android:color/transparent"
+        android:paddingLeft="@dimen/home_item_pad"
+        android:paddingRight="@dimen/home_item_pad"
         android:divider="@android:color/transparent"
         android:layout_height="wrap_content"></ExpandableListView>
 

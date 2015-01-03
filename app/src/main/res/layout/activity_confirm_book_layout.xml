@@ -130,7 +130,7 @@
                 android:id="@+id/book_detail_gv"
                 android:layout_marginTop="@dimen/book_detail_between_line"
                 android:layout_width="match_parent"
-                android:numColumns="2"
+                android:numColumns="3"
                 android:listSelector="@android:color/transparent"
                 android:layout_height="wrap_content"></com.jch.lib.view.ScrollGridView>
 
@@ -144,6 +144,7 @@
         </LinearLayout>
 
         <Button
+            android:id="@+id/confirm_sub_btn"
             style="@style/green_btn_style"
             android:text="@string/submit_order"
             android:layout_marginLeft="20dp"

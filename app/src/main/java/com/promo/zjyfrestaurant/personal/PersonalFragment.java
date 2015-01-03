@@ -141,6 +141,9 @@ public class PersonalFragment extends BaseFragment implements View.OnClickListen
                 break;
             }
             case R.id.person_order: {
+
+                Intent intent = new Intent(getActivity(), MyOrderActivity.class);
+                transNextPage(intent);
                 break;
             }
             case R.id.person_address: {

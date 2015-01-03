@@ -2,6 +2,7 @@ package com.promo.zjyfrestaurant.impl;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Context;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -96,6 +97,52 @@ public class ShowMenuRequset {
                 super.onFailure(statusCode, headers, responseString, throwable);
                 callback.onfailed("网络数据获取失败");
                 dialog.dismiss();
+            }
+        });
+
+        return null;
+    }
+
+    /**
+     * 后台获取数据，没有progressDialog
+     *
+     * @param context
+     * @param url
+     * @param parmater
+     * @param t
+     * @param callback
+     * @param <T>
+     * @return
+     */
+    public static <T> T getData(Context context, String url, ZJYFRequestParmater parmater, final Class<T> t, final RequestCallback callback) {
+
+        HttpUtil.post(url, parmater, new JsonHttpResponseHandler("utf-8") {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                super.onSuccess(statusCode, headers, response);
+                BaseResponse<T> resultBaseBean = getResponse(response.toString(), t);
+
+                if (resultBaseBean.getCode() == 100) {
+                    Gson gson = new Gson();
+                    String dataJsonStr = gson.toJson(resultBaseBean.getData());         //第二次解析内部data数据。由于泛型在gson中不能做第二层参数，需要将response中的data从新变成json,然后用Gson第二次解析。
+                    T dataBean = (T) gson.fromJson(dataJsonStr, t);
+                    callback.onSuccess(dataBean);
+                } else {
+                    callback.onfailed("网络数据错误。");
+                }
+
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                super.onFailure(statusCode, headers, throwable, errorResponse);
+                callback.onfailed("网络数据错误");
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                super.onFailure(statusCode, headers, responseString, throwable);
+                callback.onfailed("网络数据获取失败");
             }
         });
 

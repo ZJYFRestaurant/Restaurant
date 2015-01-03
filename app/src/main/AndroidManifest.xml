@@ -58,8 +58,8 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait"
             android:launchMode="singleTask"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -129,17 +129,20 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".home.MenuDetailActivity"
-            android:launchMode="singleTask"
-            android:label="@string/app_name" />
+            android:label="@string/app_name"
+            android:launchMode="singleTask" />
         <activity
             android:name=".home.recommendPager.PrivilegeDetailActivity"
-            android:launchMode="singleInstance"
-            android:label="@string/app_name"></activity>
-
+            android:label="@string/app_name"
+            android:launchMode="singleTask" />
         <activity
             android:name=".book.bookActivity.BookActivity"
-            android:launchMode="singleTask"
-            android:label="@string/app_name" />
+            android:label="@string/app_name"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".personal.MyOrderActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"></activity>
     </application>
 
 </manifest>
