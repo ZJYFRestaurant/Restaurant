@@ -94,7 +94,7 @@ public class ConfirmBookActivity extends BaseActivity {
     private void submit() {
         ZJYFRequestParmater parma = new ZJYFRequestParmater(getApplicationContext());
         parma.put("uid", ((ZjyfApplication) getApplicationContext()).getUid());
-        parma.put("type", orderBean.getType());
+        parma.put("type", orderBean.getType().getValue());
         if (orderBean.getType() == OrderType.ARRIVE) {  //到店吃饭。
             parma.put("contact", orderBean.getContact());
             parma.put("tel", orderBean.getTel());

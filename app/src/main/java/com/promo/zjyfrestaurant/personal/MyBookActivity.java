@@ -14,6 +14,9 @@ import com.promo.zjyfrestaurant.impl.ShowMenuRequset;
 import com.promo.zjyfrestaurant.impl.ZJYFRequestParmater;
 import com.promo.zjyfrestaurant.util.ContextUtil;
 
+/**
+ * 我的预定。
+ */
 public class MyBookActivity extends BaseActivity {
 
 
@@ -47,10 +50,14 @@ public class MyBookActivity extends BaseActivity {
             @Override
             public void onSuccess(MyBooksBean data) {
                 adapter.notifyDataSetChanged(data);
+                extentList();
             }
         });
+    }
 
-
+    private void extentList() {
+        mybookelist.expandGroup(0);
+        mybookelist.expandGroup(1);
     }
 
 
@@ -62,6 +69,14 @@ public class MyBookActivity extends BaseActivity {
         mybookelist.setEnabled(true);
         adapter = new MyBookAdapter(getApplicationContext());
         mybookelist.setAdapter(adapter);
+        mybookelist.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+            @Override
+            public void onGroupExpand(int groupPosition) {
+
+            }
+        });
+
+
         getData();
 
     }

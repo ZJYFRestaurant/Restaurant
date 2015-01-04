@@ -2,7 +2,9 @@ package com.promo.zjyfrestaurant.book;
 
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +15,7 @@ import com.jch.lib.view.PagerSlidingTabStrip;
 import com.promo.zjyfrestaurant.BaseFragment;
 import com.promo.zjyfrestaurant.R;
 import com.promo.zjyfrestaurant.book.bookActivity.BookFragCallBack;
+import com.promo.zjyfrestaurant.book.subFragment.ToRestFragment;
 import com.promo.zjyfrestaurant.shoppingcart.ShoppingCartView;
 
 /**
@@ -26,6 +29,8 @@ public class BookFragment extends BaseFragment {
 
     private static BookFragment fragment = null;
     private boolean isFromActivity = false;
+
+    private BookPagerAdapter bookPagerAdapter;
 
     private BookFragCallBack fragCallBack;
 
@@ -94,7 +99,7 @@ public class BookFragment extends BaseFragment {
 
         bookslidetab = (PagerSlidingTabStrip) containerView.findViewById(R.id.book_slide_tab);
         bookpager = (ViewPager) containerView.findViewById(R.id.book_pager);
-        BookPagerAdapter bookPagerAdapter = new BookPagerAdapter(getChildFragmentManager(), getResources().getStringArray(R.array.book_tab), getActivity().getApplicationContext());
+        bookPagerAdapter = new BookPagerAdapter(getChildFragmentManager(), getResources().getStringArray(R.array.book_tab), getActivity().getApplicationContext());
         bookpager.setAdapter(bookPagerAdapter);
         bookslidetab.setViewPager(bookpager);
 
@@ -111,5 +116,11 @@ public class BookFragment extends BaseFragment {
         addRightItem(shoppingCartView);
     }
 
-
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == getActivity().RESULT_OK)
+            if (requestCode == ToRestFragment.REQ_CODE)
+                ((Fragment) bookPagerAdapter.instantiateItem(bookpager, 2)).onActivityResult(requestCode, resultCode, data);        //获取fragment。
+    }
 }

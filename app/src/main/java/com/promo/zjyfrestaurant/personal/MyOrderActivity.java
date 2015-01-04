@@ -9,6 +9,8 @@ import com.promo.zjyfrestaurant.application.ZjyfApplication;
 import com.promo.zjyfrestaurant.impl.RequestCallback;
 import com.promo.zjyfrestaurant.impl.ShowMenuRequset;
 import com.promo.zjyfrestaurant.impl.ZJYFRequestParmater;
+import com.promo.zjyfrestaurant.util.ContextUtil;
+import com.promo.zjyfrestaurant.util.LogCat;
 
 /**
  * 我的点餐。
@@ -32,12 +34,13 @@ public class MyOrderActivity extends BaseActivity {
         ShowMenuRequset.getData(MyOrderActivity.this, HttpConstant.getFoodList, parma, String.class, new RequestCallback<String>() {
             @Override
             public void onfailed(String msg) {
-
+                ContextUtil.toast(getApplication(), msg);
             }
 
             @Override
             public void onSuccess(String data) {
-
+                LogCat.d("order:" + data);
+                LogCat.d("order:" + data);
             }
         });
     }

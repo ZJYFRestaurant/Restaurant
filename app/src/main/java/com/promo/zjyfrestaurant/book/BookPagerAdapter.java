@@ -54,5 +54,4 @@ public class BookPagerAdapter extends FragmentPagerAdapter {
         return fragment;
     }
 
-
 }

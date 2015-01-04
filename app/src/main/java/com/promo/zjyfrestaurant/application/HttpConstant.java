@@ -81,5 +81,13 @@ public class HttpConstant {
     public static final String getAddressList = getRootUrl() + "getAddressList";
 
     public static final String addAddress = getRootUrl() + "addAddress";
+    /**
+     * 修改地址。 *
+     */
+    public static final String updateAddress = getRootUrl() + "updateAddress";
+
+    public static final String addSuggest = getRootUrl() + "addSuggest";
+
+    public static final String deleteAddress = getRootUrl() + "deleteAddress";
 
 }

@@ -1,5 +1,6 @@
 package com.promo.zjyfrestaurant.book.bookActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -16,6 +17,7 @@ public class BookActivity extends FragmentActivity implements BookFragCallBack {
 
 
     private FrameLayout bookcontainer;
+    private BookFragment bookFragment;
 
     @Override
     public void bookFragcall() {
@@ -34,7 +36,7 @@ public class BookActivity extends FragmentActivity implements BookFragCallBack {
 
     private void initialize() {
 
-        BookFragment bookFragment = new BookFragment();
+        bookFragment = new BookFragment();
         Bundle bundle = new Bundle();
         bundle.putBoolean(BookFragment.FROMKEY, true);
         bookFragment.setArguments(bundle);
@@ -45,5 +47,10 @@ public class BookActivity extends FragmentActivity implements BookFragCallBack {
         ft.commitAllowingStateLoss();
     }
 
-
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK)
+            bookFragment.onActivityResult(requestCode, resultCode, data);
+    }
 }

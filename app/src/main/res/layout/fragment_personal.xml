@@ -21,6 +21,7 @@
 
                 <ImageView
                     android:id="@+id/personal_head_img"
+                    android:clickable="false"
                     android:scaleType="centerCrop"
                     android:layout_gravity="center"
                     android:background="@drawable/personal_head_img_bg_layer"
@@ -212,6 +213,7 @@
             </TableLayout>
 
             <Button
+                android:visibility="gone"
                 android:id="@+id/logout_btn"
                 android:layout_margin="20dp"
                 android:background="@drawable/green_bg_sel"

@@ -58,8 +58,8 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:launchMode="singleTask"
             android:screenOrientation="portrait"
+            android:launchMode="standard"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -80,12 +80,18 @@
         <activity
             android:name=".personal.AddAddressActivity"
             android:label="@string/app_name"
-            android:launchMode="singleTask"
+            android:launchMode="standard"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".personal.ModifyAddrActivity"
+            android:label="@string/app_name"
+            android:launchMode="standard"
+            android:screenOrientation="portrait" />
+
         <activity
             android:name=".personal.AddressActivity"
             android:label="@string/app_name"
-            android:launchMode="singleTask"
+            android:launchMode="standard"
             android:screenOrientation="portrait" />
         <activity
             android:name=".personal.FeedBackActivity"
@@ -137,8 +143,8 @@
             android:launchMode="singleTask" />
         <activity
             android:name=".book.bookActivity.BookActivity"
-            android:label="@string/app_name"
-            android:launchMode="singleTask" />
+            android:launchMode="standard"
+            android:label="@string/app_name" />
         <activity
             android:name=".personal.MyOrderActivity"
             android:label="@string/app_name"

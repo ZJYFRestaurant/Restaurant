@@ -88,4 +88,7 @@
     <string name="consumer_warning">没有人吃饭哦！</string>
     <string name="book_time_warning">什么时候用餐呢？</string>
     <string name="select_time">请选择时间：</string>
-    </resources>
+    <string name="modify_erro">修改失败</string>
+    <string name="modify_ok">修改成功</string>
+    <string name="book_addr_warning">地址不能为空</string>
+</resources>

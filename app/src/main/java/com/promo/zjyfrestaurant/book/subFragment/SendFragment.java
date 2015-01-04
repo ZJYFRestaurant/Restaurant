@@ -10,7 +10,6 @@ import android.widget.EditText;
 import com.jch.lib.util.TextUtil;
 import com.jch.lib.util.VaildUtil;
 import com.promo.zjyfrestaurant.R;
-import com.promo.zjyfrestaurant.bean.OrderBean;
 import com.promo.zjyfrestaurant.bean.OrderType;
 import com.promo.zjyfrestaurant.util.ContextUtil;
 import com.promo.zjyfrestaurant.view.NumberView;
@@ -86,6 +85,7 @@ public class SendFragment extends BookBaseFragment {
         setInputFocusChange(booknumnum, booknumet);
         setInputFocusChange(booktimenum, booktimeet);
         setInputFocusChange(bookothernum, bookotheret);
+
 
         booktimeet.setOnClickListener(new View.OnClickListener() {
             @Override

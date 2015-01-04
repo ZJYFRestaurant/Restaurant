@@ -11,6 +11,8 @@ import android.widget.EditText;
 import com.jch.lib.util.TextUtil;
 import com.jch.lib.util.VaildUtil;
 import com.promo.zjyfrestaurant.R;
+import com.promo.zjyfrestaurant.bean.OrderType;
+import com.promo.zjyfrestaurant.util.ContextUtil;
 import com.promo.zjyfrestaurant.view.NumberView;
 
 /**
@@ -82,10 +84,23 @@ public class ToBringFragment extends BookBaseFragment {
         setInputFocusChange(booktimenum, booktimeet);
         setInputFocusChange(bookothernum, bookotheret);
 
+        booktimeet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectTime(booktimeet);
+            }
+        });
+
         booksubmitbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkOrder();
+                String checkResult = checkOrder();
+                if (!TextUtil.stringIsNull(checkResult)) {
+                    ContextUtil.toast(getActivity().getApplicationContext(), checkResult);
+                    return;
+                }
+                orderBean.setType(OrderType.BRING);
+
                 submit(orderBean);
             }
         });

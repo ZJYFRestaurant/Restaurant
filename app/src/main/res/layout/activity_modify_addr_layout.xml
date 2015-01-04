@@ -73,7 +73,7 @@
 
                     <TextView
                         style="@style/font_gray_12"
-                        android:text="@string/constant_name"
+                        android:text="@string/constant_phone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
 
@@ -106,12 +106,14 @@
                         android:id="@+id/modify_addr"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
+                        android:singleLine="true"
+                        android:ellipsize="end"
                         style="@style/font_black_15"
                         android:background="@null" />
 
                     <TextView
                         style="@style/font_gray_12"
-                        android:text="@string/constant_name"
+                        android:text="@string/constant_addr"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
 

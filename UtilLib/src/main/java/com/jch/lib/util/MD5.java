@@ -247,7 +247,7 @@ public class MD5 {
         long a = state[0], b = state[1], c = state[2], d = state[3];
         long[] x = new long[16];
         Decode(x, block, 64);
-		/* Round 1 */
+        /* Round 1 */
         a = FF(a, b, c, d, x[0], S11, 0xd76aa478L); /* 1 */
         d = FF(d, a, b, c, x[1], S12, 0xe8c7b756L); /* 2 */
         c = FF(c, d, a, b, x[2], S13, 0x242070dbL); /* 3 */

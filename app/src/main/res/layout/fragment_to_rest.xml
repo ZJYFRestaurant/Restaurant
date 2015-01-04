@@ -12,6 +12,58 @@
         <TableLayout style="@style/book_tb_style">
 
 
+            <TableRow
+                android:id="@+id/book_contact_tr"
+                style="@style/book_tr_style"
+                android:visibility="gone">
+
+                <com.promo.zjyfrestaurant.view.NumberView
+                    android:id="@+id/book_contact_num"
+                    style="@style/book_input_num_style"
+                    app:num_line_color="@color/gray1"
+                    app:num_line_cur_color="@color/gray1"
+                    app:num_tv_bg="@drawable/num_gray_shape"
+                    app:num_tv_cur_bg="@drawable/num_green_shape"
+                    app:num_tv_text="1"
+                    app:num_tv_text_color="@color/white"
+                    app:num_tv_text_size="5sp"
+                    app:num_tv_text_cur_color="@color/white" />
+
+                <EditText
+                    android:editable="false"
+                    android:id="@+id/book_contact_et"
+                    android:drawableLeft="@drawable/book_contacts"
+                    android:hint="@string/book_constant"
+                    style="@style/input_edit_style" />
+
+            </TableRow>
+
+            <TableRow
+                style="@style/book_tr_style"
+                android:visibility="gone"
+                android:id="@+id/book_phone_tr">
+
+                <com.promo.zjyfrestaurant.view.NumberView
+                    android:id="@+id/book_phone_num"
+                    style="@style/book_input_num_style"
+                    app:num_line_color="@color/gray1"
+                    app:num_line_cur_color="@color/gray1"
+                    app:num_tv_bg="@drawable/num_gray_shape"
+                    app:num_tv_cur_bg="@drawable/num_green_shape"
+                    app:num_tv_text="2"
+                    app:num_tv_text_color="@color/white"
+                    app:num_tv_text_size="5sp"
+                    app:num_tv_text_cur_color="@color/white" />
+
+                <EditText
+                    android:editable="false"
+                    android:id="@+id/book_phone_et"
+                    android:drawableLeft="@drawable/book_phone"
+                    style="@style/input_edit_style"
+                    android:hint="@string/book_phone" />
+
+            </TableRow>
+
             <TableRow style="@style/book_tr_style">
 
                 <com.promo.zjyfrestaurant.view.NumberView
@@ -25,12 +77,6 @@
                     app:num_tv_text_color="@color/white"
                     app:num_tv_text_size="5sp"
                     app:num_tv_text_cur_color="@color/white" />
-
-                <!--<EditText-->
-                <!--android:id="@+id/book_addr_et"-->
-                <!--android:drawableLeft="@drawable/book_address"-->
-                <!--android:hint="@string/book_number"-->
-                <!--style="@style/input_edit_style" />-->
 
                 <RelativeLayout
                     style="@style/input_edit_style"
@@ -53,11 +99,13 @@
                         android:background="@drawable/green_slid_btn_sel"
                         android:layout_alignParentRight="true" />
 
-                    <TextView
+                    <EditText
                         android:id="@+id/book_addr_tv"
                         style="@style/font_gray2_15"
                         android:layout_margin="5dp"
+                        android:editable="false"
                         android:ellipsize="end"
+                        android:background="@android:color/transparent"
                         android:singleLine="true"
                         android:layout_centerVertical="true"
                         android:layout_toRightOf="@id/book_address_icon"
@@ -87,6 +135,7 @@
                     android:id="@+id/book_time_et"
                     android:drawableLeft="@drawable/book_time"
                     android:hint="@string/book_time"
+                    android:editable="false"
                     style="@style/input_edit_style" />
 
             </TableRow>

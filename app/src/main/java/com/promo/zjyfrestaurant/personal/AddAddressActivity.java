@@ -2,6 +2,7 @@ package com.promo.zjyfrestaurant.personal;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,9 +27,15 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
     private EditText mAddrEt = null;
     private AddressBean address = new AddressBean();
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
     /**
      * 地址信息。
      */
+
 
     @Override
     protected View initContentView() {
@@ -38,6 +45,11 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
         init(containerView);
 
         return containerView;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 
     @Override
@@ -68,12 +80,11 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
 
     private void init(View containerView) {
         addOkBtn();
+        setTitle(getResources().getString(R.string.add_address));
 
         mNameEt = (EditText) containerView.findViewById(R.id.add__addr_name_et);
         mPhoneEt = (EditText) containerView.findViewById(R.id.add_addr_phone_et);
         mAddrEt = (EditText) containerView.findViewById(R.id.add_addr_et);
-
-        setTitle(getResources().getString(R.string.add_address));
 
     }
 

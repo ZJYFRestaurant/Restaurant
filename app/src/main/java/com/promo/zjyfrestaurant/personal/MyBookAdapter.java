@@ -83,7 +83,7 @@ public class MyBookAdapter extends BaseExpandableListAdapter {
     public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
         int viewIds;
         if (groupPosition == 0) {
-            viewIds = R.layout.mybook_title_ed;
+            viewIds = R.layout.mybook_title_pre;
         } else {
             viewIds = R.layout.mybook_title_ed;
         }
