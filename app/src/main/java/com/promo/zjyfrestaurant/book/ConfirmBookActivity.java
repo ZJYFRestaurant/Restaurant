@@ -96,14 +96,22 @@ public class ConfirmBookActivity extends BaseActivity {
         parma.put("uid", ((ZjyfApplication) getApplicationContext()).getUid());
         parma.put("type", orderBean.getType().getValue());
         if (orderBean.getType() == OrderType.ARRIVE) {  //到店吃饭。
-            parma.put("contact", orderBean.getContact());
-            parma.put("tel", orderBean.getTel());
-            parma.put("use_time", orderBean.getUse_UnitTime());
+
             parma.put("people_num", orderBean.getPeople_num());
-            parma.put("remark", orderBean.getRemark());
-            parma.put("price", orderBean.getPrice());
-            parma.put("products", orderBean.getProducts());
+
+        } else if (orderBean.getType() == OrderType.BRING) {        //外带
+
+        } else {        //送餐
+            parma.put("address_id", orderBean.getAddress_id());
+            parma.put("address_content", orderBean.getAddress_content());
         }
+        parma.put("use_time", orderBean.getUse_UnitTime());
+        parma.put("contact", orderBean.getContact());
+        parma.put("tel", orderBean.getTel());
+        parma.put("remark", orderBean.getRemark());
+        parma.put("price", orderBean.getPrice());
+        parma.put("products", orderBean.getProductStr());
+
 
         ShowMenuRequset.getData(ConfirmBookActivity.this, HttpConstant.postOrder, parma, Integer.class, new RequestCallback<Integer>() {
             @Override

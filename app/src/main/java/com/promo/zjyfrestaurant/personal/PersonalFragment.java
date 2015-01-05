@@ -122,8 +122,7 @@ public class PersonalFragment extends BaseFragment implements View.OnClickListen
         switch (id) {
 
             case R.id.personal_head_img: {
-
-                login();
+//                login();
 
                 break;
             }

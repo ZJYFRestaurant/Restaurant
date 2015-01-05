@@ -6,6 +6,7 @@ import com.promo.zjyfrestaurant.BaseActivity;
 import com.promo.zjyfrestaurant.R;
 import com.promo.zjyfrestaurant.application.HttpConstant;
 import com.promo.zjyfrestaurant.application.ZjyfApplication;
+import com.promo.zjyfrestaurant.bean.OrderTimeBean;
 import com.promo.zjyfrestaurant.impl.RequestCallback;
 import com.promo.zjyfrestaurant.impl.ShowMenuRequset;
 import com.promo.zjyfrestaurant.impl.ZJYFRequestParmater;
@@ -31,26 +32,22 @@ public class MyOrderActivity extends BaseActivity {
 
         ZJYFRequestParmater parma = new ZJYFRequestParmater(getApplicationContext());
         parma.put("uid", ((ZjyfApplication) getApplicationContext()).getUid());
-        ShowMenuRequset.getData(MyOrderActivity.this, HttpConstant.getFoodList, parma, String.class, new RequestCallback<String>() {
+        ShowMenuRequset.getData(MyOrderActivity.this, HttpConstant.getFoodList, parma, OrderTimeBean.class, new RequestCallback<OrderTimeBean>() {
             @Override
             public void onfailed(String msg) {
                 ContextUtil.toast(getApplication(), msg);
             }
 
             @Override
-            public void onSuccess(String data) {
+            public void onSuccess(OrderTimeBean data) {
                 LogCat.d("order:" + data);
                 LogCat.d("order:" + data);
             }
         });
     }
 
-    private void initVeiw(View containerView)
-
-    {
-
+    private void initVeiw(View containerView) {
         setTitle(getResources().getString(R.string.personal_order));
-
         getData();
     }
 

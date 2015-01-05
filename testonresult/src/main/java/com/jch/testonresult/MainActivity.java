@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import java.util.HashMap;
+
 
 public class MainActivity extends Activity {
 
@@ -13,6 +15,8 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        testMap();
     }
 
     public void next(View view) {
@@ -26,10 +30,21 @@ public class MainActivity extends Activity {
         switch (requestCode) {
             case RESULT_OK: {
 
-                Log.d("test_tag", "fdsfsf");
+                Log.d("test_tag", "fdsfsf--------");
 
             }
         }
+
+    }
+
+
+    public void testMap() {
+
+        HashMap<String, String> map = new HashMap<String, String>();
+        map.put("test", "test1");
+        boolean containB = map.containsKey("test");
+
+        Log.w("test", "map contains test:" + containB);
 
     }
 }

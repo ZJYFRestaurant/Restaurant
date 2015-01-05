@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:paddingLeft="25dp"
+    android:paddingBottom="15dp"
+    android:gravity="bottom"
+    android:paddingTop="15dp"
+    android:layout_height="wrap_content">
+
+
+    <ImageView
+        android:background="@drawable/myorder_time_item_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/myorder_time_item_tv"
+        style="@style/font_gray2_17"
+        android:layout_marginLeft="10dp"
+        android:layout_width="wrap_content"
+        android:text="2015.32.12"
+        android:layout_height="wrap_content" />
+</LinearLayout>
