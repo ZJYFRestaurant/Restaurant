@@ -89,5 +89,11 @@ public class HttpConstant {
     public static final String addSuggest = getRootUrl() + "addSuggest";
 
     public static final String deleteAddress = getRootUrl() + "deleteAddress";
+    /**
+     * 检查更新
+     */
+    public static final String getBaseInfo = getRootUrl() + "getBaseInfo";
+    /** 地图。 **/
+    public static final String getMapPosition = getRootUrl() + "getMapPosition";
 
 }

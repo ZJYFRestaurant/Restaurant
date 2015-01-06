@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bg_gray"
     tools:context="com.promo.zjyfrestaurant.personal.MyOrderActivity">
 
 
@@ -9,10 +10,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/myorder_lv"
+        android:listSelector="@android:color/transparent"
         android:paddingRight="@dimen/common_pad"
-        android:paddingLeft="@dimen/common_pad">
-
-
-    </ListView>
+        android:paddingBottom="@dimen/common_pad"
+        android:paddingLeft="@dimen/common_pad"></ListView>
 
 </RelativeLayout>

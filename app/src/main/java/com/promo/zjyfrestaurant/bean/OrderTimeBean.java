@@ -32,6 +32,13 @@ public class OrderTimeBean {
         return (ArrayList) orderDatas.values();
     }
 
+    public HashMap<String, ArrayList<TimeOrderBean>> getOrderDatas() {
+        return orderDatas;
+    }
+
+    public void setOrderDatas(HashMap<String, ArrayList<TimeOrderBean>> orderDatas) {
+        this.orderDatas = orderDatas;
+    }
 
     public void parseData() {
 

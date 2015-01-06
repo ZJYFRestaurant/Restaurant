@@ -19,13 +19,16 @@ import com.baidu.mapapi.map.MapPoi;
 import com.baidu.mapapi.map.MapStatusUpdate;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
+import com.baidu.mapapi.map.Marker;
+import com.baidu.mapapi.map.MarkerOptions;
 import com.baidu.mapapi.map.MyLocationConfiguration;
 import com.baidu.mapapi.map.MyLocationData;
+import com.baidu.mapapi.map.OverlayOptions;
 import com.baidu.mapapi.model.LatLng;
 import com.baidu.mapapi.overlayutil.DrivingRouteOverlay;
-import com.baidu.mapapi.overlayutil.OverlayManager;
 import com.baidu.mapapi.search.core.RouteLine;
 import com.baidu.mapapi.search.core.SearchResult;
+import com.baidu.mapapi.search.route.DrivingRouteLine;
 import com.baidu.mapapi.search.route.DrivingRoutePlanOption;
 import com.baidu.mapapi.search.route.DrivingRouteResult;
 import com.baidu.mapapi.search.route.OnGetRoutePlanResultListener;
@@ -33,8 +36,18 @@ import com.baidu.mapapi.search.route.PlanNode;
 import com.baidu.mapapi.search.route.RoutePlanSearch;
 import com.baidu.mapapi.search.route.TransitRouteResult;
 import com.baidu.mapapi.search.route.WalkingRouteResult;
+import com.jch.lib.util.HttpUtil;
+import com.loopj.android.http.JsonHttpResponseHandler;
 import com.promo.zjyfrestaurant.BaseFragment;
 import com.promo.zjyfrestaurant.R;
+import com.promo.zjyfrestaurant.application.HttpConstant;
+import com.promo.zjyfrestaurant.impl.ZJYFRequestParmater;
+import com.promo.zjyfrestaurant.util.ContextUtil;
+import com.promo.zjyfrestaurant.util.LogCat;
+
+import org.apache.http.Header;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * A simple {@link android.support.v4.app.Fragment} subclass.
@@ -49,10 +62,13 @@ public class MapFragment extends BaseFragment implements BaiduMap.OnMapClickList
      * 初始化地图显示中心点*
      */
     private final LatLng initPoint = new LatLng(32.026763, 118.786463);
+
+    private LatLng startPoint;
+
     /**
      * 路线规划终点。
      */
-    private final LatLng endPoint = new LatLng(32.026763, 118.906463);
+    private LatLng endPoint;
 
     private float mZoom = 15.0f;    //地图放缩比例
 
@@ -62,11 +78,21 @@ public class MapFragment extends BaseFragment implements BaiduMap.OnMapClickList
     private SDKReceiver mReceiver = null;
     boolean isFirstLoc = true;// 是否首次定位
 
+    BitmapDescriptor startBd = BitmapDescriptorFactory
+            .fromResource(R.drawable.map_start);
+
+    BitmapDescriptor endBd = BitmapDescriptorFactory.fromResource(R.drawable.map_end);
+
+    private String address;
+    private String shop_name;
+    private String tel;
+
     private int freshPeriod = 3000;
     //路线规划。
     RouteLine route = null;
-    OverlayManager routeOverlay = null;
     RoutePlanSearch mSearch = null;
+
+    private Marker startMark;
 
     /**
      * Use this factory method to create a new instance of
@@ -105,7 +131,15 @@ public class MapFragment extends BaseFragment implements BaiduMap.OnMapClickList
         hideHeadView();
 
         bmapView = (MapView) containerView.findViewById(R.id.bmap_view);
+        bmapView.setClickable(true);
         mBaiduMap = bmapView.getMap();
+        mBaiduMap.setOnMarkerClickListener(new BaiduMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+
+                return false;
+            }
+        });
 
         mBaiduMap.setMapType(BaiduMap.MAP_TYPE_NORMAL);
         // 开启定位图层
@@ -115,6 +149,7 @@ public class MapFragment extends BaseFragment implements BaiduMap.OnMapClickList
         //初始化展示地图范围
         MapStatusUpdate u = MapStatusUpdateFactory.newLatLngZoom(initPoint, mZoom);
         mBaiduMap.setMapStatus(u);
+
         //定位初始化
         mLocClient = new LocationClient(getActivity().getApplicationContext());
         MyLocationListener myLocationListener = new MyLocationListener();
@@ -125,13 +160,11 @@ public class MapFragment extends BaseFragment implements BaiduMap.OnMapClickList
 //        option.setScanSpan(freshPeriod);
         mLocClient.setLocOption(option);
         mLocClient.start();
-
         // 设置定位图层的配置（定位模式，是否允许方向信息，用户自定义定位图标）
-        BitmapDescriptor mCurrentMarker = null;
-        MyLocationConfiguration.LocationMode locationMode = MyLocationConfiguration.LocationMode.FOLLOWING;
-        mCurrentMarker = BitmapDescriptorFactory
-                .fromResource(R.drawable.home_stars);
-        MyLocationConfiguration config = new MyLocationConfiguration(locationMode, true, mCurrentMarker);
+        MyLocationConfiguration.LocationMode locationMode = MyLocationConfiguration.LocationMode.NORMAL;
+//        mCurrentMarker = BitmapDescriptorFactory
+//                .fromResource(android.R.drawable.screen_background_light_transparent);
+        MyLocationConfiguration config = new MyLocationConfiguration(locationMode, false, null);
         mBaiduMap.setMyLocationConfigeration(config);
 
         mReceiver = new SDKReceiver();
@@ -139,6 +172,7 @@ public class MapFragment extends BaseFragment implements BaiduMap.OnMapClickList
         mSearch = RoutePlanSearch.newInstance();
         mSearch.setOnGetRoutePlanResultListener(this);
 
+        getDestLocation();
     }
 
 
@@ -165,9 +199,9 @@ public class MapFragment extends BaseFragment implements BaiduMap.OnMapClickList
                     .direction(100).latitude(location.getLatitude())
                     .longitude(location.getLongitude()).build();
             mBaiduMap.setMyLocationData(locData);
-            LatLng latLng = new LatLng(location.getLatitude(),
+            startPoint = new LatLng(location.getLatitude(),
                     location.getLongitude());
-            mSearch.drivingSearch(new DrivingRoutePlanOption().from(PlanNode.withLocation(latLng)).to(PlanNode.withLocation(endPoint)));
+            searchDriver();
 
         }
 
@@ -176,6 +210,65 @@ public class MapFragment extends BaseFragment implements BaiduMap.OnMapClickList
 
         }
     }
+
+    /**
+     * 获取地理位置。
+     */
+    private void getDestLocation() {
+
+        HttpUtil.post(HttpConstant.getMapPosition, new ZJYFRequestParmater(getActivity().getApplicationContext()), new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+
+                try {
+                    JSONObject resObj = response.getJSONObject("response");
+                    int code = resObj.getInt("code");
+                    if (code == 100) {
+                        JSONObject dataObj = resObj.getJSONObject("data");
+                        double longitude = dataObj.getDouble("long");
+                        double latitude = dataObj.getDouble("lat");
+                        address = dataObj.getString("address");
+                        shop_name = dataObj.getString("shop_name");
+                        tel = dataObj.getString("tel");
+                        endPoint = new LatLng(latitude, longitude);
+                        searchDriver();
+                    } else {
+                        ContextUtil.toast(getActivity().getApplicationContext(), getString(R.string.get_local_erro));
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    ContextUtil.toast(getActivity().getApplicationContext(), getString(R.string.get_local_erro));
+                }
+
+                super.onSuccess(statusCode, headers, response);
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                ContextUtil.toast(getActivity().getApplicationContext(), getString(R.string.get_local_erro));
+                super.onFailure(statusCode, headers, throwable, errorResponse);
+            }
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, String responseString) {
+                ContextUtil.toast(getActivity().getApplicationContext(), getString(R.string.get_local_erro));
+                super.onSuccess(statusCode, headers, responseString);
+            }
+        });
+
+    }
+
+    /**
+     * 查询公交路线。
+     */
+    private void searchDriver() {
+        if (startPoint != null && endPoint != null) {
+            mSearch.drivingSearch(new DrivingRoutePlanOption().from(PlanNode.withLocation(startPoint)).to(PlanNode.withLocation(endPoint)));
+
+        }
+    }
+
 
     @Override
     public void onMapClick(LatLng latLng) {
@@ -208,13 +301,13 @@ public class MapFragment extends BaseFragment implements BaiduMap.OnMapClickList
             return;
         }
         if (result.error == SearchResult.ERRORNO.NO_ERROR) {
-            route = result.getRouteLines().get(0);
             DrivingRouteOverlay overlay = new MyDrivingRouteOverlay(mBaiduMap);
-            routeOverlay = overlay;
             mBaiduMap.setOnMarkerClickListener(overlay);
+            mBaiduMap.setOnMarkerClickListener(new MyOnMarkClickListener());
             overlay.setData(result.getRouteLines().get(0));
             overlay.addToMap();
             overlay.zoomToSpan();
+
         }
 
     }
@@ -226,13 +319,44 @@ public class MapFragment extends BaseFragment implements BaiduMap.OnMapClickList
         }
 
         @Override
+        public void setData(DrivingRouteLine drivingRouteLine) {
+
+
+            super.setData(drivingRouteLine);
+        }
+
+        @Override
         public BitmapDescriptor getStartMarker() {
-            return super.getStartMarker();
+
+            OverlayOptions startOO = new MarkerOptions().position(startPoint).icon(startBd).zIndex(10).draggable(false);
+            startMark = (Marker) (mBaiduMap.addOverlay(startOO));
+            return startBd;
         }
 
         @Override
         public BitmapDescriptor getTerminalMarker() {
-            return super.getTerminalMarker();
+            return BitmapDescriptorFactory
+                    .fromResource(R.drawable.map_end);
+        }
+
+        @Override
+        public boolean onRouteNodeClick(int i) {
+            return super.onRouteNodeClick(i);
+        }
+    }
+
+    /**
+     *
+     */
+    private class MyOnMarkClickListener implements BaiduMap.OnMarkerClickListener {
+
+
+        @Override
+        public boolean onMarkerClick(Marker marker) {
+
+            LogCat.d("mark click");
+
+            return true;
         }
     }
 

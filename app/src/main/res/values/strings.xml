@@ -7,6 +7,15 @@
     <string name="back">返回</string>
     <string name="yuan">元</string>
     <string name="yuan_sign">￥</string>
+    <string name="prompt">温馨提示：</string>
+    <string name="continue_download">上次更新没有完成，已下载%d%%，是否继续？</string>
+    <string name="downloaded">已经下载%d%%</string>
+    <string name="click_install">%s下载完成！点击安装！</string>
+    <string name="download_fialed">下载失败！</string>
+    <string name="find_new_version">发现新版本%s</string>
+    <string name="update_right_now">立即升级</string>
+    <string name="ok">确定</string>
+    <string name="cancel">取消</string>
 
     <!-- home -->
     <string name="home_specialty">招牌美食</string>
@@ -91,4 +100,8 @@
     <string name="modify_erro">修改失败</string>
     <string name="modify_ok">修改成功</string>
     <string name="book_addr_warning">地址不能为空</string>
+
+    <string name="update_erro">版本更新失败</string>
+    <string name="update_no">当前版本已是最新版本</string>
+    <string name="get_local_erro">获取地址失败</string>
 </resources>

@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:orientation="vertical"
+    android:padding="@dimen/home_item_pad"
+    android:layout_width="match_parent"
+    android:gravity="center_horizontal"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@drawable/white_shape"
+        android:id="@+id/myorder_dish_item_img"
+        android:scaleType="centerCrop" />
+
+    <TextView
+        android:id="@+id/myorder_dish_item_name_tv"
+        android:layout_width="wrap_content"
+        style="@style/font_gray2_15"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:layout_marginTop="5dp"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

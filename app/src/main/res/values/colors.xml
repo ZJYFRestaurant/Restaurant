@@ -15,4 +15,7 @@
     <color name="green3">#315D07</color>
     <color name="title_green">#899C02</color>
 
+    <color name="ebingo_btn_pressed">#ccc</color>
+    <color name="ebingo_btn_normal">#0000</color>
+
 </resources>

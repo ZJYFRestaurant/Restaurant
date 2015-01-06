@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.promo.zjyfrestaurant.BaseFragment;
 import com.promo.zjyfrestaurant.R;
 import com.promo.zjyfrestaurant.personal.login.LoginActivity;
+import com.promo.zjyfrestaurant.util.VersionManager;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -192,7 +193,7 @@ public class PersonalFragment extends BaseFragment implements View.OnClickListen
      * 检查版本更新。
      */
     private void updata() {
-//        VersionManager.
+        VersionManager.requestVersionCode(getActivity().getApplicationContext());
     }
 
     /**

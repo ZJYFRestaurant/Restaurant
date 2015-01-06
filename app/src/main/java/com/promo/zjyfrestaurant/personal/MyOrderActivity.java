@@ -1,6 +1,7 @@
 package com.promo.zjyfrestaurant.personal;
 
 import android.view.View;
+import android.widget.ListView;
 
 import com.promo.zjyfrestaurant.BaseActivity;
 import com.promo.zjyfrestaurant.R;
@@ -11,13 +12,15 @@ import com.promo.zjyfrestaurant.impl.RequestCallback;
 import com.promo.zjyfrestaurant.impl.ShowMenuRequset;
 import com.promo.zjyfrestaurant.impl.ZJYFRequestParmater;
 import com.promo.zjyfrestaurant.util.ContextUtil;
-import com.promo.zjyfrestaurant.util.LogCat;
 
 /**
  * 我的点餐。
  */
 public class MyOrderActivity extends BaseActivity {
 
+
+    private ListView myorderlv;
+    private MyOderListViewAdapter adapter;
 
     @Override
     protected View initContentView() {
@@ -40,8 +43,8 @@ public class MyOrderActivity extends BaseActivity {
 
             @Override
             public void onSuccess(OrderTimeBean data) {
-                LogCat.d("order:" + data);
-                LogCat.d("order:" + data);
+                data.parseData();
+                adapter.notifyDataSetChanged(data.getOrderDatas());
             }
         });
     }
@@ -49,6 +52,10 @@ public class MyOrderActivity extends BaseActivity {
     private void initVeiw(View containerView) {
         setTitle(getResources().getString(R.string.personal_order));
         getData();
+
+        myorderlv = (ListView) containerView.findViewById(R.id.myorder_lv);
+        adapter = new MyOderListViewAdapter(getApplicationContext());
+        myorderlv.setAdapter(adapter);
     }
 
 }
