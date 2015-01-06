@@ -38,9 +38,9 @@ public class MyBookAdapter extends BaseExpandableListAdapter {
     @Override
     public int getChildrenCount(int groupPosition) {
         if (groupPosition == 1) {               //过期
-            return myBooksBean.getOverdue().size();
+            return myBooksBean.getOverdue() == null ? 0 : myBooksBean.getOverdue().size();
         } else {         //未过期。
-            return myBooksBean.getNormal().size();
+            return myBooksBean.getNormal() == null ? 0 : myBooksBean.getNormal().size();
         }
 
     }

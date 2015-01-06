@@ -49,8 +49,10 @@ public class MyBookActivity extends BaseActivity {
 
             @Override
             public void onSuccess(MyBooksBean data) {
-                adapter.notifyDataSetChanged(data);
-                extentList();
+                if (data != null) {
+                    adapter.notifyDataSetChanged(data);
+                    extentList();
+                }
             }
         });
     }

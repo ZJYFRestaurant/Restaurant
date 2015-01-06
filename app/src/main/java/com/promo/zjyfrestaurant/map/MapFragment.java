@@ -1,10 +1,14 @@
 package com.promo.zjyfrestaurant.map;
 
 
+import android.content.Intent;
 import android.content.IntentFilter;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.baidu.location.BDLocation;
@@ -15,6 +19,7 @@ import com.baidu.mapapi.SDKInitializer;
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.BitmapDescriptor;
 import com.baidu.mapapi.map.BitmapDescriptorFactory;
+import com.baidu.mapapi.map.InfoWindow;
 import com.baidu.mapapi.map.MapPoi;
 import com.baidu.mapapi.map.MapStatusUpdate;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
@@ -51,7 +56,7 @@ import org.json.JSONObject;
 
 /**
  * A simple {@link android.support.v4.app.Fragment} subclass.
- * Use the {@link com.promo.zjyfrestaurant.map.MapFragment#newInstance} factory method to
+ * Use the {@link MapFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
 public class MapFragment extends BaseFragment implements BaiduMap.OnMapClickListener, OnGetRoutePlanResultListener {
@@ -77,10 +82,12 @@ public class MapFragment extends BaseFragment implements BaiduMap.OnMapClickList
     private BaiduMap mBaiduMap;
     private SDKReceiver mReceiver = null;
     boolean isFirstLoc = true;// 是否首次定位
-
+    private Marker startMark;
+    private InfoWindow mInfoWindow;
     BitmapDescriptor startBd = BitmapDescriptorFactory
             .fromResource(R.drawable.map_start);
 
+    private Marker endMark;
     BitmapDescriptor endBd = BitmapDescriptorFactory.fromResource(R.drawable.map_end);
 
     private String address;
@@ -91,8 +98,8 @@ public class MapFragment extends BaseFragment implements BaiduMap.OnMapClickList
     //路线规划。
     RouteLine route = null;
     RoutePlanSearch mSearch = null;
+    private ImageButton maptelbtn;
 
-    private Marker startMark;
 
     /**
      * Use this factory method to create a new instance of
@@ -130,16 +137,18 @@ public class MapFragment extends BaseFragment implements BaiduMap.OnMapClickList
     private void init(View containerView) {
         hideHeadView();
 
+        maptelbtn = (ImageButton) containerView.findViewById(R.id.map_tel_btn);
+
+        maptelbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + tel));
+                startActivity(intent);
+            }
+        });
         bmapView = (MapView) containerView.findViewById(R.id.bmap_view);
         bmapView.setClickable(true);
         mBaiduMap = bmapView.getMap();
-        mBaiduMap.setOnMarkerClickListener(new BaiduMap.OnMarkerClickListener() {
-            @Override
-            public boolean onMarkerClick(Marker marker) {
-
-                return false;
-            }
-        });
 
         mBaiduMap.setMapType(BaiduMap.MAP_TYPE_NORMAL);
         // 开启定位图层
@@ -174,7 +183,6 @@ public class MapFragment extends BaseFragment implements BaiduMap.OnMapClickList
 
         getDestLocation();
     }
-
 
     private class MyLocationListener implements BDLocationListener {
 
@@ -303,7 +311,6 @@ public class MapFragment extends BaseFragment implements BaiduMap.OnMapClickList
         if (result.error == SearchResult.ERRORNO.NO_ERROR) {
             DrivingRouteOverlay overlay = new MyDrivingRouteOverlay(mBaiduMap);
             mBaiduMap.setOnMarkerClickListener(overlay);
-            mBaiduMap.setOnMarkerClickListener(new MyOnMarkClickListener());
             overlay.setData(result.getRouteLines().get(0));
             overlay.addToMap();
             overlay.zoomToSpan();
@@ -321,43 +328,51 @@ public class MapFragment extends BaseFragment implements BaiduMap.OnMapClickList
         @Override
         public void setData(DrivingRouteLine drivingRouteLine) {
 
-
             super.setData(drivingRouteLine);
         }
 
         @Override
         public BitmapDescriptor getStartMarker() {
 
-            OverlayOptions startOO = new MarkerOptions().position(startPoint).icon(startBd).zIndex(10).draggable(false);
-            startMark = (Marker) (mBaiduMap.addOverlay(startOO));
+//            OverlayOptions startOO = new MarkerOptions().position(startPoint).icon(startBd).zIndex(10).draggable(false);
+//            startMark = (Marker) (mBaiduMap.addOverlay(startOO));
             return startBd;
         }
 
         @Override
         public BitmapDescriptor getTerminalMarker() {
-            return BitmapDescriptorFactory
-                    .fromResource(R.drawable.map_end);
+
+            OverlayOptions endOO = new MarkerOptions().position(endPoint).icon(endBd).zIndex(10).draggable(false);
+            endMark = (Marker) (mBaiduMap.addOverlay(endOO));
+
+            InfoWindow.OnInfoWindowClickListener listener = null;
+            LogCat.v("on Marker click  2--");
+            View view = View.inflate(getActivity().getApplicationContext(), R.layout.map_dermern_layout, null);
+            TextView nameTv = (TextView) view.findViewById(R.id.map_win_name);
+            TextView addrTv = (TextView) view.findViewById(R.id.map_win_addr);
+            TextView telTv = (TextView) view.findViewById(R.id.map_win_tel);
+            nameTv.setText(shop_name);
+            addrTv.setText(address);
+            telTv.setText(tel);
+            listener = new InfoWindow.OnInfoWindowClickListener() {
+                @Override
+                public void onInfoWindowClick() {
+                }
+            };
+
+            mInfoWindow = new InfoWindow(BitmapDescriptorFactory.fromView(view), endPoint, -47, listener);
+            mBaiduMap.showInfoWindow(mInfoWindow);
+
+            return endBd;
         }
 
         @Override
         public boolean onRouteNodeClick(int i) {
+            LogCat.v("on Route node click--");
+
             return super.onRouteNodeClick(i);
         }
-    }
 
-    /**
-     *
-     */
-    private class MyOnMarkClickListener implements BaiduMap.OnMarkerClickListener {
-
-
-        @Override
-        public boolean onMarkerClick(Marker marker) {
-
-            LogCat.d("mark click");
-
-            return true;
-        }
     }
 
 

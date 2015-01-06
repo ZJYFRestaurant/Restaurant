@@ -43,8 +43,10 @@ public class MyOrderActivity extends BaseActivity {
 
             @Override
             public void onSuccess(OrderTimeBean data) {
-                data.parseData();
-                adapter.notifyDataSetChanged(data.getOrderDatas());
+                if (data != null) {
+                    data.parseData();
+                    adapter.notifyDataSetChanged(data.getOrderDatas());
+                }
             }
         });
     }
