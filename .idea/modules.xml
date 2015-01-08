@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/UtilLib/UtilLib.iml" filepath="$PROJECT_DIR$/UtilLib/UtilLib.iml" />
       <module fileurl="file://$PROJECT_DIR$/ZJYFRestaurant.iml" filepath="$PROJECT_DIR$/ZJYFRestaurant.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/indicator_lib/indicator_lib.iml" filepath="$PROJECT_DIR$/indicator_lib/indicator_lib.iml" />
       <module fileurl="file://$PROJECT_DIR$/pagertranslatedemo/pagertranslatedemo.iml" filepath="$PROJECT_DIR$/pagertranslatedemo/pagertranslatedemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/testonresult/testonresult.iml" filepath="$PROJECT_DIR$/testonresult/testonresult.iml" />
     </modules>

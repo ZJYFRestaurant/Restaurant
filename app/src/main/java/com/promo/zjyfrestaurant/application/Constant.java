@@ -11,6 +11,10 @@ public class Constant {
     public static final String PRO_TAG = "ZJYF";
 
     public static final String UID = "uid";
+    /**
+     * 引导页 *
+     */
+    public static final String GUIDE = "guide";
 
     /**
      * 是否可发行
@@ -33,4 +37,6 @@ public class Constant {
     public static final Point PRIV_IMG_POINT = new Point(286, 160);
 
     public static final Point RECM_IMG_POINT = new Point(600, 288);
+
+    public static final Point GUID_IMG_POINT = new Point(1000, 1280);
 }

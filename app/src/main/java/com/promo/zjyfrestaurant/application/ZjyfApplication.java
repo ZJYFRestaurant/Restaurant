@@ -79,4 +79,23 @@ public class ZjyfApplication extends Application {
         });
         return 0;
     }
+
+    /**
+     * 是否显示引导页。
+     *
+     * @return
+     */
+    public boolean shouldGuid() {
+
+        return SharedPreferenceUtil.getBoolean(getApplicationContext(), Constant.GUIDE, true);
+    }
+
+    /**
+     * 已经显示过引导页。
+     */
+    public void guidOver() {
+
+        SharedPreferenceUtil.saveBoolean(getApplicationContext(), Constant.GUIDE, false);
+
+    }
 }

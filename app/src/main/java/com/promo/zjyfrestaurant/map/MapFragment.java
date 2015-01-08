@@ -378,6 +378,8 @@ public class MapFragment extends BaseFragment implements BaiduMap.OnMapClickList
 
     @Override
     public void onDestroy() {
+        startBd.recycle();
+        endBd.recycle();
         mSearch.destroy();
         // 退出时销毁定位
         mLocClient.stop();

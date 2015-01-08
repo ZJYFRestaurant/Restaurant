@@ -38,6 +38,12 @@ public class DisplayUtil {
 
     }
 
+    /**
+     * 获取屏幕尺寸。
+     *
+     * @param display
+     * @param outSize
+     */
     @SuppressLint("NewApi")
     public static void getSize(Display display, Point outSize) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
@@ -217,6 +223,32 @@ public class DisplayUtil {
                 .getWindowManager(), baseHeight, baseWidth, exceptWidth) * widthPer);
         params.width = (int) ((int) getScaledWidth(activity
                 .getWindowManager(), baseHeight, baseWidth, exceptWidth) * widthPer);
+        view.setLayoutParams(params);
+    }
+
+    /**
+     * 根据高度计算宽度。
+     *
+     * @param view
+     * @param baseImgSize
+     * @param exceptHeight
+     * @param activity
+     * @param heightPer
+     */
+    public static void resizeVeiwByScreenHeight(View view, Point baseImgSize, int exceptHeight, Activity activity, double heightPer) {
+
+        ViewGroup.LayoutParams params = view.getLayoutParams();
+
+        WindowManager windowManager = activity.getWindowManager();
+        final Display display = windowManager.getDefaultDisplay();
+        Point screenPoint = new Point();
+        getSize(display, screenPoint);
+
+        int outY = screenPoint.y - exceptHeight;
+        int outX = (int) ((double) (screenPoint.x * baseImgSize.y) / (double) outY * heightPer);
+
+        params.height = outY;
+        params.width = outX;
         view.setLayoutParams(params);
     }
 

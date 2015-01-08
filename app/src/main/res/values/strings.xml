@@ -100,8 +100,12 @@
     <string name="modify_erro">修改失败</string>
     <string name="modify_ok">修改成功</string>
     <string name="book_addr_warning">地址不能为空</string>
-
     <string name="update_erro">版本更新失败</string>
     <string name="update_no">当前版本已是最新版本</string>
     <string name="get_local_erro">获取地址失败</string>
+    <string name="title_activity_loading">LoadingActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

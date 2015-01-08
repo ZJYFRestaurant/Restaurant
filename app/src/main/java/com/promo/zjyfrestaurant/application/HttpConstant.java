@@ -93,7 +93,10 @@ public class HttpConstant {
      * 检查更新
      */
     public static final String getBaseInfo = getRootUrl() + "getBaseInfo";
-    /** 地图。 **/
+    /**
+     * 地图。 *
+     */
     public static final String getMapPosition = getRootUrl() + "getMapPosition";
+
 
 }
