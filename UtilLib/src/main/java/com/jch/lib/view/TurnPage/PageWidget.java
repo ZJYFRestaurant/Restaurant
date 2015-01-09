@@ -8,6 +8,7 @@ import android.graphics.ColorMatrixColorFilter;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.Point;
 import android.graphics.PointF;
 import android.graphics.Region;
 import android.graphics.drawable.GradientDrawable;
@@ -24,8 +25,18 @@ public class PageWidget extends View {
     private int mCornerY = 0;
     private Path mPath0;
     private Path mPath1;
+    /**
+     * 翻页适配器。 *
+     */
+    private TurnPageAdapter adapter;
+    /**
+     * 翻页控制器。 *
+     */
+    private TurnPageManager manager;
+
     Bitmap mCurPageBitmap = null; // 当前页
     Bitmap mNextPageBitmap = null;
+    Bitmap mDefaultBitmap;      //默认bitmap.
 
     PointF mTouch = new PointF(); // 拖拽点
     PointF mBezierStart1 = new PointF(); // 贝塞尔曲线起始点
@@ -84,6 +95,8 @@ public class PageWidget extends View {
 
         mTouch.x = 0.01f; // 不让x,y为0,否则在点计算时会有问题
         mTouch.y = 0.01f;
+
+        manager = new TurnPageManager(this);
     }
 
     /**
@@ -290,9 +303,12 @@ public class PageWidget extends View {
         mNextPageBitmap = bm2;
     }
 
-    public void setScreen(int w, int h) {
+    public void setScreen(int w, int h, Bitmap defaultBmp) {
         mWidth = w;
         mHeight = h;
+        mDefaultBitmap = defaultBmp;
+        Point screenPoint = new Point(w, h);
+        manager.init(screenPoint, defaultBmp);       //set screen size into manager.
         mMaxLength = (float) Math.hypot(mWidth, mHeight);
     }
 
@@ -560,4 +576,21 @@ public class PageWidget extends View {
         return true;
     }
 
+    public TurnPageAdapter getAdapter() {
+        return adapter;
+    }
+
+    public void setAdapter(TurnPageAdapter adapter) {
+        this.adapter = adapter;
+        if (manager != null)
+            manager.setAapter(adapter);
+    }
+
+    public TurnPageManager getManager() {
+        return manager;
+    }
+
+    public void setManager(TurnPageManager manager) {
+        this.manager = manager;
+    }
 }

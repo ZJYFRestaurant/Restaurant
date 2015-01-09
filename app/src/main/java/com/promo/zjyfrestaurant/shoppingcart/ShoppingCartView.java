@@ -58,14 +58,17 @@ public class ShoppingCartView extends FrameLayout implements View.OnClickListene
     }
 
     public void addDish(int id, int num) {
-
         carttv.setText(shoppingCart.getDishNum());
+        visibleNumTv();
     }
 
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         super.onLayout(changed, left, top, right, bottom);
+        visibleNumTv();
+    }
 
+    private void visibleNumTv() {
         if (shoppingCart.getDishNum() != 0) {
             carttv.setVisibility(VISIBLE);
         } else {
@@ -94,6 +97,8 @@ public class ShoppingCartView extends FrameLayout implements View.OnClickListene
 
     @Override
     public void update(ShoppingCartSubject subject, int num) {
+
         carttv.setText(String.valueOf(num));
+        visibleNumTv();
     }
 }

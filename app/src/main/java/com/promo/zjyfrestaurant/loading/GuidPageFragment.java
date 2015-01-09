@@ -129,6 +129,7 @@ public class GuidPageFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(), MainActivity.class));
+                getActivity().finish();
             }
         });
 
