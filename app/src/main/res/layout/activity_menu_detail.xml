@@ -43,7 +43,7 @@
                     app:text_color="@color/gray2"
                     app:text="0"
                     app:img_size="35dp"
-                    app:drawable_padding="8dp"></com.promo.zjyfrestaurant.view.AddDealPicker>
+                    app:drawable_padding="5dp"></com.promo.zjyfrestaurant.view.AddDealPicker>
 
                 <LinearLayout
                     android:layout_width="wrap_content"

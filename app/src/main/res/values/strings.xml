@@ -57,7 +57,7 @@
     <string name="constant_addr">详细地址</string>
     <string name="feedback_hint">请输入您对我们的宝贵意见！</string>
     <string name="share_subject">分享主题</string>
-    <string name="share_content">分享内容</string>
+    <string name="share_content">紫金渔府:%s</string>
     <string name="logout">退出登录</string>
     <string name="login_sign">使用一下账号登录</string>
     <string name="recommend_dish">菜品推荐</string>

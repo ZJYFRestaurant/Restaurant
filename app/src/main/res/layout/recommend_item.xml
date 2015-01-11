@@ -30,7 +30,7 @@
             app:text_color="@color/black"
             app:text="0"
             app:img_size="35dp"
-            app:drawable_padding="8dp"></com.promo.zjyfrestaurant.view.AddDealPicker>
+            app:drawable_padding="2dp"></com.promo.zjyfrestaurant.view.AddDealPicker>
 
         <LinearLayout
             android:layout_alignParentLeft="true"

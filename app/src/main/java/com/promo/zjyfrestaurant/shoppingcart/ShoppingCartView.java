@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -22,6 +24,7 @@ public class ShoppingCartView extends FrameLayout implements View.OnClickListene
     private View contentView = null;
     private ImageView cartimg;
     private TextView carttv;
+    Animation animation;
 
     public ShoppingCartView(Context context) {
         super(context);
@@ -43,6 +46,7 @@ public class ShoppingCartView extends FrameLayout implements View.OnClickListene
         contentView = View.inflate(getContext(), R.layout.shoppingcat_view, null);
         cartimg = (ImageView) contentView.findViewById(R.id.cart_img);
         carttv = (TextView) contentView.findViewById(R.id.cart_tv);
+        animation = AnimationUtils.loadAnimation(getContext(), R.anim.scale_anim);
         addView(contentView);
 
         setOnClickListener(this);
@@ -91,14 +95,13 @@ public class ShoppingCartView extends FrameLayout implements View.OnClickListene
         Intent intent = new Intent(getContext(), ShoppingCartActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         getContext().startActivity(intent);
-//        getContext().overridePendingTransition(R.anim.slide_in_right, R.anim.static_anim);
     }
 
 
     @Override
     public void update(ShoppingCartSubject subject, int num) {
-
-        carttv.setText(String.valueOf(num));
         visibleNumTv();
+        carttv.setText(String.valueOf(num));
+        carttv.startAnimation(animation);
     }
 }

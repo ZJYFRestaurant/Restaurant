@@ -66,6 +66,11 @@ public class BookFragment extends BaseFragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         try {
@@ -80,6 +85,19 @@ public class BookFragment extends BaseFragment {
     public void onDetach() {
         super.onDetach();
         fragCallBack = null;
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+
+
+    }
+
+    private void checkCartMenu() {
+
+
+
     }
 
     @Override

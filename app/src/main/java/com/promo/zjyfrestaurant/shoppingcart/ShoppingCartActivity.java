@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.promo.zjyfrestaurant.BaseActivity;
 import com.promo.zjyfrestaurant.R;
 import com.promo.zjyfrestaurant.book.bookActivity.BookActivity;
+import com.promo.zjyfrestaurant.home.recommendPager.MenuActivity;
 
 public class ShoppingCartActivity extends BaseActivity implements CartOrderChangeListener, CompoundButton.OnCheckedChangeListener {
 
@@ -48,7 +49,7 @@ public class ShoppingCartActivity extends BaseActivity implements CartOrderChang
     private void initView(View containerView) {
 
         setTitle(getResources().getString(R.string.shopping_cart));
-        addRightCart();     //添加右侧购物车。
+        addRightItem(addMenuView());
 
         ShoppingCart.newInstance().setOrderChangeListener(this);
 
@@ -75,6 +76,20 @@ public class ShoppingCartActivity extends BaseActivity implements CartOrderChang
 
             }
         });
+    }
+
+    private View addMenuView() {
+
+        final Button menuBtn = (Button) View.inflate(getApplicationContext(), R.layout.menu_btn_layout, null);
+        menuBtn.setId(R.id.menu_icon);
+        menuBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ShoppingCartActivity.this, MenuActivity.class);
+                transNextPage(intent, false);
+            }
+        });
+        return menuBtn;
     }
 
 

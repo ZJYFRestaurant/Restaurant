@@ -106,6 +106,10 @@ public class ToBringFragment extends BookBaseFragment {
         });
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
 
     /**
      * 检测输入。

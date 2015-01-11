@@ -3,9 +3,7 @@ package com.promo.zjyfrestaurant.home.recommendPager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.RadioGroup;
 
@@ -124,17 +122,13 @@ public class MenuActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     }
 
     private void addShoppingCart() {
-
         ShoppingCartView shoppingCartView = new ShoppingCartView(getApplicationContext());
-        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        shoppingCartView.setLayoutParams(params);
         addRightItem(shoppingCartView);
 
     }
 
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {
-
         getMenuData(menuCategoryBeans.get(checkedId).getId());
     }
 

@@ -67,6 +67,10 @@ public class SendFragment extends BookBaseFragment {
         return containerView;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
 
     private void initialize(View containerView) {
         bookcontactnum = (NumberView) containerView.findViewById(R.id.book_contact_num);

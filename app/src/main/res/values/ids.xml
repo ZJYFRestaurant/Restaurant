@@ -4,4 +4,5 @@
     <item type="id" name="addBtn">false</item>
     <item type="id" name="dealPickleftImgId">false</item>
     <item type="id" name="dealPickrightImgId">false</item>
+    <item type="id" name="menu_icon">false</item>
 </resources>

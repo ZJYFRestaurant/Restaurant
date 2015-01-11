@@ -96,7 +96,7 @@ public abstract class BaseActivity extends Activity {
     protected void addRightItem(View rightItem) {
 
         if (rightItem != null) {
-            RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
             params.addRule(RelativeLayout.CENTER_VERTICAL);
             params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
             params.width = (int) getResources().getDimension(R.dimen.add_btn_width);
@@ -114,7 +114,6 @@ public abstract class BaseActivity extends Activity {
     private void addShoppingCart() {
 
         ShoppingCartView shoppingCartView = new ShoppingCartView(getApplicationContext());
-        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         addRightItem(shoppingCartView);
     }
 

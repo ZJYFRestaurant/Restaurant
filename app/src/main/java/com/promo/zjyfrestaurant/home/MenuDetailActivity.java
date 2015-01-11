@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.jch.lib.util.DialogUtil;
 import com.jch.lib.util.DisplayUtil;
+import com.jch.lib.util.FileUtil;
 import com.jch.lib.util.ImageManager;
 import com.promo.zjyfrestaurant.BaseActivity;
 import com.promo.zjyfrestaurant.R;
@@ -25,7 +26,7 @@ import com.promo.zjyfrestaurant.util.ContextUtil;
 import com.promo.zjyfrestaurant.view.AddDealPicker;
 
 /**
- * 菜单详情。
+ * 菜品详情。
  */
 public class MenuDetailActivity extends BaseActivity implements View.OnClickListener {
 
@@ -125,13 +126,10 @@ public class MenuDetailActivity extends BaseActivity implements View.OnClickList
 
     @Override
     public void onClick(View v) {
-
         if (v.getId() == R.id.share_imgBtn) {
-            Intent intent = new Intent(Intent.ACTION_SEND); // 启动分享发送的属性
-            intent.setType("text/plain"); // 分享发送的数据类型
-            intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.share_subject)); // 分享的主题
-            intent.putExtra(Intent.EXTRA_TEXT, menudetailnametv.getText().toString()); // 分享的内容
-            startActivity(Intent.createChooser(intent, "选择分享"));
+            menudetailimg.setDrawingCacheEnabled(true);
+            Intent shareIntent = FileUtil.share(proDetailBean.getCover(), proDetailBean.getDescription(), null);
+            startActivity(Intent.createChooser(shareIntent, "选择分享"));
         }
 
     }

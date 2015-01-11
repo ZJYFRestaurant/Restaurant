@@ -6,8 +6,23 @@
         android:fillEnabled="true"
         android:fillBefore="true"
         android:fillAfter="false"
-        android:duration="500"
+        android:duration="300"
+        android:pivotX="100%"
+        android:pivotY="0%"
         android:fromXScale="100%"
+        android:fromYScale="100%"
+        android:toYScale="150%"
         android:toXScale="150%" />
-
+    <scale
+        android:interpolator="@android:anim/anticipate_overshoot_interpolator"
+        android:fillEnabled="true"
+        android:fillBefore="true"
+        android:fillAfter="false"
+        android:duration="100"
+        android:pivotX="100%"
+        android:pivotY="0%"
+        android:fromXScale="150%"
+        android:fromYScale="150%"
+        android:toYScale="100%"
+        android:toXScale="100%" />
 </set>

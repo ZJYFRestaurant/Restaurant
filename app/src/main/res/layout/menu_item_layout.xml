@@ -78,7 +78,7 @@
                 app:text_color="@color/black"
                 app:text="0"
                 app:img_size="30dp"
-                app:drawable_padding="8dp"></com.promo.zjyfrestaurant.view.AddDealPicker>
+                app:drawable_padding="1dp"></com.promo.zjyfrestaurant.view.AddDealPicker>
 
         </RelativeLayout>
 
