@@ -229,7 +229,13 @@ public class ShoppingCart extends ShoppingCartSubject implements CartOberver {
 
 
     public ArrayList<DishBean> getDishBeans() {
-        return dishBeans;
+        ArrayList<DishBean> dishBeanses = new ArrayList<>();
+        for (DishBean dishBean : dishBeans) {
+
+            if (dishBean.getNum() != 0)
+                dishBeanses.add(dishBean);
+        }
+        return dishBeanses;
     }
 
     public void setDishBeans(ArrayList<DishBean> dishBeans) {

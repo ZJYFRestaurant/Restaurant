@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 /**
- *
+ * 活动详情。
  */
 public class PrivilegeActionBean implements Parcelable {
 
@@ -17,7 +17,6 @@ public class PrivilegeActionBean implements Parcelable {
     private String cover;
     private String content;
     private int is_delete;
-
 
     @Override
     public int describeContents() {

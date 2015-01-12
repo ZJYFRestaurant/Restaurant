@@ -213,8 +213,13 @@ public class AddDealPicker extends LinearLayout implements View.OnClickListener 
      */
     public void setDishBean(DishBean dishBean) {
         this.dishBean = dishBean;
-        if (this.dishBean != null)
-            numTv.setText(String.valueOf(ShoppingCart.newInstance().getDishNum(dishBean.getId())));
+
+        if (this.dishBean != null) {
+            int num = ShoppingCart.newInstance().getDishNum(dishBean.getId());
+            numTv.setText(String.valueOf(num));
+            this.dishBean.setNum(num);
+        }
+        checkNum();
     }
 
     private void saveAttributeData(AttributeSet attrs, TypedArray a) {
@@ -397,16 +402,16 @@ public class AddDealPicker extends LinearLayout implements View.OnClickListener 
 
         switch (v.getId()) {
             case R.id.dealPickleftImgId: {
-
                 subtractionTv();    //数据减1
                 break;
             }
             case R.id.dealPickrightImgId: {
                 additionTv();    //数据加1
-
                 break;
             }
+
         }
+        checkNum();
     }
 
     /**
@@ -419,6 +424,20 @@ public class AddDealPicker extends LinearLayout implements View.OnClickListener 
                 dishBean.dataChanged();
                 dishBean.nodifyDataChanged();       //更新购物车订购数据。
             }
+        }
+    }
+
+    /**
+     * Checking dish number. if dish's number is 0, hide subtraction view and number view. viceverse.
+     */
+    private void checkNum() {
+
+        if (ShoppingCart.newInstance().getDishNum(dishBean.getId()) == 0) {
+            reduceImg.setVisibility(INVISIBLE);
+            numTv.setVisibility(INVISIBLE);
+        } else {
+            reduceImg.setVisibility(VISIBLE);
+            numTv.setVisibility(VISIBLE);
         }
     }
 

@@ -49,6 +49,7 @@
 
                 <EditText
                     android:id="@+id/book_phone_et"
+                    android:inputType="phone"
                     android:drawableLeft="@drawable/book_phone"
                     style="@style/input_edit_style"
                     android:hint="@string/book_phone" />
@@ -73,6 +74,7 @@
                     android:id="@+id/book_num_et"
                     android:drawableLeft="@drawable/book_num"
                     android:hint="@string/book_number"
+                    android:inputType="number"
                     style="@style/input_edit_style" />
 
             </TableRow>
@@ -94,7 +96,7 @@
                 <EditText
                     android:id="@+id/book_time_et"
                     android:drawableLeft="@drawable/book_time"
-                    android:hint="@string/book_time"
+                    android:hint="@string/book_detail_time"
                     style="@style/input_edit_style" />
 
             </TableRow>

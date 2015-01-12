@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.view.KeyEvent;
 import android.widget.FrameLayout;
 
 import com.promo.zjyfrestaurant.R;
@@ -23,6 +24,16 @@ public class BookActivity extends FragmentActivity implements BookFragCallBack {
     public void bookFragcall() {
         onBackPressed();
         this.finish();
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        super.onKeyDown(keyCode, event);
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            this.finish();
+        }
+        return true;
+
     }
 
     @Override

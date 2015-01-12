@@ -16,7 +16,10 @@
     <string name="update_right_now">立即升级</string>
     <string name="ok">确定</string>
     <string name="cancel">取消</string>
-
+    <string name="dilog_title">楚霸王在上！</string>
+    <string name="no_dish_warn">您还没有点餐，要不要先去洗劫一番。</string>
+    <string name="dialog_go">去洗劫</string>
+    <string name="dialog_come">来上恭</string>
     <!-- home -->
     <string name="home_specialty">招牌美食</string>
     <string name="home_today">今天价：</string>
@@ -103,9 +106,7 @@
     <string name="update_erro">版本更新失败</string>
     <string name="update_no">当前版本已是最新版本</string>
     <string name="get_local_erro">获取地址失败</string>
-    <string name="title_activity_loading">LoadingActivity</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="activity_detail">活动详情</string>
+    <string name="home_http">http://</string>
 
 </resources>

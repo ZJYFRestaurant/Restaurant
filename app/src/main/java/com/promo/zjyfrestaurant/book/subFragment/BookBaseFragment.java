@@ -147,6 +147,8 @@ public class BookBaseFragment extends Fragment implements View.OnFocusChangeList
                 SimpleDateFormat simpleTimeFormat = new SimpleDateFormat("HH:mm");//创建时间格式
                 String timeStr = simpleTimeFormat.format(calendar.getTime());//按照最新的calendar更新时间显示
                 timeSb.append(" ").append(timeStr);
+
+
                 timeEt.setText(timeSb.toString());
 
                 break;

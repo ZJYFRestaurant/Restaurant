@@ -13,7 +13,6 @@ import com.promo.zjyfrestaurant.BaseActivity;
 import com.promo.zjyfrestaurant.R;
 import com.promo.zjyfrestaurant.application.HttpConstant;
 import com.promo.zjyfrestaurant.bean.PrivilegeActionBean;
-import com.promo.zjyfrestaurant.home.MenuDetailActivity;
 import com.promo.zjyfrestaurant.impl.RequestCallback;
 import com.promo.zjyfrestaurant.impl.ShowMenuRequset;
 import com.promo.zjyfrestaurant.impl.ZJYFRequestParmater;
@@ -73,7 +72,6 @@ public class PrivilegeActivity extends BaseActivity implements AdapterView.OnIte
                     adapter.notifyDataSetChanged(data);
                 }
             }
-
         });
     }
 
@@ -87,11 +85,13 @@ public class PrivilegeActivity extends BaseActivity implements AdapterView.OnIte
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Intent intent = new Intent(this, MenuDetailActivity.class);
+        Intent intent = new Intent(this, PrivilegeDetailActivity.class);
         int pro_id = privileges.get(position).getId();
 
         Bundle bundle = new Bundle();
-        bundle.putString(MenuDetailActivity.PRO_ID_KEY, String.valueOf(pro_id));
+        bundle.putString(PrivilegeDetailActivity.DETAIL_ID, String.valueOf(pro_id));
+        bundle.putParcelable(PrivilegeDetailActivity.DETAIL_KEY, privileges.get(position));
+
         intent.putExtras(bundle);
         transNextPage(intent, true);
     }

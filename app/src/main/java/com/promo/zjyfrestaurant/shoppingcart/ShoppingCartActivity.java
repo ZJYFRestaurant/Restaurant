@@ -70,12 +70,12 @@ public class ShoppingCartActivity extends BaseActivity implements CartOrderChang
         cartbarnextbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent intent = new Intent(ShoppingCartActivity.this, BookActivity.class);
                 transNextPage(intent, true);
-
             }
         });
+        selectAllCb.setChecked(true);
+
     }
 
     private View addMenuView() {

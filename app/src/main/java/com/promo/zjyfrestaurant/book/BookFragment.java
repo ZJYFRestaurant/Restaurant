@@ -16,7 +16,10 @@ import com.promo.zjyfrestaurant.BaseFragment;
 import com.promo.zjyfrestaurant.R;
 import com.promo.zjyfrestaurant.book.bookActivity.BookFragCallBack;
 import com.promo.zjyfrestaurant.book.subFragment.ToRestFragment;
+import com.promo.zjyfrestaurant.home.recommendPager.MenuActivity;
+import com.promo.zjyfrestaurant.shoppingcart.ShoppingCart;
 import com.promo.zjyfrestaurant.shoppingcart.ShoppingCartView;
+import com.promo.zjyfrestaurant.util.ZJYFDialog;
 
 /**
  * A simple {@link android.support.v4.app.Fragment} subclass.
@@ -90,14 +93,32 @@ public class BookFragment extends BaseFragment {
     @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
-
-
+        if (!hidden) {
+            showBookDialog();//检测购物车。
+        }
     }
 
-    private void checkCartMenu() {
+    /**
+     * 购物车中没有菜品的提示。
+     */
+    private void showBookDialog() {
+        int dishNum = ShoppingCart.newInstance().getDishNum();
+        if (dishNum != 0) {
+            return;
+        }
 
-
-
+        ZJYFDialog.Builder.zJYFDialog(getActivity()).setTitle(getString(R.string.dilog_title)).setContentMsg(getString(R.string.no_dish_warn)).setPositiveBtn(R.string.dialog_go, new ZJYFDialog.ZJYFOnclickListener() {
+            @Override
+            public void onclick() {
+                Intent intent = new Intent(getActivity(), MenuActivity.class);
+                transNextPage(intent);
+            }
+        }).setNectiveBtn(R.string.dialog_come, new ZJYFDialog.ZJYFOnclickListener() {
+            @Override
+            public void onclick() {
+                bookpager.setCurrentItem(bookPagerAdapter.getCount() - 1);  //跳转到外卖
+            }
+        }).build().show();
     }
 
     @Override
@@ -120,7 +141,27 @@ public class BookFragment extends BaseFragment {
         bookPagerAdapter = new BookPagerAdapter(getChildFragmentManager(), getResources().getStringArray(R.array.book_tab), getActivity().getApplicationContext());
         bookpager.setAdapter(bookPagerAdapter);
         bookslidetab.setViewPager(bookpager);
+        bookslidetab.setOnPageChangeListener(new ViewPagerChangerListener());
+        showBookDialog();
+    }
 
+    private class ViewPagerChangerListener implements ViewPager.OnPageChangeListener {
+
+        @Override
+        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+        }
+
+        @Override
+        public void onPageSelected(int position) {
+            if (position != bookPagerAdapter.getCount() - 1)        //检测购物车。
+                showBookDialog();
+
+        }
+
+        @Override
+        public void onPageScrollStateChanged(int state) {
+        }
     }
 
     /**

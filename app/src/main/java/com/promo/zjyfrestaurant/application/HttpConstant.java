@@ -11,7 +11,7 @@ public class HttpConstant {
 
     private static final boolean HOSTLOCALABLE = true;
 
-    private static final String HOST_LOCAL = "http://fish.ebingoo.com";
+    public static final String HOST_LOCAL = "http://fish.ebingoo.com";
 
     private static final String HOST_REMOTE = "";
 
@@ -97,6 +97,10 @@ public class HttpConstant {
      * 地图。 *
      */
     public static final String getMapPosition = getRootUrl() + "getMapPosition";
+    /**
+     * 活动详情。
+     */
+    public static final String getActivityDetail = getRootUrl() + "getActivityDetail";
 
 
 }

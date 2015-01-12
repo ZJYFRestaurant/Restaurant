@@ -103,7 +103,7 @@
     <style name="common_marg_item">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_margin">10dp</item>
+        <item name="android:layout_margin">@dimen/common_top_marg</item>
     </style>
 
     <style name="common_marg_white_item" parent="common_marg_item">

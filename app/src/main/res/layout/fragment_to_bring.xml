@@ -47,6 +47,7 @@
 
                 <EditText
                     android:id="@+id/book_phone_et"
+                    android:inputType="phone"
                     android:drawableLeft="@drawable/book_phone"
                     style="@style/input_edit_style"
                     android:hint="@string/book_phone" />

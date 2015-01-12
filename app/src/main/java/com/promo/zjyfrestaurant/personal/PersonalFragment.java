@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.promo.zjyfrestaurant.BaseFragment;
 import com.promo.zjyfrestaurant.R;
+import com.promo.zjyfrestaurant.application.HttpConstant;
 import com.promo.zjyfrestaurant.personal.login.LoginActivity;
 import com.promo.zjyfrestaurant.util.VersionManager;
 
@@ -158,7 +159,7 @@ public class PersonalFragment extends BaseFragment implements View.OnClickListen
                 Intent intent = new Intent(Intent.ACTION_SEND); // 启动分享发送的属性
                 intent.setType("text/plain"); // 分享发送的数据类型
                 intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.share_subject)); // 分享的主题
-                intent.putExtra(Intent.EXTRA_TEXT, getString(R.string.share_content)); // 分享的内容
+                intent.putExtra(Intent.EXTRA_TEXT, getString(R.string.share_content, HttpConstant.HOST_LOCAL)); // 分享的内容
                 startActivity(Intent.createChooser(intent, "选择分享"));
 
                 break;

@@ -40,6 +40,7 @@ public class RecommendActivity extends BaseActivity implements AdapterView.OnIte
 
     private void initView(View containerView) {
         setTitle(getResources().getString(R.string.recommend_dish));
+        addRightCart();
 
         recommendlist = (ListView) containerView.findViewById(R.id.recommend_list);
         recommendAdapter = new RecommendAdapter(this);
