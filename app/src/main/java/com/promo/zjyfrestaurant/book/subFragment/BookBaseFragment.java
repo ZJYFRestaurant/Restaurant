@@ -15,10 +15,13 @@ import com.promo.zjyfrestaurant.R;
 import com.promo.zjyfrestaurant.bean.OrderBean;
 import com.promo.zjyfrestaurant.book.ConfirmBookActivity;
 import com.promo.zjyfrestaurant.shoppingcart.ShoppingCart;
+import com.promo.zjyfrestaurant.util.ContextUtil;
 import com.promo.zjyfrestaurant.view.NumberView;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Hashtable;
 import java.util.Locale;
 
@@ -147,9 +150,10 @@ public class BookBaseFragment extends Fragment implements View.OnFocusChangeList
                 SimpleDateFormat simpleTimeFormat = new SimpleDateFormat("HH:mm");//创建时间格式
                 String timeStr = simpleTimeFormat.format(calendar.getTime());//按照最新的calendar更新时间显示
                 timeSb.append(" ").append(timeStr);
-
-
-                timeEt.setText(timeSb.toString());
+                if (isBeforeNow(timeSb.toString())) {
+                    ContextUtil.toast(getActivity(), getString(R.string.before_now_warn));
+                } else
+                    timeEt.setText(timeSb.toString());
 
                 break;
             default:
@@ -164,5 +168,23 @@ public class BookBaseFragment extends Fragment implements View.OnFocusChangeList
         timePickerDialog.show();
     }
 
+    /**
+     * 检测是否在现在时间之前。
+     *
+     * @param timeStr
+     * @return
+     */
+    private boolean isBeforeNow(String timeStr) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日 HH:mm");
+        Date date = null;
+        try {
+            date = sdf.parse(timeStr);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        Date nowDate = new Date();
+        return date.before(nowDate);
+    }
 
 }
