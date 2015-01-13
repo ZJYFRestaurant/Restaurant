@@ -31,6 +31,7 @@ public class MainActivity extends FragmentActivity implements RadioGroup.OnCheck
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_layout);
         initialize();
+
     }
 
 

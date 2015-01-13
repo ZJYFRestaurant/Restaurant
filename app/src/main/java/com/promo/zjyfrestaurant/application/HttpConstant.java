@@ -92,7 +92,7 @@ public class HttpConstant {
     /**
      * 检查更新
      */
-    public static final String getBaseInfo = getRootUrl() + "getBaseInfo";
+    public static final String getNewestVersion = getRootUrl() + "getNewestVersion";
     /**
      * 地图。 *
      */
@@ -101,6 +101,10 @@ public class HttpConstant {
      * 活动详情。
      */
     public static final String getActivityDetail = getRootUrl() + "getActivityDetail";
+    /**
+     * 关于我们
+     */
 
+    public static final String getBaseInfo = getRootUrl() + "getBaseInfo";
 
 }

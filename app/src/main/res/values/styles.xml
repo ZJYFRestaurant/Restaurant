@@ -114,6 +114,10 @@
         <item name="android:padding">10dp</item>
     </style>
 
+    <style name="comnon_pad_3_white_item" parent="common_white_item">
+        <item name="android:padding">5dp</item>
+    </style>
+
     <style name="edit_white_style" parent="cmmon_pad_white_item">
         <item name="android:textSize">@dimen/font_15</item>
         <item name="android:textColor">@color/black</item>
@@ -174,11 +178,6 @@
         <item name="android:layout_marginTop">5dp</item>
     </style>
 
-    <!--android:orientation="horizontal"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:gravity="center_vertical"-->
-
     <style name="book_tr_style">
         <item name="android:orientation">horizontal</item>
         <item name="android:layout_height">wrap_content</item>
@@ -202,7 +201,7 @@
     </style>
 
     <style name="book_input_num_style">
-        <item name="android:layout_width">20dp</item>
+        <item name="android:layout_width">30dp</item>
         <item name="android:layout_height">match_parent</item>
     </style>
 
@@ -226,6 +225,12 @@
         <item name="android:layout_marginTop">@dimen/book_detail_between_line</item>
     </style>
 
+    <style name="book_detail_all_colume" parent="font_gray2_14">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
     <style name="home_item_base_tv_style" parent="font_gray_12">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -243,6 +248,7 @@
     </style>
 
     <style name="home_item_price_green_tv_style" parent="font_greent_14">
+        <item name="android:gravity">center_horizontal</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_alignParentBottom">true</item>
         <item name="android:ellipsize">end</item>

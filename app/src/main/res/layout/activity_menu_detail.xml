@@ -43,7 +43,7 @@
                     app:text_color="@color/gray2"
                     app:text="0"
                     app:img_size="35dp"
-                    app:drawable_padding="5dp"></com.promo.zjyfrestaurant.view.AddDealPicker>
+                    app:drawable_padding="3dp"></com.promo.zjyfrestaurant.view.AddDealPicker>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -78,7 +78,6 @@
                         <TextView
                             android:id="@+id/menu_detail_price_tv"
                             style="@style/font_greent_14"
-                            android:text="299"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
 
@@ -99,7 +98,6 @@
                 android:id="@+id/menu_detail_promt_tv"
                 android:layout_marginTop="@dimen/book_detail_between_line"
                 android:layout_width="match_parent"
-                android:text="死难吃，死难吃，死难吃，死难吃，死难吃，死难吃，死难吃，"
                 android:layout_height="wrap_content" />
 
         </LinearLayout>

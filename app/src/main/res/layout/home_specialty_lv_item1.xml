@@ -15,6 +15,7 @@
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_weight="1"
+            android:layout_marginLeft="@dimen/home_item_pad"
             android:layout_height="wrap_content">
 
             <ImageView

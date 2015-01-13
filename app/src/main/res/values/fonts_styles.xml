@@ -77,6 +77,11 @@
         <item name="android:textColor">@color/gray2</item>
     </style>
 
+    <style name="hint_gray_12">
+        <item name="android:textSize">@dimen/font_12</item>
+        <item name="android:textColor">@color/hint_gray</item>
+    </style>
+
     <style name="font_black_13">
         <item name="android:textSize">@dimen/font_13</item>
         <item name="android:textColor">@color/black</item>

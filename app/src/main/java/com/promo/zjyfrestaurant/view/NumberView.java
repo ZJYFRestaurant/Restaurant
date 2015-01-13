@@ -20,7 +20,7 @@ public class NumberView extends LinearLayout {
 
     private static final int DEF_BG = Color.GRAY;
     private static final int DEF_TVCOLOR = Color.WHITE;
-    private static final float DEF_TVSIZE = 22;
+    private static final float DEF_TVSIZE = 15;
     private View mContentView = null;
     private View mTopLine = null;
     private View mBtmLine = null;
@@ -59,7 +59,7 @@ public class NumberView extends LinearLayout {
 
     private void init(AttributeSet attrs, int defStyle) {
 
-        setGravity(Gravity.CENTER_VERTICAL);
+        setGravity(Gravity.CENTER);
         setOrientation(VERTICAL);
 
         mLineColor = DEF_BG;
@@ -133,7 +133,6 @@ public class NumberView extends LinearLayout {
             numTv.setText(mTvStr);
         }
 
-
         addView(mContentView);
 
     }
@@ -142,6 +141,10 @@ public class NumberView extends LinearLayout {
         numTv = (TextView) mContentView.findViewById(R.id.num_tv);
         numTv.setTextSize(mTvSize);
 
+        initdata();
+    }
+
+    private void initdata() {
         if (mEnd) {
             mBtmLine.setVisibility(INVISIBLE);
         }
@@ -157,6 +160,7 @@ public class NumberView extends LinearLayout {
             numTv.setTextColor(mTvColor);
             DisplayUtil.setBackground(numTv, mTvBg);
         }
+        numTv.setGravity(Gravity.CENTER);
     }
 
     /**
@@ -165,23 +169,16 @@ public class NumberView extends LinearLayout {
      * @param num
      */
     public void setTextNum(String num) {
-
         if (num != null) {
             numTv.setText(num);
         }
+        initdata();
     }
 
     public void setChecked(boolean checked) {
-
         curflag = checked;
-        initView();
+        initdata();
     }
 
 
-    @Override
-    protected void onLayout(boolean changed, int l, int t, int r, int b) {
-        super.onLayout(changed, l, t, r, b);
-
-
-    }
 }

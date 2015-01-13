@@ -40,8 +40,9 @@ public class VersionManager {
 
     public static void requestVersionCode(final Context context) {
 
-
-        ShowMenuRequset.getData(context, HttpConstant.getBaseInfo, new ZJYFRequestParmater(context), VersionBean.class, new RequestCallback<VersionBean>() {
+        ZJYFRequestParmater parmater = new ZJYFRequestParmater(context);
+        parmater.put("version", DeviceInfo.getVersionCode(context));
+        ShowMenuRequset.getData(context, HttpConstant.getNewestVersion, parmater, VersionBean.class, new RequestCallback<VersionBean>() {
             @Override
             public void onfailed(String msg) {
                 ContextUtil.toast(context, context.getResources().getString(R.string.update_erro));

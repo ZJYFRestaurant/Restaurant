@@ -3,9 +3,12 @@ package com.promo.zjyfrestaurant.personal;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
+import com.jch.lib.util.DisplayUtil;
 import com.promo.zjyfrestaurant.BaseActivity;
 import com.promo.zjyfrestaurant.R;
+import com.promo.zjyfrestaurant.application.Constant;
 import com.promo.zjyfrestaurant.application.HttpConstant;
 import com.promo.zjyfrestaurant.application.ZjyfApplication;
 import com.promo.zjyfrestaurant.impl.RequestCallback;
@@ -20,7 +23,7 @@ public class FeedBackActivity extends BaseActivity {
 
 
     private EditText feedbacket;
-    private Button feedbacksmtbtn;
+    private ImageView feedback_img;
 
     @Override
     protected View initContentView() {
@@ -56,8 +59,16 @@ public class FeedBackActivity extends BaseActivity {
         addOkBtn();
 
         feedbacket = (EditText) containerView.findViewById(R.id.feedback_et);
-        feedbacksmtbtn = (Button) containerView.findViewById(R.id.feedback_smt_btn);
-        feedbacksmtbtn.setOnClickListener(new View.OnClickListener() {
+        feedback_img = (ImageView) containerView.findViewById(R.id.feedback_img);
+
+        int ecept = (int) (getResources().getDimension(R.dimen.feed_back_img_margin) * 2);
+        DisplayUtil.resizeViewByScreenWidth(feedback_img, Constant.FEED_BACK_IMG.x, Constant.FEED_BACK_IMG.y, ecept, FeedBackActivity.this);
+    }
+
+    private void addOkBtn() {
+
+        Button okBtn = (Button) View.inflate(getApplicationContext(), R.layout.add_addr_ok, null);
+        okBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!feedbacket.getText().toString().trim().equals(""))
@@ -67,22 +78,8 @@ public class FeedBackActivity extends BaseActivity {
                 }
             }
         });
+
+        addRightItem(okBtn);
     }
 
-    private void addOkBtn() {
-
-        Button okBtn = (Button) View.inflate(getApplicationContext(), R.layout.add_addr_ok, null);
-        okBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
-//        addRightItem(okBtn);
-    }
-
-    private void initialize() {
-
-    }
 }

@@ -147,6 +147,8 @@ public class ShoppingCart extends ShoppingCartSubject implements CartOberver {
                 new CartAsync(CartAsync.UPDATE, mContext).execute(dish);        //更新数据库
                 dishNum = dish.getNum();
                 //TODO 当菜品的数量为0是 删除此菜品。
+
+
                 setChanged();
                 notifyObservers(getDishNum());
             }
@@ -315,7 +317,7 @@ public class ShoppingCart extends ShoppingCartSubject implements CartOberver {
 
         ArrayList<DishBean> orders = new ArrayList<DishBean>();
         for (DishBean dishBean : dishBeans) {
-            if (dishBean.getIsOrder() == 1) {
+            if (dishBean.getIsOrder() == 1 && dishBean.getNum() != 0) {     //选择的订单菜品。
                 orders.add(dishBean);
             }
         }

@@ -54,6 +54,7 @@
                     <RelativeLayout style="@style/weight_1_style">
 
                         <ImageView style="@style/person_arro_iv" />
+
                     </RelativeLayout>
 
 

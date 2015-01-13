@@ -12,6 +12,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TableRow;
+import android.widget.TextView;
 
 import com.jch.lib.util.DisplayUtil;
 import com.jch.lib.util.TextUtil;
@@ -43,7 +44,7 @@ public class ToRestFragment extends BookBaseFragment implements View.OnClickList
     private EditText bookaddrtv;
     private RelativeLayout booaddrrl;
     private NumberView booktimenum;
-    private EditText booktimeet;
+    private TextView booktimeet;
     private NumberView bookothernum;
     private EditText bookotheret;
     private Button booksubmitbtn;
@@ -108,7 +109,7 @@ public class ToRestFragment extends BookBaseFragment implements View.OnClickList
         bookaddrtv = (EditText) containerView.findViewById(R.id.book_addr_tv);
         booaddrrl = (RelativeLayout) containerView.findViewById(R.id.boo_addr_rl);
         booktimenum = (NumberView) containerView.findViewById(R.id.book_time_num);
-        booktimeet = (EditText) containerView.findViewById(R.id.book_time_et);
+        booktimeet = (TextView) containerView.findViewById(R.id.book_time_et);
         bookothernum = (NumberView) containerView.findViewById(R.id.book_other_num);
         bookotheret = (EditText) containerView.findViewById(R.id.book_other_et);
         booksubmitbtn = (Button) containerView.findViewById(R.id.book_submit_btn);
@@ -116,11 +117,11 @@ public class ToRestFragment extends BookBaseFragment implements View.OnClickList
         booktimeet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                booktimeet.setTag(booktimenum);
                 selectTime(booktimeet);
             }
         });
 
-        setInputFocusChange(booktimenum, booktimeet);
         setInputFocusChange(bookothernum, bookotheret);
 //        setInputFocusChange(bookaddrnum, booaddrrl);
         setInputFocusChange(bookcontactnum, bookcontactet);
@@ -193,6 +194,9 @@ public class ToRestFragment extends BookBaseFragment implements View.OnClickList
 
         bookaddrtv.setText(addresss.getContent());
         DisplayUtil.setBackground(booaddrrl, getResources().getDrawable(R.drawable.book_enter_focused));
+        bookcontactet.setPadding((int) getResources().getDimension(R.dimen.book_draw_pad_left), 0, 0, 0);
+        bookphoneet.setPadding((int) getResources().getDimension(R.dimen.book_draw_pad_left), 0, 0, 0);
+        ((RelativeLayout.LayoutParams) bookaddressicon.getLayoutParams()).leftMargin = (int) getResources().getDimension(R.dimen.book_draw_pad_left);
     }
 
     /**
@@ -206,6 +210,9 @@ public class ToRestFragment extends BookBaseFragment implements View.OnClickList
         String contactStr = bookcontactet.getText().toString().trim();     //联系人。
         if (TextUtil.stringIsNull(contactStr)) {
             checkResult = getResources().getString(R.string.add_name_warning);
+            return checkResult;
+        } else if (contactStr.length() < 2) {
+            checkResult = getResources().getString(R.string.name_length_warning);
             return checkResult;
         } else {
             orderBean.setContact(contactStr);

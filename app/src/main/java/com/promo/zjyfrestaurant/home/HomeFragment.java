@@ -117,7 +117,6 @@ public class HomeFragment extends BaseFragment {
 
             switch (position) {
                 case 0: {
-
                     newClz = RecommendActivity.class;
                     break;
                 }

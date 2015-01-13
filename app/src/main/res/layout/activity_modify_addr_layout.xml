@@ -29,11 +29,11 @@
                         android:id="@+id/modify_addr_name"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
-                        style="@style/font_black_15"
+                        style="@style/font_gray2_15"
                         android:background="@null" />
 
                     <TextView
-                        style="@style/font_gray_12"
+                        style="@style/hint_gray_12"
                         android:text="@string/constant_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
@@ -68,11 +68,11 @@
                         android:id="@+id/modify_addr_phone"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
-                        style="@style/font_black_15"
+                        style="@style/font_gray2_15"
                         android:background="@null" />
 
                     <TextView
-                        style="@style/font_gray_12"
+                        style="@style/hint_gray_12"
                         android:text="@string/constant_phone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
@@ -108,11 +108,11 @@
                         android:layout_height="30dp"
                         android:singleLine="true"
                         android:ellipsize="end"
-                        style="@style/font_black_15"
+                        style="@style/font_gray2_15"
                         android:background="@null" />
 
                     <TextView
-                        style="@style/font_gray_12"
+                        style="@style/hint_gray_12"
                         android:text="@string/constant_addr"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />

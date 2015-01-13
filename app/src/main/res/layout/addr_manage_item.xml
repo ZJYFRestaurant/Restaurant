@@ -11,48 +11,59 @@
         android:focusable="false"
         android:focusableInTouchMode="false"
         android:layout_alignParentRight="true"
+        android:layout_marginLeft="15dp"
         android:background="@drawable/item_del_btn"
         android:layout_height="wrap_content" />
 
     <LinearLayout
         android:layout_toLeftOf="@id/item_del_btn"
         android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_marginRight="5dp"
+        android:background="@color/gray1"
+        android:orientation="horizontal"
+        android:paddingRight="2px"
         android:layout_height="wrap_content">
 
         <LinearLayout
-            android:orientation="horizontal"
+            android:orientation="vertical"
+            android:background="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/addr_item_name_tv"
-                style="@style/font_black_15"
-                android:layout_weight="4"
-                android:singleLine="true"
-                android:ellipsize="end"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/addr_item_name_tv"
+                    style="@style/font_gray2_15"
+                    android:layout_weight="4"
+                    android:singleLine="true"
+                    android:ellipsize="end"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/addr_item_phone_tv"
+                    style="@style/font_gray2_15"
+                    android:singleLine="true"
+                    android:ellipsize="end"
+                    android:layout_weight="6"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
 
             <TextView
-                android:id="@+id/addr_item_phone_tv"
-                style="@style/font_black_15"
-                android:singleLine="true"
+                android:id="@+id/addr_item_tv"
+                android:lines="2"
+                style="@style/font_gray2_15"
+                android:layout_marginTop="5dp"
                 android:ellipsize="end"
-                android:layout_weight="6"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
+
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/addr_item_tv"
-            android:lines="2"
-            style="@style/font_gray2_15"
-            android:layout_marginTop="5dp"
-            android:ellipsize="end"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
     </LinearLayout>
 
 

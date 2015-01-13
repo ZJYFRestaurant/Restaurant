@@ -63,11 +63,11 @@ public class AddDealPicker extends LinearLayout implements View.OnClickListener 
     /**
      * 默认字体大小。
      */
-    private static final int TEXT_SIZE = 15;
+    private static final int TEXT_SIZE = 11;
     /**
      * 默认字体颜色。
      */
-    private static final int TEXT_COLOR = Color.BLACK;
+    private static final int TEXT_COLOR = Color.GRAY;
     /**
      * img
      */
@@ -284,6 +284,7 @@ public class AddDealPicker extends LinearLayout implements View.OnClickListener 
 
         numTv = new TextView(getContext());
         numTv.setTextColor(textColor);
+
         numTv.setTextSize(textSize);
         numTv.setText(text);
         LayoutParams textParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -431,7 +432,8 @@ public class AddDealPicker extends LinearLayout implements View.OnClickListener 
      * Checking dish number. if dish's number is 0, hide subtraction view and number view. viceverse.
      */
     private void checkNum() {
-
+        if (dishBean == null)
+            return;
         if (ShoppingCart.newInstance().getDishNum(dishBean.getId()) == 0) {
             reduceImg.setVisibility(INVISIBLE);
             numTv.setVisibility(INVISIBLE);

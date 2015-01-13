@@ -22,12 +22,14 @@ import java.io.File;
  */
 public class ZjyfApplication extends Application {
 
+
     @Override
     public void onCreate() {
         super.onCreate();
         initImageLoaderConfiguration();
         SDKInitializer.initialize(getApplicationContext());
         ShoppingCart.newInstance().initData(getApplicationContext());
+
     }
 
     /**
@@ -51,6 +53,7 @@ public class ZjyfApplication extends Application {
         ImageLoader.getInstance().init(config);
 
         getUid();
+
     }
 
     /**

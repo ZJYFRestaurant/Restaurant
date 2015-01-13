@@ -2,12 +2,15 @@ package com.promo.zjyfrestaurant.book.subFragment;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.TimePicker;
 
 import com.jch.lib.util.DisplayUtil;
@@ -44,7 +47,7 @@ public class BookBaseFragment extends Fragment implements View.OnFocusChangeList
     private boolean dataFlag = false;
     private boolean timeFalg = false;
 
-    private EditText timeEt = null;
+    private TextView timeEt = null;
     protected OrderBean orderBean = new OrderBean();
 
     final int DATE = 1;
@@ -52,12 +55,15 @@ public class BookBaseFragment extends Fragment implements View.OnFocusChangeList
 
     @Override
     public void onFocusChange(View v, boolean hasFocus) {
-
+        if (!(v instanceof EditText))   //只检测edittext 的焦点监听。
+            return;
         EditText editText = (EditText) v;
         NumberView numberView = inputMap.get(editText);
         if (hasFocus) {  //获得焦点，背景变蓝
             numberView.setChecked(true);
             DisplayUtil.setBackground(editText, getResources().getDrawable(R.drawable.book_enter_focused));
+            InputMethodManager inputManager = ((InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE));
+            inputManager.toggleSoftInput(0, InputMethodManager.SHOW_IMPLICIT);
         } else { //失去焦点时，如果edit中有数据背景变蓝，没有数据背景变灰
             String text = editText.getText().toString();
             if (text != null && !text.equals("")) {
@@ -96,9 +102,12 @@ public class BookBaseFragment extends Fragment implements View.OnFocusChangeList
         startActivity(intent);
     }
 
-    protected void selectTime(EditText editText) {
+    protected void selectTime(TextView timeTv) {
 
-        timeEt = editText;
+        timeEt = timeTv;
+        NumberView numberView = (NumberView) timeTv.getTag();
+        DisplayUtil.setBackground(timeTv, getResources().getDrawable(R.drawable.book_enter_focused));
+        numberView.setChecked(true);
         DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), listener, calendar.get(Calendar.YEAR),
                 calendar.get(Calendar.MONTH),
                 calendar.get(Calendar.DAY_OF_MONTH));
@@ -152,9 +161,13 @@ public class BookBaseFragment extends Fragment implements View.OnFocusChangeList
                 timeSb.append(" ").append(timeStr);
                 if (isBeforeNow(timeSb.toString())) {
                     ContextUtil.toast(getActivity(), getString(R.string.before_now_warn));
+                    timeEt.setText("");
+                    DisplayUtil.setBackground(timeEt, getResources().getDrawable(R.drawable.book_enter));
+                    NumberView numberView = (NumberView) timeEt.getTag();
+                    numberView.setChecked(false);
                 } else
                     timeEt.setText(timeSb.toString());
-
+                timeEt.setPadding((int) getResources().getDimension(R.dimen.book_draw_pad_left), 0, 0, 0);
                 break;
             default:
                 break;
@@ -182,6 +195,9 @@ public class BookBaseFragment extends Fragment implements View.OnFocusChangeList
         } catch (ParseException e) {
             e.printStackTrace();
         }
+
+        long time = date.getTime() - 1800000l;     //推迟半个小时。
+        date.setTime(time);
 
         Date nowDate = new Date();
         return date.before(nowDate);

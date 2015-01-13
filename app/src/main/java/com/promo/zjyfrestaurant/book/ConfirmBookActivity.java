@@ -1,8 +1,10 @@
 package com.promo.zjyfrestaurant.book;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.jch.lib.view.ScrollGridView;
@@ -15,6 +17,8 @@ import com.promo.zjyfrestaurant.bean.OrderType;
 import com.promo.zjyfrestaurant.impl.RequestCallback;
 import com.promo.zjyfrestaurant.impl.ShowMenuRequset;
 import com.promo.zjyfrestaurant.impl.ZJYFRequestParmater;
+import com.promo.zjyfrestaurant.personal.MyBookActivity;
+import com.promo.zjyfrestaurant.shoppingcart.ShoppingCart;
 import com.promo.zjyfrestaurant.util.ContextUtil;
 
 /**
@@ -29,14 +33,19 @@ public class ConfirmBookActivity extends BaseActivity {
      * 订单。 *
      */
     private OrderBean orderBean = null;
-    private TextView bookdetailmoney;
-    private TextView bookdetailcontact;
-    private TextView bookdetailnumtv;
-    private TextView bookdetailtimetv;
-    private ScrollGridView bookdetailgv;
-    private Button subBtn;
 
     private ComfirmBookAdapter confirmAdapter;
+    private TextView bookdetailmoney;
+    private TextView bookdetailcontact;
+    private TextView bookdetailphone;
+    private TableRow bookdetailphonetr;
+    private TextView bookdetailnumtv;
+    private TableRow bookdetailnumtr;
+    private TextView bookdetailtimetitle;
+    private TextView bookdetailtimetv;
+    private TextView bookdetailothertv;
+    private ScrollGridView bookdetailgv;
+    private Button subBtn;
 
 
     @Override
@@ -61,13 +70,17 @@ public class ConfirmBookActivity extends BaseActivity {
 
         setTitle(getResources().getString(R.string.comfirm_book));
 
-        bookdetailmoney = (TextView) containerView.findViewById(R.id.book_detail_money);
-        bookdetailcontact = (TextView) containerView.findViewById(R.id.book_detail_contact);
-        bookdetailnumtv = (TextView) containerView.findViewById(R.id.book_detail_num_tv);
-        bookdetailtimetv = (TextView) containerView.findViewById(R.id.book_detail_time_tv);
-        bookdetailgv = (ScrollGridView) containerView.findViewById(R.id.book_detail_gv);
-        subBtn = (Button) containerView.findViewById(R.id.confirm_sub_btn);
-
+        bookdetailmoney = (TextView) findViewById(R.id.book_detail_money);
+        bookdetailcontact = (TextView) findViewById(R.id.book_detail_contact);
+        bookdetailphone = (TextView) findViewById(R.id.book_detail_phone);
+        bookdetailphonetr = (TableRow) findViewById(R.id.book_detail_phone_tr);
+        bookdetailnumtv = (TextView) findViewById(R.id.book_detail_num_tv);
+        bookdetailnumtr = (TableRow) findViewById(R.id.book_detail_num_tr);
+        bookdetailtimetitle = (TextView) findViewById(R.id.book_detail_time_title);
+        bookdetailtimetv = (TextView) findViewById(R.id.book_detail_time_tv);
+        bookdetailothertv = (TextView) findViewById(R.id.book_detail_other_tv);
+        bookdetailgv = (ScrollGridView) findViewById(R.id.book_detail_gv);
+        subBtn = (Button) findViewById(R.id.confirm_sub_btn);
 
         if (orderBean != null) {
             bookdetailmoney.setText(String.valueOf(orderBean.getPrice()));
@@ -77,7 +90,6 @@ public class ConfirmBookActivity extends BaseActivity {
             confirmAdapter = new ComfirmBookAdapter(getApplicationContext(), orderBean.getProducts());
             bookdetailgv.setAdapter(confirmAdapter);
         }
-
 
         subBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,7 +133,13 @@ public class ConfirmBookActivity extends BaseActivity {
 
             @Override
             public void onSuccess(Integer data) {
+
+                ShoppingCart.newInstance().clearCart(); //清空菜单。
+
                 ContextUtil.toast(getApplicationContext(), "下单成功，订单号为：" + data);
+                Intent intent = new Intent(ConfirmBookActivity.this, MyBookActivity.class);
+                transNextPage(intent, true);
+                ConfirmBookActivity.this.finish();
             }
         });
 

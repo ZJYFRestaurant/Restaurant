@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.jch.lib.util.TextUtil;
 import com.jch.lib.util.VaildUtil;
@@ -25,7 +26,7 @@ public class ToBringFragment extends BookBaseFragment {
     private NumberView bookphonenum;
     private EditText bookphoneet;
     private NumberView booktimenum;
-    private EditText booktimeet;
+    private TextView booktimeet;
     private NumberView bookothernum;
     private EditText bookotheret;
     private Button booksubmitbtn;
@@ -74,19 +75,19 @@ public class ToBringFragment extends BookBaseFragment {
         bookphonenum = (NumberView) containerView.findViewById(R.id.book_phone_num);
         bookphoneet = (EditText) containerView.findViewById(R.id.book_phone_et);
         booktimenum = (NumberView) containerView.findViewById(R.id.book_time_num);
-        booktimeet = (EditText) containerView.findViewById(R.id.book_time_et);
+        booktimeet = (TextView) containerView.findViewById(R.id.book_time_et);
         bookothernum = (NumberView) containerView.findViewById(R.id.book_other_num);
         bookotheret = (EditText) containerView.findViewById(R.id.book_other_et);
         booksubmitbtn = (Button) containerView.findViewById(R.id.book_submit_btn);
 
         setInputFocusChange(bookcontactnum, bookcontactet);
         setInputFocusChange(bookphonenum, bookphoneet);
-        setInputFocusChange(booktimenum, booktimeet);
         setInputFocusChange(bookothernum, bookotheret);
 
         booktimeet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                booktimeet.setTag(booktimenum);
                 selectTime(booktimeet);
             }
         });
@@ -122,6 +123,9 @@ public class ToBringFragment extends BookBaseFragment {
         String contactStr = bookcontactet.getText().toString().trim();     //联系人。
         if (TextUtil.stringIsNull(contactStr)) {
             checkResult = getResources().getString(R.string.add_name_warning);
+            return checkResult;
+        } else if (contactStr.length() < 2) {
+            checkResult = getResources().getString(R.string.name_length_warning);
             return checkResult;
         } else {
             orderBean.setContact(contactStr);

@@ -17,6 +17,7 @@ import com.promo.zjyfrestaurant.impl.ShowMenuRequset;
 import com.promo.zjyfrestaurant.impl.ZJYFRequestParmater;
 import com.promo.zjyfrestaurant.util.ContextUtil;
 import com.promo.zjyfrestaurant.util.LogCat;
+import com.promo.zjyfrestaurant.util.ZJYFDialog;
 
 import java.util.ArrayList;
 
@@ -147,8 +148,23 @@ public class AddressActivity extends BaseActivity implements View.OnClickListene
     }
 
     @Override
-    public void delAddr(int pointion) {
-        delAddr(addresses.get(pointion));
+    public void delAddr(final int pointion) {
+
+        ZJYFDialog.Builder builder = ZJYFDialog.Builder.zJYFDialog(AddressActivity.this);
+        builder.setTitle(R.string.dialog_promot)
+                .setContentMsg(R.string.delete_addr_confirm)
+                .setPositiveBtn(R.string.ok, new ZJYFDialog.ZJYFOnclickListener() {
+                    @Override
+                    public void onclick() {
+                        delAddr(addresses.get(pointion));
+                    }
+                }).setNectiveBtn(R.string.cancel, new ZJYFDialog.ZJYFOnclickListener() {
+            @Override
+            public void onclick() {
+
+            }
+        }).show();
+
     }
 
     /**

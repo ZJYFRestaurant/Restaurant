@@ -5,9 +5,10 @@
     android:layout_height="match_parent">
 
     <ImageView
+        android:id="@+id/feedback_img"
         android:layout_width="match_parent"
-        android:scaleType="fitCenter"
-        android:layout_margin="15dp"
+        android:scaleType="centerCrop"
+        android:layout_margin="@dimen/feed_back_img_margin"
         android:src="@drawable/feedback_banner"
         android:layout_height="wrap_content" />
 
@@ -21,12 +22,5 @@
         android:hint="@string/feedback_hint"
         style="@style/edit_white_style" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_gravity="center"
-        android:id="@+id/feedback_smt_btn"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/submit_fb_sel"
-        android:layout_height="wrap_content" />
 
 </LinearLayout>

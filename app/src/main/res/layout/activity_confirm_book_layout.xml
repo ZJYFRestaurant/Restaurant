@@ -30,6 +30,7 @@
                 android:layout_height="wrap_content" />
 
             <TableLayout
+                android:stretchColumns="5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -41,9 +42,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                    <LinearLayout style="@style/book_detail_all_colume">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -70,16 +69,33 @@
 
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        style="@style/font_gray2_14"
                         android:id="@+id/book_detail_contact"
                         android:text="刘女士"
-                        android:layout_height="wrap_content" />
+                        style="@style/book_detail_all_colume" />
 
 
                 </TableRow>
 
-                <TableRow style="@style/book_detail_tr_style">
+                <TableRow style="@style/book_detail_tr_style"
+                    android:id="@+id/book_detail_phone_tr">
+
+                    <TextView
+                        style="@style/font_gray2_14"
+                        android:text="@string/book_phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+
+                    <TextView
+                        style="@style/book_detail_all_colume"
+                        android:id="@+id/book_detail_phone" />
+
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/book_detail_num_tr"
+                    style="@style/book_detail_tr_style">
 
                     <TextView
                         style="@style/font_gray2_14"
@@ -89,10 +105,8 @@
 
 
                     <TextView
-                        style="@style/font_gray2_14"
-                        android:id="@+id/book_detail_num_tv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        style="@style/book_detail_all_colume"
+                        android:id="@+id/book_detail_num_tv" />
 
 
                 </TableRow>
@@ -100,6 +114,7 @@
                 <TableRow style="@style/book_detail_tr_style">
 
                     <TextView
+                        android:id="@+id/book_detail_time_title"
                         style="@style/font_gray2_14"
                         android:text="@string/book_detail_time"
                         android:layout_width="wrap_content"
@@ -107,8 +122,18 @@
 
 
                     <TextView
-                        style="@style/font_gray2_14"
-                        android:id="@+id/book_detail_time_tv"
+                        style="@style/book_detail_all_colume"
+                        android:id="@+id/book_detail_time_tv" />
+
+                </TableRow>
+
+                <TableRow style="@style/book_detail_tr_style">
+
+                    <TextView
+                        style="@style/book_detail_all_colume"
+                        android:layout_span="2"
+                        android:text="@string/book_detail_other"
+                        android:id="@+id/book_detail_other_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 

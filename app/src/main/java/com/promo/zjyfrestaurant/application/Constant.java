@@ -39,4 +39,6 @@ public class Constant {
     public static final Point RECM_IMG_POINT = new Point(600, 288);
 
     public static final Point GUID_IMG_POINT = new Point(1000, 1280);
+
+    public static final Point FEED_BACK_IMG = new Point(608, 124);
 }
