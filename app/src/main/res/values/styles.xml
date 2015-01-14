@@ -74,6 +74,7 @@
     </style>
 
     <style name="my_book_item_img_style">
+        <item name="android:scaleType">centerCrop</item>
         <item name="android:layout_width">145dp</item>
         <item name="android:layout_height">80dp</item>
         <item name="android:background">@drawable/book_item_img_shape</item>
@@ -112,6 +113,10 @@
 
     <style name="cmmon_pad_white_item" parent="common_white_item">
         <item name="android:padding">10dp</item>
+    </style>
+
+    <style name="cmmon_pad_2_white_item" parent="common_white_item">
+        <item name="android:padding">2dp</item>
     </style>
 
     <style name="comnon_pad_3_white_item" parent="common_white_item">
@@ -259,6 +264,13 @@
     <style name="menu_item_img_size">
         <item name="android:layout_height">80dp</item>
         <item name="android:layout_width">80dp</item>
+    </style>
+
+    <style name="no_msg_img_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_marginRight">50dp</item>
     </style>
 
 </resources>

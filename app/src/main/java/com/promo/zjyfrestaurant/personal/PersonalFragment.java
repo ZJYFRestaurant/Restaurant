@@ -15,7 +15,6 @@ import android.widget.TextView;
 import com.promo.zjyfrestaurant.BaseFragment;
 import com.promo.zjyfrestaurant.R;
 import com.promo.zjyfrestaurant.application.HttpConstant;
-import com.promo.zjyfrestaurant.personal.login.LoginActivity;
 import com.promo.zjyfrestaurant.util.VersionManager;
 
 /**
@@ -197,12 +196,5 @@ public class PersonalFragment extends BaseFragment implements View.OnClickListen
         VersionManager.requestVersionCode(getActivity().getApplicationContext());
     }
 
-    /**
-     *
-     */
-    private void login() {
-        Intent intent = new Intent(getActivity(), LoginActivity.class);
-        transNextPage(intent);
-    }
 
 }

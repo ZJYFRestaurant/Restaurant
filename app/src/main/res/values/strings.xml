@@ -92,6 +92,7 @@
     <string name="book_detail_num">就餐人数：</string>
     <string name="book_detail_time">就餐时间：</string>
     <string name="send_time">送达时间</string>
+    <string name="send_time_">送达时间：</string>
     <string name="book_detail_prompt">温馨提示：为了您的方便请在预定时间到达就餐，若超过10分钟未到达，我们将另行安排。</string>
     <string name="submit_order">提交订单</string>
     <string name="menu_detail">菜品详情</string>
@@ -113,6 +114,9 @@
     <string name="home_http">http://</string>
     <string name="before_now_warn">所选时间已过期</string>
     <string name="dialog_promot">渔府提示：</string>
+    <string name="get_dish_time">取餐时间：</string>
+    <string name="send_addr">送达地址：</string>
+    <string name="share_addr">http://fish.ebingoo.com/</string>
     <string name="delete_addr_confirm">亲，你确定要删除这条地址信息吗?</string>
 
 </resources>

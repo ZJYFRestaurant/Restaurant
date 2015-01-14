@@ -1,20 +1,44 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:background="@color/bg_gray"
     android:layout_height="match_parent"
     tools:context="com.promo.zjyfrestaurant.personal.MyBookActivity">
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/mybook_no_msg_ll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5" />
+
+        <ImageView
+            style="@style/no_msg_img_style"
+            android:scaleType="centerCrop"
+            android:src="@drawable/no_book_img" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3" />
+
+    </LinearLayout>
 
     <ExpandableListView
         android:id="@+id/mybook_elist"
         android:layout_width="match_parent"
         android:dividerHeight="5dp"
         android:groupIndicator="@null"
+        android:childDivider="@android:color/transparent"
         android:listSelector="@android:color/transparent"
         android:paddingLeft="@dimen/home_item_pad"
         android:paddingRight="@dimen/home_item_pad"
         android:divider="@android:color/transparent"
         android:layout_height="wrap_content"></ExpandableListView>
 
-</RelativeLayout>
+
+</FrameLayout>

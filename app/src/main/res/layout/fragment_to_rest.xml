@@ -26,7 +26,7 @@
                     app:num_tv_cur_bg="@drawable/num_green_shape"
                     app:num_tv_text="1"
                     app:num_tv_text_color="@color/white"
-                    app:num_tv_text_size="7sp"
+                    app:num_tv_text_size="15sp"
                     app:num_tv_text_cur_color="@color/white" />
 
                 <EditText
@@ -52,7 +52,7 @@
                     app:num_tv_cur_bg="@drawable/num_green_shape"
                     app:num_tv_text="2"
                     app:num_tv_text_color="@color/white"
-                    app:num_tv_text_size="7sp"
+                    app:num_tv_text_size="15sp"
                     app:num_tv_text_cur_color="@color/white" />
 
                 <EditText
@@ -76,7 +76,7 @@
                     app:num_tv_cur_bg="@drawable/num_green_shape"
                     app:num_tv_text="1"
                     app:num_tv_text_color="@color/white"
-                    app:num_tv_text_size="7sp"
+                    app:num_tv_text_size="15sp"
                     app:num_tv_text_cur_color="@color/white" />
 
                 <RelativeLayout
@@ -129,7 +129,7 @@
                     app:num_tv_cur_bg="@drawable/num_green_shape"
                     app:num_tv_text="2"
                     app:num_tv_text_color="@color/white"
-                    app:num_tv_text_size="7sp"
+                    app:num_tv_text_size="15sp"
                     app:num_tv_text_cur_color="@color/white" />
 
                 <TextView
@@ -152,7 +152,7 @@
                     app:num_tv_cur_bg="@drawable/num_green_shape"
                     app:num_tv_text="3"
                     app:num_tv_text_color="@color/white"
-                    app:num_tv_text_size="7sp"
+                    app:num_tv_text_size="15sp"
                     app:num_tv_end="true"
                     app:num_tv_text_cur_color="@color/white" />
 

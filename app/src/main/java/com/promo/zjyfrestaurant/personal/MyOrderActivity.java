@@ -1,6 +1,7 @@
 package com.promo.zjyfrestaurant.personal;
 
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.promo.zjyfrestaurant.BaseActivity;
@@ -21,6 +22,7 @@ public class MyOrderActivity extends BaseActivity {
 
     private ListView myorderlv;
     private MyOderListViewAdapter adapter;
+    private LinearLayout noOrderLl;
 
     @Override
     protected View initContentView() {
@@ -39,13 +41,17 @@ public class MyOrderActivity extends BaseActivity {
             @Override
             public void onfailed(String msg) {
                 ContextUtil.toast(getApplication(), msg);
+                myorderlv.setVisibility(View.GONE);
             }
 
             @Override
             public void onSuccess(OrderTimeBean data) {
-                if (data != null) {
+                if (data != null && data.getTime() != null && data.getTime().size() != 0) {
                     data.parseData();
                     adapter.notifyDataSetChanged(data.getOrderDatas());
+                    noOrderLl.setVisibility(View.GONE);
+                } else {
+                    myorderlv.setVisibility(View.GONE);
                 }
             }
         });
@@ -56,8 +62,10 @@ public class MyOrderActivity extends BaseActivity {
         getData();
 
         myorderlv = (ListView) containerView.findViewById(R.id.myorder_lv);
+        noOrderLl = (LinearLayout) containerView.findViewById(R.id.myorder_no_msg_ll);
         adapter = new MyOderListViewAdapter(getApplicationContext());
         myorderlv.setAdapter(adapter);
     }
+
 
 }

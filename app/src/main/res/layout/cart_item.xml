@@ -31,7 +31,7 @@
             android:layout_alignParentRight="true"
             app:left_img="@drawable/reduce"
             app:right_img="@drawable/plus"
-            app:text_size="@dimen/font_12"
+            app:text_size="@dimen/font_22"
             app:text_color="@color/gray3"
             app:text="0"
             app:img_size="35dp"

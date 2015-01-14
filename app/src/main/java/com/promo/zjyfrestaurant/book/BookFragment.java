@@ -2,6 +2,7 @@ package com.promo.zjyfrestaurant.book;
 
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -107,7 +108,7 @@ public class BookFragment extends BaseFragment {
             return;
         }
 
-        ZJYFDialog.Builder.zJYFDialog(getActivity()).setTitle(getString(R.string.dilog_title)).setContentMsg(getString(R.string.no_dish_warn)).setPositiveBtn(R.string.dialog_go, new ZJYFDialog.ZJYFOnclickListener() {
+        ZJYFDialog.Builder builder = ZJYFDialog.Builder.zJYFDialog(getActivity()).setTitle(getString(R.string.dilog_title)).setContentMsg(getString(R.string.no_dish_warn)).setPositiveBtn(R.string.dialog_go, new ZJYFDialog.ZJYFOnclickListener() {
             @Override
             public void onclick() {
                 Intent intent = new Intent(getActivity(), MenuActivity.class);
@@ -118,7 +119,21 @@ public class BookFragment extends BaseFragment {
             public void onclick() {
                 bookpager.setCurrentItem(bookPagerAdapter.getCount() - 1);  //跳转到外卖
             }
-        }).build().show();
+        });
+        ZJYFDialog dialog = builder.build();
+        dialog.setOnCancelListener(new DialogCancel());
+        dialog.show();
+    }
+
+    /**
+     * dialog 隐藏监听。
+     */
+    private class DialogCancel implements DialogInterface.OnCancelListener {
+
+        @Override
+        public void onCancel(DialogInterface dialog) {
+            bookpager.setCurrentItem(bookPagerAdapter.getCount() - 1);  //跳转到外卖
+        }
     }
 
     @Override

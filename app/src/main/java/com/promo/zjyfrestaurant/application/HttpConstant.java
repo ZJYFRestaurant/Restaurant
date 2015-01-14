@@ -104,7 +104,11 @@ public class HttpConstant {
     /**
      * 关于我们
      */
-
     public static final String getBaseInfo = getRootUrl() + "getBaseInfo";
+
+    /**
+     * 订单详情。
+     */
+    public static final String getOrderDetail = getRootUrl() + "getOrderDetail";
 
 }

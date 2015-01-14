@@ -55,7 +55,7 @@ public class PrivilegeDetailActivity extends BaseActivity {
                 Intent intent = new Intent(Intent.ACTION_SEND); // 启动分享发送的属性
                 intent.setType("text/plain"); // 分享发送的数据类型
                 intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.share_subject)); // 分享的主题
-                intent.putExtra(Intent.EXTRA_TEXT, "优惠活动：" + detailbean.getCover()); // 分享的内容
+                intent.putExtra(Intent.EXTRA_TEXT, getResources().getString(R.string.share_addr)); // 分享的内容
                 startActivity(Intent.createChooser(intent, "选择分享"));
             }
         });

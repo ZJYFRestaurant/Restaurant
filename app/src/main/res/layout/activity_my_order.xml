@@ -5,6 +5,28 @@
     android:background="@color/bg_gray"
     tools:context="com.promo.zjyfrestaurant.personal.MyOrderActivity">
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/myorder_no_msg_ll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5" />
+
+        <ImageView
+            style="@style/no_msg_img_style"
+            android:scaleType="centerCrop"
+            android:src="@drawable/no_order_img" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3" />
+
+    </LinearLayout>
 
     <ListView
         android:layout_width="match_parent"

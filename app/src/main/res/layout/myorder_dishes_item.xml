@@ -6,6 +6,8 @@
     <com.jch.lib.view.ScrollGridView
         android:id="@+id/myorder_dishes_lv"
         android:numColumns="2"
-        style="@style/cmmon_pad_white_item"></com.jch.lib.view.ScrollGridView>
+        android:padding="2dp"
+        android:horizontalSpacing="@dimen/common_pad"
+        style="@style/common_white_item"></com.jch.lib.view.ScrollGridView>
 
 </FrameLayout>

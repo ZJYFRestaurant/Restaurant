@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.jch.lib.view.PagerScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/bg_gray"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        style="@style/common_marg_white_item"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:drawableLeft="@drawable/book_detail_icon"
+            android:drawablePadding="10dp"
+            android:layout_width="wrap_content"
+            style="@style/font_gray2_15"
+            android:gravity="center_vertical"
+            android:text="@string/book_detail"
+            android:layout_height="wrap_content" />
+
+        <TableLayout
+            android:stretchColumns="5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TableRow style="@style/book_detail_tr_style">
+
+                <TextView
+                    style="@style/font_gray2_14"
+                    android:text="@string/book_money"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout style="@style/book_detail_all_colume">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        style="@style/font_green3_18"
+                        android:id="@+id/book_detail_money"
+                        android:text="5516"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        style="@style/font_gray2_14"
+                        android:text="@string/yuan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </TableRow>
+
+            <TableRow style="@style/book_detail_tr_style">
+
+                <TextView
+                    style="@style/font_gray2_14"
+                    android:text="@string/book_contact"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+
+                <TextView
+                    android:id="@+id/book_detail_contact"
+                    android:text="刘女士"
+                    style="@style/book_detail_all_colume" />
+
+
+            </TableRow>
+
+            <TableRow
+                style="@style/book_detail_tr_style"
+                android:id="@+id/book_detail_phone_tr">
+
+                <TextView
+                    style="@style/font_gray2_14"
+                    android:text="@string/book_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+
+                <TextView
+                    style="@style/book_detail_all_colume"
+                    android:id="@+id/book_detail_phone" />
+
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/book_detail_num_tr"
+                style="@style/book_detail_tr_style">
+
+                <TextView
+                    style="@style/font_gray2_14"
+                    android:text="@string/book_detail_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+
+                <TextView
+                    style="@style/book_detail_all_colume"
+                    android:id="@+id/book_detail_num_tv" />
+
+
+            </TableRow>
+
+            <TableRow style="@style/book_detail_tr_style">
+
+                <TextView
+                    android:id="@+id/book_detail_time_title"
+                    style="@style/font_gray2_14"
+                    android:text="@string/book_detail_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+
+                <TextView
+                    style="@style/book_detail_all_colume"
+                    android:id="@+id/book_detail_time_tv" />
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/book_detail_addr_tr"
+                style="@style/book_detail_tr_style">
+
+                <TextView
+                    android:id="@+id/book_detail_addr_title"
+                    style="@style/font_gray2_14"
+                    android:text="@string/send_addr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+
+                <TextView
+                    style="@style/book_detail_all_colume"
+                    android:id="@+id/book_detail_send_addr_tv" />
+
+            </TableRow>
+
+            <TableRow style="@style/book_detail_tr_style">
+
+                <TextView
+                    style="@style/book_detail_all_colume"
+                    android:layout_span="2"
+                    android:text="@string/book_detail_other"
+                    android:id="@+id/book_detail_other_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </TableRow>
+        </TableLayout>
+
+        <TextView
+            android:drawableLeft="@drawable/book_detail_seled"
+            android:drawablePadding="10dp"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="20dp"
+            style="@style/font_gray2_15"
+            android:gravity="center_vertical"
+            android:text="@string/book_seled"
+            android:layout_height="wrap_content" />
+
+        <com.jch.lib.view.ScrollGridView
+            android:id="@+id/book_detail_gv"
+            android:layout_marginTop="@dimen/book_detail_between_line"
+            android:layout_width="match_parent"
+            android:numColumns="auto_fit"
+            android:layout_height="wrap_content"></com.jch.lib.view.ScrollGridView>
+    </LinearLayout>
+
+
+</com.jch.lib.view.PagerScrollView>

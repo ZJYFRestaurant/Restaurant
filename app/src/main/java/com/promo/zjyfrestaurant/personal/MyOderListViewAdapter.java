@@ -97,7 +97,6 @@ public class MyOderListViewAdapter extends BaseAdapter {
         if (type == 0) {
             titleHolder.titlTv.setText(titleTime);
         } else {
-
             MyOrderGridViewAdapter adapter = new MyOrderGridViewAdapter(mContext, timeOrderBeans);      //向gradveiw中添加数据。
             containerViewHolder.listView.setAdapter(adapter);
             containerViewHolder.listView.setOnItemClickListener(new ListOICSN(timeOrderBeans));

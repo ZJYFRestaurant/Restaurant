@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.promo.zjyfrestaurant.BaseActivity;
@@ -38,6 +39,7 @@ public class AddressActivity extends BaseActivity implements View.OnClickListene
     private ListView addrlv;
     private AddressAdapter adapter;
     private ArrayList<AddressBean> addresses = new ArrayList<>();
+    private LinearLayout noAddrLl;
 
     @Override
     protected View initContentView() {
@@ -58,13 +60,19 @@ public class AddressActivity extends BaseActivity implements View.OnClickListene
             @Override
             public void onfailed(String msg) {
                 ContextUtil.toast(AddressActivity.this, msg);
+                addrlv.setVisibility(View.GONE);
             }
 
             @Override
             public void onSuccess(ArrayList<AddressBean> data) {
-                addresses.clear();
-                addresses.addAll(data);
-                adapter.notifyDataSetChanged(data);
+                if (data != null && data.size() != 0) {
+                    noAddrLl.setVisibility(View.GONE);
+                    addresses.clear();
+                    addresses.addAll(data);
+                    adapter.notifyDataSetChanged(data);
+                } else {
+                    addrlv.setVisibility(View.GONE);
+                }
             }
         });
 
@@ -77,6 +85,7 @@ public class AddressActivity extends BaseActivity implements View.OnClickListene
         itemType = getIntent().getIntExtra(ITEM_PRESS_KEY, MODIFY_ITEM);
 
         addrlv = (ListView) containerView.findViewById(R.id.addr_lv);
+        noAddrLl = (LinearLayout) containerView.findViewById(R.id.addr_no_msg_ll);
         adapter = new AddressAdapter(getApplicationContext());
         adapter.setDelAddrCallBack(this);
         addrlv.setAdapter(adapter);
@@ -124,6 +133,7 @@ public class AddressActivity extends BaseActivity implements View.OnClickListene
                 if (requestCode == ADDCODE) {
                     AddressBean addressBean = data.getParcelableExtra(ADDINFO_KEY);
                     addresses.add(addressBean);
+                    hasData();
                     adapter.notifyDataSetChanged(addresses);
                 } else if (requestCode == MODCODE) {        //获取修改结果。
                     AddressBean address = data.getParcelableExtra(ModifyAddrActivity.MODIFY_ADDR_KEY);
@@ -186,9 +196,22 @@ public class AddressActivity extends BaseActivity implements View.OnClickListene
             public void onSuccess(String data) {
                 ContextUtil.toast(getApplicationContext(), data);
                 addresses.remove(address);
+                if (addresses.size() == 0) {
+                    noData();
+                }
                 adapter.notifyDataSetChanged(addresses);
             }
         });
+    }
+
+    private void hasData() {
+        noAddrLl.setVisibility(View.GONE);
+        addrlv.setVisibility(View.VISIBLE);
+    }
+
+    private void noData() {
+        noAddrLl.setVisibility(View.VISIBLE);
+        addrlv.setVisibility(View.GONE);
     }
 
     @Override

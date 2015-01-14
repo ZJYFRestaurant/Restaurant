@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:padding="@dimen/home_item_pad"
     android:layout_width="match_parent"
     android:gravity="center_horizontal"
     android:layout_height="wrap_content">
 
-    <ImageView
+    <com.jch.lib.view.CircleImageView
+        app:roundWidth="@dimen/img_round_coner"
+        app:roundHeight="@dimen/img_round_coner"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:background="@drawable/white_shape"

@@ -128,7 +128,7 @@ public class MenuDetailActivity extends BaseActivity implements View.OnClickList
     public void onClick(View v) {
         if (v.getId() == R.id.share_imgBtn) {
             menudetailimg.setDrawingCacheEnabled(true);
-            Intent shareIntent = FileUtil.share(proDetailBean.getCover(), proDetailBean.getDescription(), null);
+            Intent shareIntent = FileUtil.share(proDetailBean.getCover(), getResources().getString(R.string.share_addr), null);
             startActivity(Intent.createChooser(shareIntent, "选择分享"));
         }
 

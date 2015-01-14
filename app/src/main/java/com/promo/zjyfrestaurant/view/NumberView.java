@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -68,6 +69,9 @@ public class NumberView extends LinearLayout {
         mTvColor = DEF_TVCOLOR;
         mTvCurColor = DEF_TVCOLOR;
 
+        DisplayMetrics dm = getResources().getDisplayMetrics();
+        float scaledDensity = dm.scaledDensity;
+
         // Load attributes
         final TypedArray a = getContext().obtainStyledAttributes(
                 attrs, R.styleable.NumberView, defStyle, 0);
@@ -102,7 +106,7 @@ public class NumberView extends LinearLayout {
                     break;
                 }
                 case R.styleable.NumberView_num_tv_text_size: {
-                    mTvSize = a.getDimension(attr, DEF_TVSIZE);
+                    mTvSize = a.getDimension(attr, DEF_TVSIZE) / scaledDensity;
                     break;
                 }
 
@@ -141,10 +145,10 @@ public class NumberView extends LinearLayout {
         numTv = (TextView) mContentView.findViewById(R.id.num_tv);
         numTv.setTextSize(mTvSize);
 
-        initdata();
+        initData();
     }
 
-    private void initdata() {
+    private void initData() {
         if (mEnd) {
             mBtmLine.setVisibility(INVISIBLE);
         }
@@ -172,12 +176,12 @@ public class NumberView extends LinearLayout {
         if (num != null) {
             numTv.setText(num);
         }
-        initdata();
+        initData();
     }
 
     public void setChecked(boolean checked) {
         curflag = checked;
-        initdata();
+        initData();
     }
 
 

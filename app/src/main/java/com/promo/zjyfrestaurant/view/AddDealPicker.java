@@ -138,6 +138,7 @@ public class AddDealPicker extends LinearLayout implements View.OnClickListener 
         textColor = TEXT_COLOR;
         imgSize = IMG_SIZE;
 
+        float scaleDensity = getResources().getDisplayMetrics().scaledDensity;
 
         // Load attributes
         final TypedArray a = getContext().obtainStyledAttributes(
@@ -165,6 +166,7 @@ public class AddDealPicker extends LinearLayout implements View.OnClickListener 
                 case R.styleable.AddDealPicker_drawable_padding: {
 
                     between_pad = a.getDimension(attr, BETWEEN_PAD);
+                    break;
                 }
                 case R.styleable.AddDealPicker_text: {
                     text = a.getString(attr);
@@ -178,7 +180,7 @@ public class AddDealPicker extends LinearLayout implements View.OnClickListener 
 
                 case R.styleable.AddDealPicker_text_size: {
 
-                    textSize = a.getDimensionPixelSize(attr, (int) textSize);
+                    textSize = a.getDimensionPixelSize(attr, (int) textSize) / scaleDensity;
                     break;
                 }
 
