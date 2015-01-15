@@ -3,7 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout style="@style/book_content_style">
+    <LinearLayout
+        style="@style/book_content_style"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
 
         <TableLayout style="@style/book_tb_style">
 
@@ -92,7 +95,7 @@
                 <TextView
                     android:id="@+id/book_time_et"
                     android:drawableLeft="@drawable/book_time"
-                    android:hint="@string/book_detail_time"
+                    android:hint="@string/book_go_time"
                     style="@style/input_edit_style" />
 
             </TableRow>

@@ -21,7 +21,6 @@ import com.promo.zjyfrestaurant.view.NumberView;
  */
 public class SendFragment extends BookBaseFragment {
 
-
     private NumberView bookcontactnum;
     private EditText bookcontactet;
     private NumberView bookphonenum;
@@ -71,6 +70,7 @@ public class SendFragment extends BookBaseFragment {
     @Override
     public void onResume() {
         super.onResume();
+        clearAllText();
     }
 
     private void initialize(View containerView) {
@@ -89,7 +89,6 @@ public class SendFragment extends BookBaseFragment {
         setInputFocusChange(bookphonenum, bookphoneet);
         setInputFocusChange(booknumnum, booknumet);
         setInputFocusChange(bookothernum, bookotheret);
-
 
         booktimeet.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,6 +113,17 @@ public class SendFragment extends BookBaseFragment {
         });
     }
 
+    private void clearAllText() {
+        clearText(bookcontactet);
+        clearText(bookphoneet);
+        clearText(booknumet);
+        clearText(booktimeet);
+        clearText(bookotheret);
+    }
+
+    private void clearText(TextView textView) {
+        textView.setText("");
+    }
 
     /**
      * 检测输入。
@@ -169,4 +179,6 @@ public class SendFragment extends BookBaseFragment {
 
         return checkResult;
     }
+
+
 }

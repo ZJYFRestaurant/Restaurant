@@ -41,7 +41,7 @@ public class MienActivity extends BaseActivity {
         PageWidget pageWidget = new PageWidget(getApplicationContext());
         Point screenSize = new Point();
         DisplayUtil.getSize(getWindowManager().getDefaultDisplay(), screenSize);
-        pageWidget.setScreen(screenSize.x, screenSize.y, BitmapFactory.decodeResource(getResources(), R.drawable.loading));
+        pageWidget.setScreen(screenSize.x, (int) (screenSize.y - getResources().getDimension(R.dimen.title_height)), BitmapFactory.decodeResource(getResources(), R.drawable.loading));
         initView(pageWidget);
 
         return pageWidget;
@@ -94,7 +94,7 @@ public class MienActivity extends BaseActivity {
 
                 @Override
                 public void onLoadingComplete(String s, View view, Bitmap bitmap) {
-                    callback.onLoadStart(bitmap);
+                    callback.onLoadComplited(bitmap);
                 }
 
                 @Override

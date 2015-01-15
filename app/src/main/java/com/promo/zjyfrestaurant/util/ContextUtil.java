@@ -25,9 +25,9 @@ public class ContextUtil {
 
         DisplayImageOptions squareImageOptions = new DisplayImageOptions.Builder()
                 .imageScaleType(ImageScaleType.IN_SAMPLE_INT)
-                .showImageForEmptyUri(R.drawable.loading_waite)
-                .showImageOnLoading(R.drawable.loading_waite)
-                .showImageOnFail(R.drawable.img_square_failed)
+                .showImageForEmptyUri(R.drawable.square_load_failed)
+                .showImageOnLoading(R.drawable.square_loading)
+                .showImageOnFail(R.drawable.square_load_failed)
                 .cacheInMemory(true).cacheOnDisc(true).build();
         return squareImageOptions;
     }
@@ -41,9 +41,9 @@ public class ContextUtil {
 
         DisplayImageOptions ractangleImgOptions = new DisplayImageOptions.Builder()
                 .imageScaleType(ImageScaleType.IN_SAMPLE_INT)
-                .showImageForEmptyUri(R.drawable.loading_big_waite)
-                .showImageOnLoading(R.drawable.loading_big_waite)
-                .showImageOnFail(R.drawable.img_big_failed)
+                .showImageForEmptyUri(R.drawable.ract_load_failed)
+                .showImageOnLoading(R.drawable.ract_loading)
+                .showImageOnFail(R.drawable.ract_load_failed)
                 .cacheInMemory(true).cacheOnDisc(true).build();
 
         return ractangleImgOptions;
@@ -52,9 +52,9 @@ public class ContextUtil {
     public static DisplayImageOptions getCircleImgOptions() {
         DisplayImageOptions circleImgOptions = new DisplayImageOptions.Builder()
                 .imageScaleType(ImageScaleType.IN_SAMPLE_INT)
-                .showImageForEmptyUri(R.drawable.circle_loading)
-                .showImageOnLoading(R.drawable.circle_loading)
-                .showImageOnFail(R.drawable.circle_loading)
+                .showImageForEmptyUri(R.drawable.square_load_failed)
+                .showImageOnLoading(R.drawable.square_loading)
+                .showImageOnFail(R.drawable.square_load_failed)
                 .cacheInMemory(true).cacheOnDisc(true).build();
 
         return circleImgOptions;

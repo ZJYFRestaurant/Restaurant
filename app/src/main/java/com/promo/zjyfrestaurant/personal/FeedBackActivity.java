@@ -48,7 +48,7 @@ public class FeedBackActivity extends BaseActivity {
 
             @Override
             public void onSuccess(String data) {
-                ContextUtil.toast(getApplicationContext(), data);
+                ContextUtil.toast(getApplicationContext(), getResources().getString(R.string.feedback_success));
             }
         });
 

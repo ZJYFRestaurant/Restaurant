@@ -3,6 +3,7 @@ package com.promo.zjyfrestaurant.book.subFragment;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -37,6 +38,7 @@ public class BookBaseFragment extends Fragment implements View.OnFocusChangeList
      * 用map保持editText和numberView一一对应的关系。
      */
     private Hashtable<EditText, NumberView> inputMap = new Hashtable<>();
+
     /**
      * 全局时间。 *
      */
@@ -88,6 +90,25 @@ public class BookBaseFragment extends Fragment implements View.OnFocusChangeList
         et.setOnFocusChangeListener(this);
     }
 
+    protected void setInputText(NumberView numberView, View view, String str) {
+
+        if (str != null && !str.equals("")) {
+            numberView.setChecked(true);
+            if (view instanceof EditText) {
+                EditText ev = (EditText) view;
+                ev.setText(str);
+                DisplayUtil.setBackground(ev, getResources().getDrawable(R.drawable.book_enter_focused));
+                ev.setPadding((int) getResources().getDimension(R.dimen.book_draw_pad_left), 0, 0, 0);
+            } else if (view instanceof TextView) {
+                TextView tv = (TextView) view;
+                tv.setText(str);
+                DisplayUtil.setBackground(tv, getResources().getDrawable(R.drawable.book_enter_focused));
+                tv.setPadding((int) getResources().getDimension(R.dimen.book_draw_pad_left), 0, 0, 0);
+            }
+
+        }
+    }
+
     /**
      * 提交预约。
      */
@@ -108,11 +129,12 @@ public class BookBaseFragment extends Fragment implements View.OnFocusChangeList
         NumberView numberView = (NumberView) timeTv.getTag();
         DisplayUtil.setBackground(timeTv, getResources().getDrawable(R.drawable.book_enter_focused));
         numberView.setChecked(true);
-        DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), listener, calendar.get(Calendar.YEAR),
+        DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), android.support.v7.appcompat.R.style.Base_V7_Theme_AppCompat_Dialog, listener, calendar.get(Calendar.YEAR),
                 calendar.get(Calendar.MONTH),
                 calendar.get(Calendar.DAY_OF_MONTH));
         datePickerDialog.setCanceledOnTouchOutside(false);
         datePickerDialog.show();
+        datePickerDialog.setOnDismissListener(new DataDismissOCL());
     }
 
     private DatePickerDialog.OnDateSetListener listener = //用于检测日期设定器的变化
@@ -123,10 +145,6 @@ public class BookBaseFragment extends Fragment implements View.OnFocusChangeList
                     calendar.set(Calendar.YEAR, arg1);//重置年份
                     calendar.set(Calendar.MONTH, arg2);//重置月份
                     calendar.set(Calendar.DAY_OF_MONTH, arg3);//重置日期
-                    if (!dataFlag)
-                        update(DATE);//调用更新日期显示
-                    dataFlag = !dataFlag;
-
                 }
 
             };
@@ -137,26 +155,34 @@ public class BookBaseFragment extends Fragment implements View.OnFocusChangeList
                 public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                     // TODO Auto-generated method stub
                     calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);//设置小时
-                    calendar.set(Calendar.MINUTE, minute);//调用分钟
-                    if (!timeFalg)
-                        update(TIME);//调用更新时间显示
-                    timeFalg = !timeFalg;
+                    calendar.set(Calendar.MINUTE, minute); //调用分钟
                 }
             };
+
+    private class DataDismissOCL implements DialogInterface.OnDismissListener {
+
+        @Override
+        public void onDismiss(DialogInterface dialog) {
+            showTimePick();
+        }
+    }
+
+    private class TimeDismissOCL implements DialogInterface.OnDismissListener {
+
+        @Override
+        public void onDismiss(DialogInterface dialog) {
+            update(TIME);//调用更新时间显示
+        }
+    }
 
     private void update(int dt) {//case一下是改变日期还是时间
         switch (dt) {
             case DATE:
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy年MM月dd日"); //创建日期格式
-                String dataStr = simpleDateFormat.format(calendar.getTime());//按照最新的calendar更新日期显示
-                if (timeSb.length() > 0) {
+            case TIME:
+                if (timeSb.length() > 0) {      //清空str
                     timeSb.delete(0, timeSb.length());
                 }
-                timeSb.append(dataStr);
-                showTimePick();
-                break;
-            case TIME:
-                SimpleDateFormat simpleTimeFormat = new SimpleDateFormat("HH:mm");//创建时间格式
+                SimpleDateFormat simpleTimeFormat = new SimpleDateFormat("yyyy年MM月dd日 HH:mm");//创建时间格式
                 String timeStr = simpleTimeFormat.format(calendar.getTime());//按照最新的calendar更新时间显示
                 timeSb.append(" ").append(timeStr);
                 if (isBeforeNow(timeSb.toString())) {
@@ -165,8 +191,9 @@ public class BookBaseFragment extends Fragment implements View.OnFocusChangeList
                     DisplayUtil.setBackground(timeEt, getResources().getDrawable(R.drawable.book_enter));
                     NumberView numberView = (NumberView) timeEt.getTag();
                     numberView.setChecked(false);
-                } else
+                } else {
                     timeEt.setText(timeSb.toString());
+                }
                 timeEt.setPadding((int) getResources().getDimension(R.dimen.book_draw_pad_left), 0, 0, 0);
                 break;
             default:
@@ -179,6 +206,7 @@ public class BookBaseFragment extends Fragment implements View.OnFocusChangeList
                 Calendar.HOUR_OF_DAY, Calendar.MINUTE, true);//调用对话框的TimerPicker
         timePickerDialog.setCanceledOnTouchOutside(false);
         timePickerDialog.show();
+        timePickerDialog.setOnDismissListener(new TimeDismissOCL());
     }
 
     /**

@@ -51,6 +51,11 @@
         <item name="android:textColor">@color/tab_green</item>
     </style>
 
+    <style name="font_greent_gray_15">
+        <item name="android:textSize">@dimen/font_15</item>
+        <item name="android:textColor">@color/gray_green</item>
+    </style>
+
     <style name="font_greent_18">
         <item name="android:textSize">@dimen/font_18</item>
         <item name="android:textColor">@color/tab_green</item>

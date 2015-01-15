@@ -24,6 +24,7 @@
 
             <LinearLayout
                 android:layout_width="0dp"
+                android:paddingLeft="10dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="4">
 
@@ -117,6 +118,32 @@
             </RelativeLayout>
         </LinearLayout>
     </RelativeLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/cart_no_dish_ll"
+        android:layout_alignParentTop="true"
+        android:layout_width="match_parent"
+        android:layout_above="@id/cart_btmbar"
+        android:layout_height="match_parent">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5" />
+
+        <ImageView
+            style="@style/no_msg_img_style"
+            android:scaleType="centerCrop"
+            android:src="@drawable/cart_no_dish" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3" />
+
+    </LinearLayout>
+
 
     <ListView
         android:id="@+id/cart_lv"

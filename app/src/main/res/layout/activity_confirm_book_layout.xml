@@ -82,7 +82,7 @@
 
                     <TextView
                         style="@style/font_gray2_14"
-                        android:text="@string/book_phone"
+                        android:text="@string/book_detail_phone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 

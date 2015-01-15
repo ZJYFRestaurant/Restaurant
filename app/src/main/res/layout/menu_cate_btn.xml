@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:background="@drawable/menu_btn_sel"
     android:button="@null"
-    android:gravity="center"
+    android:gravity="center_vertical|left"
+    android:paddingLeft="@dimen/common_pad"
     android:textSize="@dimen/font_15"
     android:textColor="@drawable/menu_check_font_sel"
     android:layout_height="@dimen/title_height">

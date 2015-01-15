@@ -52,6 +52,14 @@ public class MenuDetailActivity extends BaseActivity implements View.OnClickList
         return containerView;
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (proDetailBean != null)
+            initData();
+
+    }
+
     public void initView(View containerView) {
 
         setTitle(getResources().getString(R.string.menu_detail));

@@ -29,7 +29,6 @@ public class MyBookActivity extends BaseActivity implements ExpandableListView.O
     private MyBooksBean myBooksBean;
     private LinearLayout noDataLl;
 
-
     @Override
 
     protected View initContentView() {

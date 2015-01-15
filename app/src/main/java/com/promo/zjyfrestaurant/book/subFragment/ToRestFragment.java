@@ -82,14 +82,13 @@ public class ToRestFragment extends BookBaseFragment implements View.OnClickList
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         containerView = inflater.inflate(R.layout.fragment_to_rest, container, false);
-
+        initialize(containerView);
         return containerView;
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        initialize(containerView);
     }
 
     /**
@@ -126,6 +125,10 @@ public class ToRestFragment extends BookBaseFragment implements View.OnClickList
 //        setInputFocusChange(bookaddrnum, booaddrrl);
         setInputFocusChange(bookcontactnum, bookcontactet);
         setInputFocusChange(bookphonenum, bookphoneet);
+
+        if (address != null) {
+            onAddrSelected(address);
+        }
 
         bookseladdressbtn.setOnClickListener(this);
         booksubmitbtn.setOnClickListener(this);

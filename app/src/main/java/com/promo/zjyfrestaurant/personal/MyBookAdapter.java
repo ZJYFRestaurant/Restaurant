@@ -1,6 +1,7 @@
 package com.promo.zjyfrestaurant.personal;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
@@ -8,18 +9,28 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.jch.lib.util.ImageManager;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.FailReason;
+import com.nostra13.universalimageloader.core.assist.ImageScaleType;
+import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import com.promo.zjyfrestaurant.R;
+import com.promo.zjyfrestaurant.application.HttpConstant;
 import com.promo.zjyfrestaurant.bean.MyBookBean;
 import com.promo.zjyfrestaurant.bean.MyBooksBean;
-import com.promo.zjyfrestaurant.util.ContextUtil;
+import com.promo.zjyfrestaurant.bean.OrderType;
 import com.promo.zjyfrestaurant.util.LogCat;
 
 /**
  * Created by ACER on 2014/12/31.
  */
 public class MyBookAdapter extends BaseExpandableListAdapter {
-
+    DisplayImageOptions squareImageOptions = new DisplayImageOptions.Builder()
+            .imageScaleType(ImageScaleType.IN_SAMPLE_INT)
+            .showImageForEmptyUri(R.drawable.my_book_empty_img)
+            .showImageOnLoading(R.drawable.square_loading)
+            .showImageOnFail(R.drawable.square_load_failed)
+            .cacheInMemory(true).cacheOnDisc(true).build();
     private MyBooksBean myBooksBean = null;
     private Context context = null;
 
@@ -157,10 +168,9 @@ public class MyBookAdapter extends BaseExpandableListAdapter {
             myBookBean = myBooksBean.getOverdue().get(childPosition);
         }
 
-        ImageManager.load(myBookBean.getCover(), childViewHolder.img, ContextUtil.getRectangleImgOptions());
+        loadImg(myBookBean.getCover(), childViewHolder.img, squareImageOptions, context, myBookBean.getType());
         childViewHolder.type.setText(context.getResources().getStringArray(R.array.book_tab)[myBookBean.getType()]);
         if (myBookBean.getType() == 0) {
-            childViewHolder.numLl.setVisibility(View.VISIBLE);
             childViewHolder.people.setText(String.valueOf(myBookBean.getPeople_num()));
         } else if (myBookBean.getType() == 1) {
             childViewHolder.numLl.setVisibility(View.GONE);
@@ -188,4 +198,40 @@ public class MyBookAdapter extends BaseExpandableListAdapter {
     }
 
 
+    private void loadImg(final String imgUrl, ImageView imgView, final DisplayImageOptions options, final Context context, final int type) {
+
+        ImageLoader.getInstance().displayImage(imgUrl, imgView, options, new ImageLoadingListener() {
+            @Override
+            public void onLoadingStarted(String s, View view) {
+
+                if (imgUrl.equals(HttpConstant.ROOT_EMPTY_URL) && type == OrderType.ARRIVE.getValue())
+                    if (view instanceof ImageView) {
+                        ((ImageView) view).setImageDrawable(options.getImageForEmptyUri(context.getResources()));
+                    }
+            }
+
+            @Override
+            public void onLoadingFailed(String s, View view, FailReason failReason) {
+
+                if (imgUrl.equals(HttpConstant.ROOT_EMPTY_URL) && type == OrderType.ARRIVE.getValue())
+                    if (view instanceof ImageView) {
+                        ((ImageView) view).setImageDrawable(options.getImageForEmptyUri(context.getResources()));
+                    }
+            }
+
+            @Override
+            public void onLoadingComplete(String s, View view, Bitmap bitmap) {
+
+                if (imgUrl.equals(HttpConstant.ROOT_EMPTY_URL) && type == OrderType.ARRIVE.getValue())
+                    if (view instanceof ImageView) {
+                        ((ImageView) view).setImageDrawable(options.getImageForEmptyUri(context.getResources()));
+                    }
+            }
+
+            @Override
+            public void onLoadingCancelled(String s, View view) {
+
+            }
+        });
+    }
 }

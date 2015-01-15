@@ -28,6 +28,11 @@ import com.promo.zjyfrestaurant.util.ContextUtil;
  */
 public class ConfirmBookActivity extends BaseActivity {
 
+    /**
+     * 订单重复。
+     */
+    protected boolean confirm2Flag = false;
+
     public static final String ORDER_KEY = "orders";
     /**
      * 订单。 *
@@ -115,11 +120,15 @@ public class ConfirmBookActivity extends BaseActivity {
             bookdetailothertv.setText(bookdetailothertv.getText().toString() + orderBean.getRemark());  //其他
             confirmAdapter = new ComfirmBookAdapter(getApplicationContext(), orderBean.getProducts());
             bookdetailgv.setAdapter(confirmAdapter);
+            confirmAdapter.notifyDataSetChanged();
         }
         subBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                submit();
+                if (confirm2Flag)
+                    ContextUtil.toast(getApplicationContext(), getString(R.string.order_tiwce));
+                else
+                    submit();
             }
         });
 
@@ -143,6 +152,9 @@ public class ConfirmBookActivity extends BaseActivity {
      */
     private void initArriveData() {
 
+        if (orderBean.getProducts() == null) {
+            bookdetailgv.setVisibility(View.GONE);
+        }
         bookdetailnumtv.setText(String.valueOf(orderBean.getPeople_num()));
         bookdetailtimetv.setText(orderBean.getUse_time());
         addrTr.setVisibility(View.GONE);
@@ -181,9 +193,8 @@ public class ConfirmBookActivity extends BaseActivity {
         parma.put("contact", orderBean.getContact());
         parma.put("tel", orderBean.getTel());
         parma.put("remark", orderBean.getRemark());
-        parma.put("price", orderBean.getPrice());
         parma.put("products", orderBean.getProductStr());
-
+        parma.put("price", orderBean.getPrice());
 
         ShowMenuRequset.getData(ConfirmBookActivity.this, HttpConstant.postOrder, parma, Integer.class, new RequestCallback<Integer>() {
             @Override
@@ -199,7 +210,8 @@ public class ConfirmBookActivity extends BaseActivity {
                 ContextUtil.toast(getApplicationContext(), "下单成功，订单号为：" + data);
                 Intent intent = new Intent(ConfirmBookActivity.this, MyBookActivity.class);
                 transNextPage(intent, true);
-                ConfirmBookActivity.this.finish();
+
+                confirm2Flag = true;    //已经提交过订单
             }
         });
 

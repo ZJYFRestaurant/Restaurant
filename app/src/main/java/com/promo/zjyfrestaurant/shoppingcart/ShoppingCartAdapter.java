@@ -29,7 +29,7 @@ public class ShoppingCartAdapter extends BaseAdapter {
         this.context = context;
         ShoppingCart shoppingCart = ShoppingCart.newInstance();
         ArrayList<DishBean> data = shoppingCart.getDishBeans();
-        if (data != null || data.size() != 0)
+        if (data != null && data.size() != 0)
             this.dishBeans.addAll(data);
     }
 

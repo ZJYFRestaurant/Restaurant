@@ -1,8 +1,10 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="android:Theme.Black">
+    <style name="AppTheme" parent="Base.V11.Theme.AppCompat">
         <item name="android:windowNoTitle">true</item>
+        <item name="android:textColorHint">@color/hint_gray</item>
+        <item name="android:windowFrame">@null</item>
     </style>
 
     <style name="fill_space">

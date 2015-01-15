@@ -44,6 +44,10 @@ public class BookActivity extends FragmentActivity implements BookFragCallBack {
         initialize();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
 
     private void initialize() {
 

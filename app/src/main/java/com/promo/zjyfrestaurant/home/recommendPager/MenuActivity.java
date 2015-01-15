@@ -71,6 +71,12 @@ public class MenuActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        menuListAdapter.notifyDataSetChanged(productBeans);
+    }
+
     private void getMenuData(int category) {
         String urlStr = HttpConstant.getProductList;
         ZJYFRequestParmater parmater = new ZJYFRequestParmater(getApplicationContext());

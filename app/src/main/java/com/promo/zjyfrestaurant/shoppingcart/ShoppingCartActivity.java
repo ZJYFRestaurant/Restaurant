@@ -5,14 +5,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.promo.zjyfrestaurant.BaseActivity;
 import com.promo.zjyfrestaurant.R;
+import com.promo.zjyfrestaurant.bean.DishBean;
 import com.promo.zjyfrestaurant.book.bookActivity.BookActivity;
 import com.promo.zjyfrestaurant.home.recommendPager.MenuActivity;
+
+import java.util.ArrayList;
 
 public class ShoppingCartActivity extends BaseActivity implements CartOrderChangeListener, CompoundButton.OnCheckedChangeListener {
 
@@ -24,6 +28,7 @@ public class ShoppingCartActivity extends BaseActivity implements CartOrderChang
     private RelativeLayout cartbtmbar;
     private ListView cartlv;
     private CheckBox selectAllCb;
+    private LinearLayout noDataLl;
 
     private ShoppingCartAdapter adapter;
 
@@ -59,6 +64,7 @@ public class ShoppingCartActivity extends BaseActivity implements CartOrderChang
         carttotalpricetv = (TextView) containerView.findViewById(R.id.cart_total_price_tv);
         cartbtmbar = (RelativeLayout) containerView.findViewById(R.id.cart_btmbar);
         cartlv = (ListView) containerView.findViewById(R.id.cart_lv);
+        noDataLl = (LinearLayout) containerView.findViewById(R.id.cart_no_dish_ll);
         selectAllCb = (CheckBox) containerView.findViewById(R.id.cart_btmbar_cb);
         selectAllCb.setOnCheckedChangeListener(this);
 
@@ -92,10 +98,28 @@ public class ShoppingCartActivity extends BaseActivity implements CartOrderChang
         return menuBtn;
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        ShoppingCart cart = ShoppingCart.newInstance();
+        ArrayList<DishBean> data = cart.getDishBeans();
+        if (data != null && data.size() != 0)
+            hasData();
+        else {
+            noData();
+        }
+
+        updateTatalData(cart);
+    }
 
     @Override
     public void onOrderChange(ShoppingCart shoppingCart) {
         updateTatalData(shoppingCart);
+    }
+
+    @Override
+    public void onOrderAllDesh(boolean orderall) {
+        selectAllCb.setChecked(orderall);
     }
 
     /**
@@ -111,7 +135,18 @@ public class ShoppingCartActivity extends BaseActivity implements CartOrderChang
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
         ShoppingCart shoppingCart = ShoppingCart.newInstance();
-        shoppingCart.orderAllDish(isChecked);
+        if (isChecked)
+            shoppingCart.orderAllDish(isChecked);
         adapter.notifyDataSetChanged();
+    }
+
+    private void noData() {
+        noDataLl.setVisibility(View.VISIBLE);
+        cartlv.setVisibility(View.GONE);
+    }
+
+    private void hasData() {
+        noDataLl.setVisibility(View.GONE);
+        cartlv.setVisibility(View.VISIBLE);
     }
 }

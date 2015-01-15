@@ -123,8 +123,11 @@ public class BookDetailActivity extends BaseActivity {
                     break;
                 }
             }
-
-            bookdetailothertv.setText(bookdetailothertv.getText().toString() + orderBean.getRemark());  //其他
+            String otherStr = orderBean.getRemark();
+            if (otherStr != null && !otherStr.equals("")) {
+                bookdetailothertv.setText(bookdetailothertv.getText().toString() + otherStr);  //其他
+            } else
+                bookdetailothertv.setVisibility(View.GONE);
             confirmAdapter = new ComfirmBookAdapter(getApplicationContext(), orderBean.getProducts());
             bookdetailgv.setAdapter(confirmAdapter);
         }
@@ -133,6 +136,7 @@ public class BookDetailActivity extends BaseActivity {
     /**
      * 取餐。
      */
+
     private void initBringData() {
 
         bookdetailnumtv.setText(String.valueOf(orderBean.getPeople_num()));
@@ -160,8 +164,8 @@ public class BookDetailActivity extends BaseActivity {
 
         bookdetailnumtr.setVisibility(View.GONE);
         bookdetailtimetitle.setText(R.string.send_time_);
-        bookdetailtimetv.setText(orderBean.getUse_time());
-        sendAddrTv.setText(orderBean.getAddress());
+        bookdetailtimetv.setText(orderBean.getUse_time().trim());
+        sendAddrTv.setText(orderBean.getAddress().trim());
     }
 
 

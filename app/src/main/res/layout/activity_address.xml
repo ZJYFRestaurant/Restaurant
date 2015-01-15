@@ -18,7 +18,7 @@
         <ImageView
             style="@style/no_msg_img_style"
             android:scaleType="centerCrop"
-            android:src="@drawable/no_order_img" />
+            android:src="@drawable/no_addr_img" />
 
         <View
             android:layout_width="match_parent"

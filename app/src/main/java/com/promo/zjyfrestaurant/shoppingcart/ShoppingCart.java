@@ -293,8 +293,22 @@ public class ShoppingCart extends ShoppingCartSubject implements CartOberver {
 
         if (orderChangeListener != null) {
             orderChangeListener.onOrderChange(this);
+            orderChangeListener.onOrderAllDesh(isOrderAll());
         }
     }
+
+    private boolean isOrderAll() {
+
+        int checkAll = 1;
+        for (DishBean dishBean : dishBeans) {
+            checkAll = checkAll & dishBean.getIsOrder();
+            if (checkAll == 0)
+                return false;       //没有全选。
+        }
+
+        return true;            //全选。
+    }
+
 
     /**
      * 订购所有菜品。

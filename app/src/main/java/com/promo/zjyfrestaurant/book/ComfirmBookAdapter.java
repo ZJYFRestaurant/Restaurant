@@ -16,12 +16,15 @@ import java.util.ArrayList;
  */
 public class ComfirmBookAdapter extends BaseAdapter {
 
-    private ArrayList<DishBean> dishBeans = null;
+    private ArrayList<DishBean> dishBeans = new ArrayList<DishBean>();
     private Context context;
 
     public ComfirmBookAdapter(Context context, ArrayList<DishBean> dishBeans) {
 
-        this.dishBeans = dishBeans;
+        if (dishBeans != null && dishBeans.size() != 0) {
+            this.dishBeans.clear();
+            this.dishBeans.addAll(dishBeans);
+        }
         this.context = context;
     }
 

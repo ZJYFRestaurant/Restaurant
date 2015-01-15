@@ -81,9 +81,11 @@ public class AddressActivity extends BaseActivity implements View.OnClickListene
     private void init(View containerView) {
 
         setTitle(getResources().getString(R.string.personal_address));
-        addTittleRightBtn();
-        itemType = getIntent().getIntExtra(ITEM_PRESS_KEY, MODIFY_ITEM);
 
+        itemType = getIntent().getIntExtra(ITEM_PRESS_KEY, MODIFY_ITEM);
+        if (itemType != SEL_ITEM) {
+            addTittleRightBtn();
+        }
         addrlv = (ListView) containerView.findViewById(R.id.addr_lv);
         noAddrLl = (LinearLayout) containerView.findViewById(R.id.addr_no_msg_ll);
         adapter = new AddressAdapter(getApplicationContext());

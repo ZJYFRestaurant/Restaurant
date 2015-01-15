@@ -20,6 +20,8 @@
     <string name="no_dish_warn">您还没有点餐，要不要先去洗劫一番。</string>
     <string name="dialog_go">去洗劫</string>
     <string name="dialog_come">来上恭</string>
+
+    <string name="go_dish">请点击右上角的点餐车点菜哦，亲！</string>
     <!-- home -->
     <string name="home_specialty">招牌美食</string>
     <string name="home_today">今天价：</string>
@@ -40,6 +42,7 @@
         <item name="sent_home">外送到家</item>
     </string-array>
 
+    <string name="feedback_success">已收到您的宝贵意见，我们将会尽快改善.</string>
     <string name="custome_num">就餐人数：</string>
     <string name="time">时间：</string>
     <string name="book_pre">未到期预约</string>
@@ -50,10 +53,10 @@
     <string name="about_us_row4">电话： </string>
     <string name="add_address">新增地址</string>
     <string name="add_name">请输入联系人姓名</string>
-    <string name="add_phone">请输入联系电话</string>
+    <string name="add_phone">请输入正确的手机号</string>
     <string name="add_addr">请输入详细地址</string>
-    <string name="add_name_warning">联系人姓名不能为空</string>
-    <string name="name_length_warning">联系人姓名必须大于2位</string>
+    <string name="add_name_warning">请将姓名填写完整</string>
+    <string name="name_length_warning">请将姓名填写完整</string>
     <string name="add_addr_warning">地址不能为空</string>
     <string name="modify_addr">修改地址</string>
     <string name="constant_name">联系人姓名</string>
@@ -79,6 +82,7 @@
 
     <string name="book_constant">联系人</string>
     <string name="book_phone">联系电话</string>
+    <string name="book_go_time">就餐时间</string>
     <string name="book_time">取餐时间</string>
     <string name="book_other">其他就餐要求(选填)</string>
     <string name="book_detail_other">其他要求：</string>
@@ -90,6 +94,7 @@
     <string name="book_money">订单金额：</string>
     <string name="book_contact">联系人：</string>
     <string name="book_detail_num">就餐人数：</string>
+    <string name="book_detail_phone">联系电话：</string>
     <string name="book_detail_time">就餐时间：</string>
     <string name="send_time">送达时间</string>
     <string name="send_time_">送达时间：</string>
@@ -102,7 +107,7 @@
     <string name="cart_total">合计：</string>
     <string name="cart_part">份</string>
     <string name="consumer_warning">没有人吃饭哦！</string>
-    <string name="book_time_warning">什么时候用餐呢？</string>
+    <string name="book_time_warning">请填写完信息，亲！</string>
     <string name="select_time">请选择时间：</string>
     <string name="modify_erro">修改失败</string>
     <string name="modify_ok">修改成功</string>
@@ -118,5 +123,7 @@
     <string name="send_addr">送达地址：</string>
     <string name="share_addr">http://fish.ebingoo.com/</string>
     <string name="delete_addr_confirm">亲，你确定要删除这条地址信息吗?</string>
-
+    <string name="order_tiwce">您的提交信息与上条雷同，请修改后进行提交!</string>
+    <string name="order_ok">提交</string>
+    <string name="order_cancel">取消</string>
 </resources>

@@ -1,6 +1,7 @@
 package com.promo.zjyfrestaurant.home.recommendPager;
 
 import android.content.Context;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -50,8 +51,10 @@ public class MenuAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         RadioButton rb = (RadioButton) View.inflate(context, R.layout.menu_cate_btn, null);
+        rb.setGravity(Gravity.LEFT | Gravity.CENTER_VERTICAL);
         RadioGroup.LayoutParams params = new RadioGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int) context.getResources().getDimension(R.dimen.title_height));
         rb.setLayoutParams(params);
+        rb.setPadding((int) context.getResources().getDimension(R.dimen.common_pad), 0, 0, 0);
         String btn = this.menus.get(position).getName();
         rb.setText(btn);
         return rb;

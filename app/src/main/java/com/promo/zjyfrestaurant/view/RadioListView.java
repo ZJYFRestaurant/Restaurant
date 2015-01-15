@@ -2,6 +2,7 @@ package com.promo.zjyfrestaurant.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
@@ -56,6 +57,7 @@ public class RadioListView extends ScrollView {
         mRadioGroup = new RadioGroup(getContext());
         RadioGroup.LayoutParams params = new RadioGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         mRadioGroup.setOrientation(LinearLayout.VERTICAL);
+        mRadioGroup.setGravity(Gravity.LEFT);
         mRadioGroup.setLayoutParams(params);
 
         addView(mRadioGroup);

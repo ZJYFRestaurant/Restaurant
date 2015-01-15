@@ -6,4 +6,6 @@ package com.promo.zjyfrestaurant.shoppingcart;
 public interface CartOrderChangeListener {
 
     public void onOrderChange(ShoppingCart shoppingCart);
+
+    public void onOrderAllDesh(boolean orderall);
 }

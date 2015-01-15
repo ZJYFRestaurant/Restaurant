@@ -18,13 +18,15 @@
             android:layout_marginLeft="@dimen/home_item_pad"
             android:layout_height="wrap_content">
 
-            <ImageView
+            <com.jch.lib.view.CircleImageView
                 android:id="@+id/home_specialty_tiem_riv"
                 android:src="@drawable/home_specalty_item_riv"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="@dimen/common_pad"
                 android:layout_alignParentTop="true"
                 android:layout_width="wrap_content"
+                app:roundHeight="@dimen/img_round_coner"
+                app:roundWidth="@dimen/img_round_coner"
                 android:layout_height="wrap_content" />
 
             <LinearLayout

@@ -17,10 +17,9 @@ import com.promo.zjyfrestaurant.BaseFragment;
 import com.promo.zjyfrestaurant.R;
 import com.promo.zjyfrestaurant.book.bookActivity.BookFragCallBack;
 import com.promo.zjyfrestaurant.book.subFragment.ToRestFragment;
-import com.promo.zjyfrestaurant.home.recommendPager.MenuActivity;
 import com.promo.zjyfrestaurant.shoppingcart.ShoppingCart;
 import com.promo.zjyfrestaurant.shoppingcart.ShoppingCartView;
-import com.promo.zjyfrestaurant.util.ZJYFDialog;
+import com.promo.zjyfrestaurant.util.ContextUtil;
 
 /**
  * A simple {@link android.support.v4.app.Fragment} subclass.
@@ -72,6 +71,9 @@ public class BookFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
+        if (ShoppingCart.newInstance().getOrderNum() == 0) {
+            bookpager.setCurrentItem(0);
+        }
     }
 
     @Override
@@ -94,9 +96,11 @@ public class BookFragment extends BaseFragment {
     @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
-        if (!hidden) {
-            showBookDialog();//检测购物车。
-        }
+//        if (!hidden && bookpager.getCurrentItem() != 0) {
+//            showBookDialog();//检测购物车。
+//        }
+        bookpager.setCurrentItem(0);
+
     }
 
     /**
@@ -107,22 +111,24 @@ public class BookFragment extends BaseFragment {
         if (dishNum != 0) {
             return;
         }
+        bookpager.setCurrentItem(0);
+        ContextUtil.toast(getActivity().getApplicationContext(), getString(R.string.go_dish));
 
-        ZJYFDialog.Builder builder = ZJYFDialog.Builder.zJYFDialog(getActivity()).setTitle(getString(R.string.dilog_title)).setContentMsg(getString(R.string.no_dish_warn)).setPositiveBtn(R.string.dialog_go, new ZJYFDialog.ZJYFOnclickListener() {
-            @Override
-            public void onclick() {
-                Intent intent = new Intent(getActivity(), MenuActivity.class);
-                transNextPage(intent);
-            }
-        }).setNectiveBtn(R.string.dialog_come, new ZJYFDialog.ZJYFOnclickListener() {
-            @Override
-            public void onclick() {
-                bookpager.setCurrentItem(bookPagerAdapter.getCount() - 1);  //跳转到外卖
-            }
-        });
-        ZJYFDialog dialog = builder.build();
-        dialog.setOnCancelListener(new DialogCancel());
-        dialog.show();
+//        ZJYFDialog.Builder builder = ZJYFDialog.Builder.zJYFDialog(getActivity()).setTitle(getString(R.string.dilog_title)).setContentMsg(getString(R.string.no_dish_warn)).setPositiveBtn(R.string.dialog_go, new ZJYFDialog.ZJYFOnclickListener() {
+//            @Override
+//            public void onclick() {
+//                Intent intent = new Intent(getActivity(), MenuActivity.class);
+//                transNextPage(intent);
+//            }
+//        }).setNectiveBtn(R.string.dialog_come, new ZJYFDialog.ZJYFOnclickListener() {
+//            @Override
+//            public void onclick() {
+//                bookpager.setCurrentItem(bookPagerAdapter.getCount() - 1);  //跳转到外卖
+//            }
+//        });
+//        ZJYFDialog dialog = builder.build();
+//        dialog.setOnCancelListener(new DialogCancel());
+//        dialog.show();
     }
 
     /**
@@ -157,25 +163,25 @@ public class BookFragment extends BaseFragment {
         bookpager.setAdapter(bookPagerAdapter);
         bookslidetab.setViewPager(bookpager);
         bookslidetab.setOnPageChangeListener(new ViewPagerChangerListener());
-        showBookDialog();
+//        showBookDialog();
     }
 
     private class ViewPagerChangerListener implements ViewPager.OnPageChangeListener {
 
         @Override
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
+            if (position != 0)
+                showBookDialog();
         }
 
         @Override
         public void onPageSelected(int position) {
-            if (position != bookPagerAdapter.getCount() - 1)        //检测购物车。
-                showBookDialog();
 
         }
 
         @Override
         public void onPageScrollStateChanged(int state) {
+
         }
     }
 

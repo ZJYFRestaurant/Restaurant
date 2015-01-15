@@ -56,6 +56,7 @@
             <TextView
                 android:id="@+id/addr_item_tv"
                 android:lines="2"
+                android:gravity="bottom"
                 style="@style/font_gray2_15"
                 android:layout_marginTop="5dp"
                 android:ellipsize="end"

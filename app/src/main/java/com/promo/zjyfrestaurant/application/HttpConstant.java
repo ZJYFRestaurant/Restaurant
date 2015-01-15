@@ -19,6 +19,8 @@ public class HttpConstant {
 
     private static final String ROOT_URL = "/index.php?s=/Home/Api/";
 
+    public static final String ROOT_EMPTY_URL = "http://fish.ebingoo.com/";
+
     /**
      * 获取基本连接
      *
