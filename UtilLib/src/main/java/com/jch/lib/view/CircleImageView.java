@@ -1,126 +1,139 @@
 package com.jch.lib.view;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
-import android.graphics.Rect;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.widget.ImageView;
+
+import com.jch.lib.R;
 
 /**
  * Created by ACER on 2014/12/25.
  */
 public class CircleImageView extends ImageView {
 
-    //图片圆角角度。
-    private int cornerPixe;
+    private Paint paint;
+    private int roundWidth = 5;
+    private int roundHeight = 5;
+    private Paint paint2;
 
-    public CircleImageView(Context context) {
-        super(context);
+    public CircleImageView(Context context, AttributeSet attrs, int defStyle) {
+        super(context, attrs, defStyle);
+        init(context, attrs);
     }
 
     public CircleImageView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        init(context, attrs);
     }
 
-    public CircleImageView(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
+    public CircleImageView(Context context) {
+        super(context);
+        init(context, null);
     }
 
-    public int getCornerPixe() {
-        return cornerPixe;
-    }
+    private void init(Context context, AttributeSet attrs) {
 
-    public void setCornerPixe(int cornerPixe) {
-        this.cornerPixe = cornerPixe;
-    }
-
-    private static Bitmap toRoundCorner(Bitmap bitmap, int pixels) {
-
-        Bitmap output = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Bitmap.Config.ARGB_4444);
-
-        Canvas canvas = new Canvas(output);
-
-        final int color = 0xff424242;
-
-        final Paint paint = new Paint();
-
-        final Rect rect = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());
-
-        final RectF rectF = new RectF(rect);
-
-        final float roundPx = pixels;
-
-        paint.setAntiAlias(true);
-
-        canvas.drawARGB(0, 0, 0, 0);
-
-        paint.setColor(color);
-
-        canvas.drawRoundRect(rectF, roundPx, roundPx, paint);
-
-        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
-
-        canvas.drawBitmap(bitmap, rect, rect, paint);
-        return output;
-
-
-    }
-
-
-    /*
-    * super.onDraw(canvas);
-
-        if (mDrawable == null) {
-            return; // couldn't resolve the URI
-        }
-
-        if (mDrawableWidth == 0 || mDrawableHeight == 0) {
-            return;     // nothing to draw (empty bounds)
-        }
-
-        if (mDrawMatrix == null && mPaddingTop == 0 && mPaddingLeft == 0) {
-            mDrawable.draw(canvas);
+        if (attrs != null) {
+            TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.CircleImageView);
+            roundWidth = a.getDimensionPixelSize(R.styleable.CircleImageView_roundWidth, roundWidth);
+            roundHeight = a.getDimensionPixelSize(R.styleable.CircleImageView_roundHeight, roundHeight);
         } else {
-            int saveCount = canvas.getSaveCount();
-            canvas.save();
-
-            if (mCropToPadding) {
-                final int scrollX = mScrollX;
-                final int scrollY = mScrollY;
-                canvas.clipRect(scrollX + mPaddingLeft, scrollY + mPaddingTop,
-                        scrollX + mRight - mLeft - mPaddingRight,
-                        scrollY + mBottom - mTop - mPaddingBottom);
-            }
-
-            canvas.translate(mPaddingLeft, mPaddingTop);
-
-            if (mDrawMatrix != null) {
-                canvas.concat(mDrawMatrix);
-            }
-            mDrawable.draw(canvas);
-            canvas.restoreToCount(saveCount);
+            float density = context.getResources().getDisplayMetrics().density;
+            roundWidth = (int) (roundWidth * density);
+            roundHeight = (int) (roundHeight * density);
         }
-    * */
 
+        paint = new Paint();
+        paint.setColor(Color.WHITE);
+        paint.setAntiAlias(true);
+        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OUT));
+
+        paint2 = new Paint();
+        paint2.setXfermode(null);
+    }
 
     @Override
-    protected void onDraw(Canvas canvas) {
-
-        Paint paint = new Paint();
-        paint.setFilterBitmap(true);
-        setDrawingCacheEnabled(true);
-        Bitmap bitmap = getDrawingCache();
-        Bitmap circleBmp = toRoundCorner(bitmap, cornerPixe);
-        setDrawingCacheEnabled(false);
-
-        canvas.drawBitmap(circleBmp, 0, 0, paint);
-
-        super.onDraw(canvas);
-
+    public void draw(Canvas canvas) {
+        Bitmap bitmap = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas2 = new Canvas(bitmap);
+        super.draw(canvas2);
+        drawLiftUp(canvas2);
+        drawRightUp(canvas2);
+        drawLiftDown(canvas2);
+        drawRightDown(canvas2);
+        canvas.drawBitmap(bitmap, 0, 0, paint2);
+        bitmap.recycle();
     }
+
+    private void drawLiftUp(Canvas canvas) {
+        Path path = new Path();
+        path.moveTo(0, roundHeight);
+        path.lineTo(0, 0);
+        path.lineTo(roundWidth, 0);
+        path.arcTo(new RectF(
+                        0,
+                        0,
+                        roundWidth * 2,
+                        roundHeight * 2),
+                -90,
+                -90);
+        path.close();
+        canvas.drawPath(path, paint);
+    }
+
+    private void drawLiftDown(Canvas canvas) {
+        Path path = new Path();
+        path.moveTo(0, getHeight() - roundHeight);
+        path.lineTo(0, getHeight());
+        path.lineTo(roundWidth, getHeight());
+        path.arcTo(new RectF(
+                        0,
+                        getHeight() - roundHeight * 2,
+                        0 + roundWidth * 2,
+                        getHeight()),
+                90,
+                90);
+        path.close();
+        canvas.drawPath(path, paint);
+    }
+
+    private void drawRightDown(Canvas canvas) {
+        Path path = new Path();
+        path.moveTo(getWidth() - roundWidth, getHeight());
+        path.lineTo(getWidth(), getHeight());
+        path.lineTo(getWidth(), getHeight() - roundHeight);
+        path.arcTo(new RectF(
+                getWidth() - roundWidth * 2,
+                getHeight() - roundHeight * 2,
+                getWidth(),
+                getHeight()), 0, 90);
+        path.close();
+        canvas.drawPath(path, paint);
+    }
+
+    private void drawRightUp(Canvas canvas) {
+        Path path = new Path();
+        path.moveTo(getWidth(), roundHeight);
+        path.lineTo(getWidth(), 0);
+        path.lineTo(getWidth() - roundWidth, 0);
+        path.arcTo(new RectF(
+                        getWidth() - roundWidth * 2,
+                        0,
+                        getWidth(),
+                        0 + roundHeight * 2),
+                -90,
+                90);
+        path.close();
+        canvas.drawPath(path, paint);
+    }
+
 }

@@ -6,6 +6,7 @@ import android.content.Context;
 import android.graphics.Point;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Display;
 import android.view.View;
@@ -65,6 +66,13 @@ public class DisplayUtil {
         Log.i("width", "mywidth--" + mWidth);
 
         return (int) ((float) mWidth / 2 + 0.5f);
+
+    }
+
+    public static void getDpi(WindowManager windowManager) {
+
+        DisplayMetrics dm = new DisplayMetrics();
+        windowManager.getDefaultDisplay().getMetrics(dm);
 
     }
 

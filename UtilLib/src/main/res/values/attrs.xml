@@ -35,4 +35,6 @@
         <attr name="checked_namal" format="reference" />
     </declare-styleable>
 
+
+
 </resources>
