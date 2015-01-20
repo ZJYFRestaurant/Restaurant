@@ -135,8 +135,8 @@ public class PersonalFragment extends BaseFragment implements View.OnClickListen
 
             }
             case R.id.person_book: {
-
                 Intent intent = new Intent(getActivity(), MyBookActivity.class);
+                intent.putExtra(MyBookActivity.TO_MYBOOK_KEY, MyBookActivity.FROM_CONFIRM);
                 transNextPage(intent);
                 break;
             }

@@ -18,6 +18,7 @@ public class CartAsync extends AsyncTask<DishBean, Integer, ArrayList<DishBean>>
     public static final int UPDATE = 3; //更新购物车。
     public static final int CLEAR = 4;  //清空数据库。
     public static final int SELECT = 5;    //显示数据。
+    public static final int DEL = 6;    //删除数据。
 
     private int methodtype;
     private Context context;
@@ -48,6 +49,11 @@ public class CartAsync extends AsyncTask<DishBean, Integer, ArrayList<DishBean>>
             }
             case SELECT: {
                 return getCartData();
+            }
+
+            case DEL: {
+                delData(params[0].getId());
+                return null;
             }
             default: {
                 return null;
@@ -81,6 +87,16 @@ public class CartAsync extends AsyncTask<DishBean, Integer, ArrayList<DishBean>>
     private ArrayList<DishBean> getCartData() {
         CartDao dao = new CartDao(context);
         return dao.getDishes();
+    }
+
+    /**
+     * 删除菜品。
+     *
+     * @param dishID
+     */
+    private void delData(int dishID) {
+        CartDao dao = new CartDao(context);
+        dao.delDish(dishID);
     }
 
     /**

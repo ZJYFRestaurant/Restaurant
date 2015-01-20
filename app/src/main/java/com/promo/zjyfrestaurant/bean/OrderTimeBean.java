@@ -1,7 +1,13 @@
 package com.promo.zjyfrestaurant.bean;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -36,6 +42,7 @@ public class OrderTimeBean {
         return orderDatas;
     }
 
+
     public void setOrderDatas(HashMap<String, ArrayList<TimeOrderBean>> orderDatas) {
         this.orderDatas = orderDatas;
     }
@@ -53,6 +60,42 @@ public class OrderTimeBean {
                 orderDatas.put(timeOrderBean.getCreate_time(), timeOrderBeans);
             }
         }
+
+        sortTime();
+    }
+
+    /**
+     * 按时间降序排列。
+     */
+    public List<String> sortTime() {
+
+        List<String> keyset = new ArrayList<>(orderDatas.keySet());
+
+        Collections.sort(keyset, new Comparator() {
+            @Override
+            public int compare(Object lhs, Object rhs) {
+
+                if (parseData(lhs.toString()) > parseData(rhs.toString())) {
+                    return 1;
+                } else if (parseData(lhs.toString()) == parseData(rhs.toString()))
+                    return 0;
+                else
+                    return -1;
+            }
+        });
+        return keyset;
+    }
+
+    private long parseData(String dataStr) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
+        try {
+            Date date = sdf.parse(dataStr);
+            return date.getTime();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return 0;
     }
 
 }

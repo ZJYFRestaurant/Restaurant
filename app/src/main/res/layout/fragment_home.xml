@@ -35,7 +35,6 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:paddingTop="@dimen/common_pad"
                 android:paddingLeft="@dimen/common_pad"
                 android:paddingRight="@dimen/common_pad"
                 android:orientation="horizontal"

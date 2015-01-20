@@ -140,7 +140,13 @@ public class OrderBean implements Parcelable {
         products.add(dishBean);
     }
 
+    /**
+     * 向订单中添加菜品。先清空订单中的所有菜品。
+     *
+     * @param dishBeans 菜品。
+     */
     public void addProducts(ArrayList<DishBean> dishBeans) {
+        products.clear();
         products.addAll(dishBeans);
     }
 

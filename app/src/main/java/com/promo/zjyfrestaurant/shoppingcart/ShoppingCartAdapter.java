@@ -27,10 +27,17 @@ public class ShoppingCartAdapter extends BaseAdapter {
 
     public ShoppingCartAdapter(Context context) {
         this.context = context;
+    }
+
+    @Override
+    public void notifyDataSetChanged() {
         ShoppingCart shoppingCart = ShoppingCart.newInstance();
         ArrayList<DishBean> data = shoppingCart.getDishBeans();
-        if (data != null && data.size() != 0)
+        if (data != null && data.size() != 0) {
+            this.dishBeans.clear();
             this.dishBeans.addAll(data);
+        }
+        super.notifyDataSetChanged();
     }
 
     @Override

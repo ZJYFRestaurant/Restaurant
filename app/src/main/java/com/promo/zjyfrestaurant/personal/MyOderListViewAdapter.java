@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.jch.lib.view.ScrollGridView;
 import com.promo.zjyfrestaurant.R;
+import com.promo.zjyfrestaurant.bean.OrderTimeBean;
 import com.promo.zjyfrestaurant.bean.TimeOrderBean;
 import com.promo.zjyfrestaurant.home.MenuDetailActivity;
 
@@ -25,15 +26,17 @@ public class MyOderListViewAdapter extends BaseAdapter {
     private Context mContext;
 
     private HashMap<String, ArrayList<TimeOrderBean>> orderDatas = new HashMap<String, ArrayList<TimeOrderBean>>();
+    private ArrayList<String> dataStr = new ArrayList<>();
 
     public MyOderListViewAdapter(Context context) {
         this.mContext = context;
     }
 
 
-    public void notifyDataSetChanged(HashMap<String, ArrayList<TimeOrderBean>> orderDatas) {
-
-        this.orderDatas.putAll(orderDatas);
+    public void notifyDataSetChanged(OrderTimeBean data) {
+        data.parseData();
+        dataStr.addAll(data.sortTime());
+        this.orderDatas.putAll(data.getOrderDatas());
         super.notifyDataSetChanged();
     }
 
@@ -56,7 +59,8 @@ public class MyOderListViewAdapter extends BaseAdapter {
 
     @Override
     public Object getItem(int position) {
-        return orderDatas.get(orderDatas.keySet().toArray()[position]);
+
+        return orderDatas.get(dataStr.get(position));
     }
 
     @Override
@@ -73,7 +77,6 @@ public class MyOderListViewAdapter extends BaseAdapter {
         int type = getItemViewType(position);       //分类。
         if (convertView == null) {
             if (type == 0) {
-
                 titleHolder = new TitleViewHolder();
                 convertView = View.inflate(mContext, R.layout.myorder_time_item, null);
                 titleHolder.titlTv = (TextView) convertView.findViewById(R.id.myorder_time_item_tv);
@@ -91,11 +94,10 @@ public class MyOderListViewAdapter extends BaseAdapter {
                 containerViewHolder = (ContainerViewHolder) convertView.getTag();
         }
 
-        String titleTime = (String) orderDatas.keySet().toArray()[position / 2];
-        ArrayList<TimeOrderBean> timeOrderBeans = orderDatas.get(titleTime);
+        ArrayList<TimeOrderBean> timeOrderBeans = orderDatas.get(dataStr.get(position / 2));
 
         if (type == 0) {
-            titleHolder.titlTv.setText(titleTime);
+            titleHolder.titlTv.setText(dataStr.get(position / 2));
         } else {
             MyOrderGridViewAdapter adapter = new MyOrderGridViewAdapter(mContext, timeOrderBeans);      //向gradveiw中添加数据。
             containerViewHolder.listView.setAdapter(adapter);

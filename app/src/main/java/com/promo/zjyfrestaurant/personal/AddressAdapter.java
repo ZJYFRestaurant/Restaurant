@@ -26,9 +26,12 @@ public class AddressAdapter extends BaseAdapter {
     private TextView addritemtv;
     private DelAddrCallBack delAddrCallBack;
 
+    private int comeType = 0;
 
-    public AddressAdapter(Context context) {
+
+    public AddressAdapter(Context context, int comeType) {
         this.mContext = context;
+        this.comeType = comeType;
     }
 
     public void notifyDataSetChanged(ArrayList<AddressBean> addresses) {
@@ -80,8 +83,11 @@ public class AddressAdapter extends BaseAdapter {
         viewHolder.addTv.setText(address.getContent());
         viewHolder.nameTv.setText(address.getContact());
         viewHolder.phoneTv.setText(address.getTel());
-        viewHolder.delBtn.setOnClickListener(new DelOnCLS(position));
-
+        if (comeType != AddressActivity.SEL_ITEM) {
+            viewHolder.delBtn.setOnClickListener(new DelOnCLS(position));
+        } else {
+            viewHolder.delBtn.setVisibility(View.GONE);
+        }
         return convertView;
     }
 

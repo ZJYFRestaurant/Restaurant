@@ -15,9 +15,12 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 
 import com.jch.lib.util.DisplayUtil;
+import com.promo.zjyfrestaurant.MainActivity;
 import com.promo.zjyfrestaurant.R;
 import com.promo.zjyfrestaurant.bean.OrderBean;
 import com.promo.zjyfrestaurant.book.ConfirmBookActivity;
+import com.promo.zjyfrestaurant.book.bookActivity.BookActivity;
+import com.promo.zjyfrestaurant.personal.AddressActivity;
 import com.promo.zjyfrestaurant.shoppingcart.ShoppingCart;
 import com.promo.zjyfrestaurant.util.ContextUtil;
 import com.promo.zjyfrestaurant.view.NumberView;
@@ -34,6 +37,8 @@ import java.util.Locale;
  * Created by ACER on 2014/12/23.
  */
 public class BookBaseFragment extends Fragment implements View.OnFocusChangeListener {
+    public static final int BOOKRERUEST_CODE = 56;
+
     /**
      * 用map保持editText和numberView一一对应的关系。
      */
@@ -110,6 +115,22 @@ public class BookBaseFragment extends Fragment implements View.OnFocusChangeList
     }
 
     /**
+     * 清空view中的text。
+     *
+     * @param numberView
+     * @param view
+     */
+    protected void clearText(NumberView numberView, View view) {
+        if (view instanceof TextView) {
+            TextView tv = (TextView) view;
+            tv.setText("");
+        }
+        DisplayUtil.setBackground(view, getResources().getDrawable(R.drawable.book_enter));
+        view.setPadding((int) getResources().getDimension(R.dimen.book_draw_pad_left), 0, 0, 0);
+        numberView.setChecked(false);
+    }
+
+    /**
      * 提交预约。
      */
     protected void submit(OrderBean orderBean) {
@@ -120,6 +141,10 @@ public class BookBaseFragment extends Fragment implements View.OnFocusChangeList
         Bundle bundle = new Bundle();
         bundle.putParcelable(ConfirmBookActivity.ORDER_KEY, orderBean);
         intent.putExtras(bundle);
+        if (getParentFragment().getActivity() instanceof BookActivity)      //区分不同的跳转activity。
+            intent.putExtra(AddressActivity.FROM_ACIVITY_KEY, AddressActivity.FROM_BOOK_CODE);
+        else if (getParentFragment().getActivity() instanceof MainActivity)
+            intent.putExtra(AddressActivity.FROM_ACIVITY_KEY, AddressActivity.FROM_MAIN_CODE);
         startActivity(intent);
     }
 
@@ -153,7 +178,6 @@ public class BookBaseFragment extends Fragment implements View.OnFocusChangeList
 
                 @Override
                 public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                    // TODO Auto-generated method stub
                     calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);//设置小时
                     calendar.set(Calendar.MINUTE, minute); //调用分钟
                 }

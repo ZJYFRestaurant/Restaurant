@@ -27,7 +27,7 @@ public class DishBean extends DishObservble implements Parcelable, Serializable 
     /**
      * 是否订购被: 0 不订购，1 订购（在点餐车中点餐）。
      */
-    private int isOrder = 0;
+    private int isOrder = 1;
     /**
      * 点餐数量*
      */

@@ -136,23 +136,26 @@ public class ShoppingCart extends ShoppingCartSubject implements CartOberver {
      * @return int dishBean 的数量。
      */
     public int reduceDishes(DishBean dishBean, int num) {
-
+        ArrayList<DishBean> copyDishBeanes = new ArrayList<>(dishBeans);
         int id = dishBean.getId();
         int dishNum = 0;
-
-        for (DishBean dish : dishBeans) {
+        for (DishBean dish : copyDishBeanes) {
 
             if (id == dish.getId()) {
                 dish.setNum(dish.getNum() - num);
                 new CartAsync(CartAsync.UPDATE, mContext).execute(dish);        //更新数据库
                 dishNum = dish.getNum();
-                //TODO 当菜品的数量为0是 删除此菜品。
-
+                // 当菜品的数量为0是 删除此菜品。
+                if (dishBean.getNum() == 0) {
+                    delDish(dishBean);
+                }
 
                 setChanged();
                 notifyObservers(getDishNum());
             }
         }
+        copyDishBeanes.clear();
+        copyDishBeanes = null;
         return dishNum;
     }
 
@@ -179,15 +182,19 @@ public class ShoppingCart extends ShoppingCartSubject implements CartOberver {
      * @param id
      */
     private void reduceDish(int id) {
-
-        for (DishBean dishBean : dishBeans) {
+        ArrayList<DishBean> copyDishBeanes = new ArrayList<>(dishBeans);
+        for (DishBean dishBean : copyDishBeanes) {
 
             if (dishBean.getId() == id) {
 
                 if (dishBean.getNum() != 0) {
                     dishBean.setNum(dishBean.getNum() - 1);
                     new CartAsync(CartAsync.UPDATE, mContext).execute(dishBean);        //更新数据库
-                    //TODO 当菜品的数量为0是 删除此菜品。
+                    //当菜品的数量为0是 删除此菜品。
+                    if (dishBean.getNum() == 0) {
+                        delDish(dishBean);
+                    }
+
                     setChanged();
                     notifyObservers(getDishNum());
                 }
@@ -195,6 +202,8 @@ public class ShoppingCart extends ShoppingCartSubject implements CartOberver {
                 break;
             }
         }
+        copyDishBeanes.clear();
+        copyDishBeanes = null;
 
     }
 
@@ -205,23 +214,44 @@ public class ShoppingCart extends ShoppingCartSubject implements CartOberver {
      * @param num
      */
     private void reduceDish(int id, int num) {
-        for (DishBean dishBean : dishBeans) {
+
+        ArrayList<DishBean> copyDishBeanes = new ArrayList<>(dishBeans);
+        for (DishBean dishBean : copyDishBeanes) {
 
             if (dishBean.getId() == id) {
 
                 if (dishBean.getNum() != 0) {
                     dishBean.setNum(dishBean.getNum() - num);
+                    new CartAsync(CartAsync.UPDATE, mContext).execute(dishBean);        //更新数据库
+                    // 当菜品的数量为0是 删除此菜品。
+                    if (dishBean.getNum() == 0) {
+                        delDish(dishBean);
+                    }
+                    setChanged();
+                    notifyObservers(getDishNum());
+                    break;
                 }
-                setChanged();
-                notifyObservers(getDishNum());
-                break;
             }
         }
+
+        copyDishBeanes.clear();
+        copyDishBeanes = null;
+    }
+
+    /**
+     * 删除菜品。
+     *
+     * @param dishBean
+     */
+    private void delDish(DishBean dishBean) {
+        dishBeans.remove(dishBean);
+        new CartAsync(CartAsync.DEL, mContext).execute(dishBean);
     }
 
     /**
      * 清空购物车。
      */
+
     public void clearCart() {
         dishBeans.clear();
         new CartAsync(CartAsync.CLEAR, mContext).execute();        //更新数据库
@@ -257,6 +287,27 @@ public class ShoppingCart extends ShoppingCartSubject implements CartOberver {
         }
 
         return dishNum;
+    }
+
+    /**
+     * 删除所有没有下订单的菜品。
+     *
+     * @return int 删除后剩余的菜品。
+     */
+    public int deleteUnOrderDish() {
+        int dishNum = 0;
+        ArrayList<DishBean> copyDishBeanes = new ArrayList<>(dishBeans);
+        for (DishBean dishBean : copyDishBeanes) {
+            if (dishBean.getIsOrder() == 0)
+                delDish(dishBean);
+            else
+                dishNum += dishBean.getNum();
+        }
+
+        copyDishBeanes.clear();
+        copyDishBeanes = null;
+        return dishNum;
+
     }
 
     /**

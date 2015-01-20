@@ -165,7 +165,7 @@ public class BookDetailActivity extends BaseActivity {
         bookdetailnumtr.setVisibility(View.GONE);
         bookdetailtimetitle.setText(R.string.send_time_);
         bookdetailtimetv.setText(orderBean.getUse_time().trim());
-        sendAddrTv.setText(orderBean.getAddress().trim());
+        sendAddrTv.setText(orderBean.getAddress().trim() == null ? "" : orderBean.getAddress().trim());
     }
 
 

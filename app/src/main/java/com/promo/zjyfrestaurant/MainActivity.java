@@ -4,16 +4,23 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
+import android.view.KeyEvent;
 import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import com.jch.lib.util.DoubleExit;
 import com.promo.zjyfrestaurant.book.bookActivity.BookFragCallBack;
+import com.promo.zjyfrestaurant.book.subFragment.ToRestFragment;
 import com.promo.zjyfrestaurant.exception.FragmentException;
+import com.promo.zjyfrestaurant.personal.AddressActivity;
 
 
 public class MainActivity extends FragmentActivity implements RadioGroup.OnCheckedChangeListener, BookFragCallBack {
 
+    public static final String INTENT_TYPE_KEY = "main_intent";
+    public static final int FROM_ADDR = 26;
+    public static final int FROM_DEFAULT = -1;
 
     private FrameLayout contentfl;
     private RadioButton mainrb;
@@ -31,6 +38,16 @@ public class MainActivity extends FragmentActivity implements RadioGroup.OnCheck
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_layout);
         initialize();
+
+    }
+
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+        if (keyCode == KeyEvent.KEYCODE_BACK)
+            DoubleExit.instance(getApplicationContext()).exit();
+        return true;
 
     }
 
@@ -86,7 +103,6 @@ public class MainActivity extends FragmentActivity implements RadioGroup.OnCheck
         mCurFragment = showFrag;
     }
 
-
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {
 
@@ -129,12 +145,30 @@ public class MainActivity extends FragmentActivity implements RadioGroup.OnCheck
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        mCurFragment.onActivityResult(requestCode, resultCode, data);
+//        if (resultCode == RESULT_OK)
+//
+//        if (resultCode == RESULT_CANCELED) {
+//            mainrb.setChecked(true);
+//        }
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        int resultCode = intent.getIntExtra(INTENT_TYPE_KEY, FROM_DEFAULT);
+        if (resultCode == FROM_ADDR) {      //地址选择。
+            mCurFragment.onActivityResult(ToRestFragment.REQ_CODE, RESULT_OK, intent);
+        }
+        //判断购买成功后返回的intent是从BookActivity还是MainActivity.
+        int fromActivityCode = getIntent().getIntExtra(AddressActivity.FROM_ACIVITY_KEY, FROM_DEFAULT);
+        if (fromActivityCode == AddressActivity.FROM_BOOK_CODE) {
+            mainrb.setChecked(true);
+        }
+
 
     }
 
     @Override
     public void bookFragcall() {
-
     }
 }

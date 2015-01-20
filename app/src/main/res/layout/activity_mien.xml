@@ -1,10 +1,11 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:background="@drawable/loading"
     android:layout_height="match_parent">
 
-    <TextView
-        android:text="渔府风采，翻页效果。"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-</RelativeLayout>
+    <com.jch.lib.view.CurlView.CurlView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/curl" />
+</FrameLayout>

@@ -80,6 +80,19 @@ public class CartDao {
     }
 
     /**
+     * 删除菜品。
+     *
+     * @param dishId
+     */
+    public synchronized void delDish(int dishId) {
+
+        SQLiteDatabase db = mHelper.getWritableDatabase();
+        db.delete(DbOpenHelper.CART_TBL, "id=?", new String[]{String.valueOf(dishId)});
+        db.close();
+
+    }
+
+    /**
      * 查询。
      *
      * @return

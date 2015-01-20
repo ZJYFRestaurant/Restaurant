@@ -15,11 +15,12 @@
             style="@style/common_white_item"
             android:layout_margin="@dimen/common_pad">
 
-            <com.jch.lib.view.CircleImageView
-                android:id="@+id/menu_detail_img"
+            <com.jch.lib.view.roundImage.RoundedImageView
+                app:riv_corner_radius="@dimen/img_round_coner"
+                app:riv_border_width="0px"
+                app:riv_oval="false"
                 android:layout_margin="@dimen/home_item_pad"
-                app:roundHeight="@dimen/img_round_coner"
-                app:roundWidth="@dimen/img_round_coner"
+                android:id="@+id/menu_detail_img"
                 android:scaleType="centerCrop"
                 style="@style/common_white_item" />
 

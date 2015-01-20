@@ -200,7 +200,9 @@ public class BookFragment extends BaseFragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == getActivity().RESULT_OK)
-            if (requestCode == ToRestFragment.REQ_CODE)
-                ((Fragment) bookPagerAdapter.instantiateItem(bookpager, 2)).onActivityResult(requestCode, resultCode, data);        //获取fragment。
+            if (requestCode == ToRestFragment.REQ_CODE) {
+                ((Fragment) bookPagerAdapter.instantiateItem(bookpager, 2)).onActivityResult(requestCode, resultCode, data);
+                bookpager.setCurrentItem(2);
+            }      //获取fragment。
     }
 }

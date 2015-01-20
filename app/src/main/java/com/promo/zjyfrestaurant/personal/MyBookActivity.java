@@ -7,6 +7,7 @@ import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
 
 import com.promo.zjyfrestaurant.BaseActivity;
+import com.promo.zjyfrestaurant.MainActivity;
 import com.promo.zjyfrestaurant.R;
 import com.promo.zjyfrestaurant.application.HttpConstant;
 import com.promo.zjyfrestaurant.application.ZjyfApplication;
@@ -22,6 +23,9 @@ import com.promo.zjyfrestaurant.util.ContextUtil;
  */
 public class MyBookActivity extends BaseActivity implements ExpandableListView.OnChildClickListener {
 
+    public static final String TO_MYBOOK_KEY = "tomybook";
+    public static final int FROM_CONFIRM = 30;
+    public static final int FROM_PERSONAL = 40;
 
     private ExpandableListView mybookelist;
     private MyBookAdapter adapter;
@@ -78,6 +82,9 @@ public class MyBookActivity extends BaseActivity implements ExpandableListView.O
 
         setTitle(getResources().getString(R.string.personal_book));
 
+        if (getIntent().getIntExtra(MyBookActivity.TO_MYBOOK_KEY, FROM_PERSONAL) == FROM_CONFIRM)
+            setBackClickListener(new BackClickListener());          //
+
         mybookelist = (ExpandableListView) containerView.findViewById(R.id.mybook_elist);
         noDataLl = (LinearLayout) containerView.findViewById(R.id.mybook_no_msg_ll);
         mybookelist.setEnabled(true);
@@ -94,6 +101,19 @@ public class MyBookActivity extends BaseActivity implements ExpandableListView.O
 
         getData();
 
+    }
+
+    /**
+     * 回退监听。
+     */
+    private class BackClickListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            int fromCode = getIntent().getIntExtra(AddressActivity.FROM_ACIVITY_KEY, -1);
+            Intent intent = new Intent(MyBookActivity.this, MainActivity.class);
+            intent.putExtra(AddressActivity.FROM_ACIVITY_KEY, fromCode);
+            startActivity(intent);
+        }
     }
 
     private void addRightBtn() {

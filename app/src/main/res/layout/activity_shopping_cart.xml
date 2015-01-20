@@ -16,13 +16,14 @@
             android:layout_alignParentTop="true" />
 
         <LinearLayout
+            android:layout_below="@id/cartbar_top_line"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical"
             android:padding="10dp">
 
-            <LinearLayout
+            <FrameLayout
                 android:layout_width="0dp"
                 android:paddingLeft="10dp"
                 android:layout_height="wrap_content"
@@ -32,11 +33,13 @@
                     android:id="@+id/cart_btmbar_cb"
                     android:drawableLeft="@drawable/cart_check_sel"
                     android:button="@null"
+                    android:background="@android:color/transparent"
+                    android:layout_gravity="left"
                     style="@style/font_gray2_17"
                     android:text="@string/select_all"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
-            </LinearLayout>
+            </FrameLayout>
 
             <RelativeLayout
                 android:layout_width="0dp"
@@ -105,7 +108,6 @@
                         <TextView
                             android:id="@+id/cart_total_price_tv"
                             style="@style/font_greent_18"
-                            android:text="56"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
 
@@ -117,6 +119,8 @@
 
             </RelativeLayout>
         </LinearLayout>
+
+
     </RelativeLayout>
 
     <LinearLayout
@@ -151,6 +155,8 @@
         android:layout_above="@id/cart_btmbar"
         android:dividerHeight="5dp"
         android:divider="@android:color/transparent"
-        style="@style/common_pad_style"></ListView>
+        android:padding="@dimen/common_pad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></ListView>
 
 </RelativeLayout>

@@ -411,7 +411,7 @@ public class VersionManager {
         protected void onPostExecute(File file) {
             dialog.dismiss();
             if (file == null) {
-                ContextUtil.toast(R.string.download_fialed);
+                ContextUtil.toast(mContext, mContext.getString(R.string.download_fialed));
             } else if (!pause) {
                 NotificationCompat.Builder build = getNotification();
                 build.setContentTitle(mContext.getString(R.string.click_install, file.getName()));

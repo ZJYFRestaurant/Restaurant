@@ -4,9 +4,10 @@
     android:orientation="horizontal"
     style="@style/cmmon_pad_2_white_item">
 
-    <com.jch.lib.view.CircleImageView
-        app:roundHeight="@dimen/img_round_coner"
-        app:roundWidth="@dimen/img_round_coner"
+    <com.jch.lib.view.roundImage.RoundedImageView
+        app:riv_corner_radius="@dimen/img_round_coner"
+        app:riv_border_width="0px"
+        app:riv_oval="false"
         style="@style/my_book_item_img_style"
         android:id="@+id/mybook_item_img" />
 

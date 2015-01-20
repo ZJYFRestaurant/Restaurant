@@ -47,8 +47,7 @@ public class MyOrderActivity extends BaseActivity {
             @Override
             public void onSuccess(OrderTimeBean data) {
                 if (data != null && data.getTime() != null && data.getTime().size() != 0) {
-                    data.parseData();
-                    adapter.notifyDataSetChanged(data.getOrderDatas());
+                    adapter.notifyDataSetChanged(data);
                     noOrderLl.setVisibility(View.GONE);
                 } else {
                     myorderlv.setVisibility(View.GONE);

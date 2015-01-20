@@ -15,6 +15,7 @@ import com.promo.zjyfrestaurant.R;
 import com.promo.zjyfrestaurant.bean.DishBean;
 import com.promo.zjyfrestaurant.book.bookActivity.BookActivity;
 import com.promo.zjyfrestaurant.home.recommendPager.MenuActivity;
+import com.promo.zjyfrestaurant.util.ContextUtil;
 
 import java.util.ArrayList;
 
@@ -76,13 +77,21 @@ public class ShoppingCartActivity extends BaseActivity implements CartOrderChang
         cartbarnextbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                ShoppingCart shoppingCart = ShoppingCart.newInstance();
+                if (shoppingCart.getOrderNum() == 0) {
+                    ContextUtil.toast(getApplicationContext(), getResources().getString(R.string.order_warn));
+                    return;
+                }
+
+                shoppingCart.deleteUnOrderDish();
                 Intent intent = new Intent(ShoppingCartActivity.this, BookActivity.class);
                 transNextPage(intent, true);
             }
         });
-        selectAllCb.setChecked(true);
 
     }
+
 
     private View addMenuView() {
 
@@ -108,7 +117,8 @@ public class ShoppingCartActivity extends BaseActivity implements CartOrderChang
         else {
             noData();
         }
-
+        selectAllCb.setChecked(true);
+        adapter.notifyDataSetChanged();
         updateTatalData(cart);
     }
 
@@ -119,7 +129,12 @@ public class ShoppingCartActivity extends BaseActivity implements CartOrderChang
 
     @Override
     public void onOrderAllDesh(boolean orderall) {
-        selectAllCb.setChecked(orderall);
+        if (!orderall) {
+            selectAllCb.setOnCheckedChangeListener(null);
+            selectAllCb.setChecked(orderall);
+            selectAllCb.setOnCheckedChangeListener(this);
+        } else
+            selectAllCb.setChecked(orderall);
     }
 
     /**
@@ -135,8 +150,7 @@ public class ShoppingCartActivity extends BaseActivity implements CartOrderChang
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
         ShoppingCart shoppingCart = ShoppingCart.newInstance();
-        if (isChecked)
-            shoppingCart.orderAllDish(isChecked);
+        shoppingCart.orderAllDish(isChecked);
         adapter.notifyDataSetChanged();
     }
 

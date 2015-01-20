@@ -114,16 +114,13 @@ public class SendFragment extends BookBaseFragment {
     }
 
     private void clearAllText() {
-        clearText(bookcontactet);
-        clearText(bookphoneet);
-        clearText(booknumet);
-        clearText(booktimeet);
-        clearText(bookotheret);
+        clearText(bookcontactnum, bookcontactet);
+        clearText(bookphonenum, bookphoneet);
+        clearText(booknumnum, booknumet);
+        clearText(booktimenum, booktimeet);
+        clearText(bookothernum, bookotheret);
     }
 
-    private void clearText(TextView textView) {
-        textView.setText("");
-    }
 
     /**
      * 检测输入。

@@ -44,6 +44,13 @@ public abstract class BaseActivity extends Activity {
     private void initialize() {
 
         backbtn = (Button) findViewById(R.id.back_btn);
+        backbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+                finish();
+            }
+        });
         titletv = (TextView) findViewById(R.id.title_tv);
         contentfl = (FrameLayout) findViewById(R.id.content_fl);
 
@@ -55,16 +62,17 @@ public abstract class BaseActivity extends Activity {
         contentView.setLayoutParams(new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         contentfl.addView(contentView);
 
-        backbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-                finish();
-            }
-        });
 
     }
 
+    /**
+     * 为返回键添加自己的监听。
+     *
+     * @param clickListener
+     */
+    protected void setBackClickListener(View.OnClickListener clickListener) {
+        backbtn.setOnClickListener(clickListener);
+    }
 
     /**
      * 隐藏标题栏.

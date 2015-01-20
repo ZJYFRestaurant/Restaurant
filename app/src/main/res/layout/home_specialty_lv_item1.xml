@@ -18,15 +18,13 @@
             android:layout_marginLeft="@dimen/home_item_pad"
             android:layout_height="wrap_content">
 
-            <com.jch.lib.view.CircleImageView
+            <ImageView
                 android:id="@+id/home_specialty_tiem_riv"
                 android:src="@drawable/home_specalty_item_riv"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="@dimen/common_pad"
                 android:layout_alignParentTop="true"
                 android:layout_width="wrap_content"
-                app:roundHeight="@dimen/img_round_coner"
-                app:roundWidth="@dimen/img_round_coner"
                 android:layout_height="wrap_content" />
 
             <LinearLayout
@@ -80,7 +78,10 @@
 
         </RelativeLayout>
 
-        <ImageView
+        <com.jch.lib.view.roundImage.RoundedImageView
+            app:riv_corner_radius="@dimen/img_round_coner"
+            app:riv_border_width="0px"
+            app:riv_oval="false"
             android:id="@+id/home_specialty_item_img"
             android:scaleType="centerCrop"
             android:src="@drawable/home_sup_menu"

@@ -74,6 +74,7 @@
                     <TextView
                         style="@style/hint_gray_12"
                         android:text="@string/constant_phone"
+                        android:inputType="phone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
 

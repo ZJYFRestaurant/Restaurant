@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
-    style="@style/common_list_title_item_style">
+    style="@style/common_list_title_btm_item_style">
 
     <ImageView
         android:layout_width="wrap_content"

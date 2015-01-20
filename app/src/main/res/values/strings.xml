@@ -16,6 +16,7 @@
     <string name="update_right_now">立即升级</string>
     <string name="ok">确定</string>
     <string name="cancel">取消</string>
+
     <string name="dilog_title">楚霸王在上！</string>
     <string name="no_dish_warn">您还没有点餐，要不要先去洗劫一番。</string>
     <string name="dialog_go">去洗劫</string>
@@ -126,4 +127,7 @@
     <string name="order_tiwce">您的提交信息与上条雷同，请修改后进行提交!</string>
     <string name="order_ok">提交</string>
     <string name="order_cancel">取消</string>
+    <string name="feedback_warn">请输入您对我们的宝贵意见！</string>
+    <string name="order_warn">你还没有选择下单的菜品哦，亲！</string>
+    <string name="exit_warn">再次点击退出</string>
 </resources>

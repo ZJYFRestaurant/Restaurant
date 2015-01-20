@@ -8,6 +8,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.promo.zjyfrestaurant.BaseActivity;
+import com.promo.zjyfrestaurant.MainActivity;
 import com.promo.zjyfrestaurant.R;
 import com.promo.zjyfrestaurant.application.HttpConstant;
 import com.promo.zjyfrestaurant.application.ZjyfApplication;
@@ -33,7 +34,12 @@ public class AddressActivity extends BaseActivity implements View.OnClickListene
     public static final int SEL_ITEM = 103;
     public static final String SEl_ADDR_KEY = "select_addr";
     public static final String ITEM_PRESS_KEY = "press_item";
+    //跳转过来的activity.key，由于BookActivity和Maintivity的launchMode不同。主要是判断地址选择时是bookActivity还是MainActivity.以区分不同返回方法。
+    public static final String FROM_ACIVITY_KEY = "from_activity";
+    public static final int FROM_MAIN_CODE = 44;
+    public static final int FROM_BOOK_CODE = 45;
 
+    private int fromActivityCode = -1;
     private int itemType = MODIFY_ITEM;
     static final String ADDINFO_KEY = "addr";
     private ListView addrlv;
@@ -81,14 +87,15 @@ public class AddressActivity extends BaseActivity implements View.OnClickListene
     private void init(View containerView) {
 
         setTitle(getResources().getString(R.string.personal_address));
+        Intent intent = getIntent();
+        itemType = intent.getIntExtra(ITEM_PRESS_KEY, MODIFY_ITEM);
 
-        itemType = getIntent().getIntExtra(ITEM_PRESS_KEY, MODIFY_ITEM);
-        if (itemType != SEL_ITEM) {
-            addTittleRightBtn();
-        }
+        addTittleRightBtn();
+        fromActivityCode = intent.getIntExtra(FROM_ACIVITY_KEY, -1);
+
         addrlv = (ListView) containerView.findViewById(R.id.addr_lv);
         noAddrLl = (LinearLayout) containerView.findViewById(R.id.addr_no_msg_ll);
-        adapter = new AddressAdapter(getApplicationContext());
+        adapter = new AddressAdapter(getApplicationContext(), itemType);
         adapter.setDelAddrCallBack(this);
         addrlv.setAdapter(adapter);
         addrlv.setOnItemClickListener(this);
@@ -226,9 +233,14 @@ public class AddressActivity extends BaseActivity implements View.OnClickListene
             intent.putExtra(ModifyAddrActivity.MODIFY_ADDR_KEY, addresses.get(position));
             startActivityForResult(intent, MODCODE);
         } else if (itemType == SEL_ITEM) {  //选择地址，来自预定单。
-            Intent intent = new Intent();
+            Intent intent = new Intent(AddressActivity.this, MainActivity.class);
             intent.putExtra(ToRestFragment.ADDR_KEY, addresses.get(position));
-            setResult(RESULT_OK, intent);
+            intent.putExtra(MainActivity.INTENT_TYPE_KEY, MainActivity.FROM_ADDR);
+
+            if (fromActivityCode == FROM_MAIN_CODE)         //MainActivty和BookActivity的不同返回方式。
+                startActivity(intent);
+            else if (fromActivityCode == FROM_BOOK_CODE)
+                setResult(RESULT_OK, intent);
             this.finish();
         }
     }

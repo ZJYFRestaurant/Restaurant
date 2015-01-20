@@ -17,9 +17,11 @@ import android.widget.TextView;
 import com.jch.lib.util.DisplayUtil;
 import com.jch.lib.util.TextUtil;
 import com.jch.lib.util.VaildUtil;
+import com.promo.zjyfrestaurant.MainActivity;
 import com.promo.zjyfrestaurant.R;
 import com.promo.zjyfrestaurant.bean.AddressBean;
 import com.promo.zjyfrestaurant.bean.OrderType;
+import com.promo.zjyfrestaurant.book.bookActivity.BookActivity;
 import com.promo.zjyfrestaurant.personal.AddressActivity;
 import com.promo.zjyfrestaurant.util.ContextUtil;
 import com.promo.zjyfrestaurant.view.NumberView;
@@ -143,6 +145,11 @@ public class ToRestFragment extends BookBaseFragment implements View.OnClickList
 
                 Intent intent = new Intent(getActivity(), AddressActivity.class);
                 intent.putExtra(AddressActivity.ITEM_PRESS_KEY, AddressActivity.SEL_ITEM);
+
+                if (getParentFragment().getActivity() instanceof BookActivity)      //区分不同的跳转activity。
+                    intent.putExtra(AddressActivity.FROM_ACIVITY_KEY, AddressActivity.FROM_BOOK_CODE);
+                else if (getParentFragment().getActivity() instanceof MainActivity)
+                    intent.putExtra(AddressActivity.FROM_ACIVITY_KEY, AddressActivity.FROM_MAIN_CODE);
                 getParentFragment().getActivity().startActivityForResult(intent, REQ_CODE);
 
                 break;

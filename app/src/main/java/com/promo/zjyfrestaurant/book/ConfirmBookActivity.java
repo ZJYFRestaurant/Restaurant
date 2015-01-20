@@ -17,6 +17,7 @@ import com.promo.zjyfrestaurant.bean.OrderType;
 import com.promo.zjyfrestaurant.impl.RequestCallback;
 import com.promo.zjyfrestaurant.impl.ShowMenuRequset;
 import com.promo.zjyfrestaurant.impl.ZJYFRequestParmater;
+import com.promo.zjyfrestaurant.personal.AddressActivity;
 import com.promo.zjyfrestaurant.personal.MyBookActivity;
 import com.promo.zjyfrestaurant.shoppingcart.ShoppingCart;
 import com.promo.zjyfrestaurant.util.ContextUtil;
@@ -50,6 +51,7 @@ public class ConfirmBookActivity extends BaseActivity {
     private TextView bookdetailtimetv;
     private TextView bookdetailothertv;
     private ScrollGridView bookdetailgv;
+    private TableRow otherTr;
     private Button subBtn;
     private TableRow addrTr;
     private TextView addrTitleTv;
@@ -91,6 +93,7 @@ public class ConfirmBookActivity extends BaseActivity {
         addrTr = (TableRow) containerView.findViewById(R.id.book_detail_addr_tr);
         addrTitleTv = (TextView) containerView.findViewById(R.id.book_detail_addr_title);
         sendAddrTv = (TextView) containerView.findViewById(R.id.book_detail_send_addr_tv);
+        otherTr = (TableRow) containerView.findViewById(R.id.confirm_other_tr);
 
         subBtn = (Button) containerView.findViewById(R.id.confirm_sub_btn);
 
@@ -116,7 +119,7 @@ public class ConfirmBookActivity extends BaseActivity {
                     break;
                 }
             }
-
+            otherTr.setVisibility(orderBean.getRemark() == null || orderBean.getRemark().equals("") ? View.GONE : View.VISIBLE);
             bookdetailothertv.setText(bookdetailothertv.getText().toString() + orderBean.getRemark());  //其他
             confirmAdapter = new ComfirmBookAdapter(getApplicationContext(), orderBean.getProducts());
             bookdetailgv.setAdapter(confirmAdapter);
@@ -145,6 +148,7 @@ public class ConfirmBookActivity extends BaseActivity {
         bookdetailtimetitle.setText(getString(R.string.get_dish_time));
         bookdetailtimetv.setText(orderBean.getUse_time());
         addrTr.setVisibility(View.GONE);
+        bookdetailgv.setVisibility(View.GONE);
     }
 
     /**
@@ -158,6 +162,7 @@ public class ConfirmBookActivity extends BaseActivity {
         bookdetailnumtv.setText(String.valueOf(orderBean.getPeople_num()));
         bookdetailtimetv.setText(orderBean.getUse_time());
         addrTr.setVisibility(View.GONE);
+        bookdetailgv.setVisibility(View.GONE);
     }
 
     /**
@@ -208,9 +213,13 @@ public class ConfirmBookActivity extends BaseActivity {
                 ShoppingCart.newInstance().clearCart(); //清空菜单。
 
                 ContextUtil.toast(getApplicationContext(), "下单成功，订单号为：" + data);
-                Intent intent = new Intent(ConfirmBookActivity.this, MyBookActivity.class);
-                transNextPage(intent, true);
 
+                Intent intent = new Intent(ConfirmBookActivity.this, MyBookActivity.class);
+                intent.putExtra(MyBookActivity.TO_MYBOOK_KEY, MyBookActivity.FROM_CONFIRM);
+                int fromCode = getIntent().getIntExtra(AddressActivity.FROM_ACIVITY_KEY, -1);
+                intent.putExtra(AddressActivity.FROM_ACIVITY_KEY, fromCode);
+
+                transNextPage(intent, false);
                 confirm2Flag = true;    //已经提交过订单
             }
         });

@@ -74,7 +74,7 @@ public class FeedBackActivity extends BaseActivity {
                 if (!feedbacket.getText().toString().trim().equals(""))
                     getData();
                 else {
-                    ContextUtil.toast(getApplicationContext(), "期待您的反馈");
+                    ContextUtil.toast(getApplicationContext(), getString(R.string.feedback_warn));
                 }
             }
         });

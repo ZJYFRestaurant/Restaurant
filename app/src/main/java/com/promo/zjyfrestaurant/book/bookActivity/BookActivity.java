@@ -10,12 +10,12 @@ import android.widget.FrameLayout;
 
 import com.promo.zjyfrestaurant.R;
 import com.promo.zjyfrestaurant.book.BookFragment;
+import com.promo.zjyfrestaurant.book.subFragment.ToRestFragment;
 
 /**
  * Created by ACER on 2014/12/30.
  */
 public class BookActivity extends FragmentActivity implements BookFragCallBack {
-
 
     private FrameLayout bookcontainer;
     private BookFragment bookFragment;
@@ -65,7 +65,8 @@ public class BookActivity extends FragmentActivity implements BookFragCallBack {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK)
+        if (resultCode == RESULT_OK && requestCode == ToRestFragment.REQ_CODE) {
             bookFragment.onActivityResult(requestCode, resultCode, data);
+        }
     }
 }

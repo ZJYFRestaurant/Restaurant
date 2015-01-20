@@ -6,13 +6,15 @@
     android:gravity="center_horizontal"
     android:layout_height="wrap_content">
 
-    <com.jch.lib.view.CircleImageView
-        app:roundWidth="@dimen/img_round_coner"
-        app:roundHeight="@dimen/img_round_coner"
+    <com.jch.lib.view.roundImage.RoundedImageView
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:background="@drawable/white_shape"
         android:id="@+id/myorder_dish_item_img"
+        app:riv_corner_radius="@dimen/img_round_coner"
+        app:riv_border_width="1px"
+        app:riv_oval="false"
+        app:riv_border_color="@color/gray_green"
         android:scaleType="centerCrop" />
 
     <TextView
