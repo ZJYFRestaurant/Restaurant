@@ -144,7 +144,7 @@ public class MienActivity extends BaseActivity {
         private Bitmap loadBitmap(int width, int height, int index, CurlPage page) {
             Bitmap b = Bitmap.createBitmap(width, height,
                     Bitmap.Config.ARGB_8888);
-            b.eraseColor(getResources().getColor(R.color.gray3));
+            b.eraseColor(getResources().getColor(R.color.bg_gray));
             Canvas c = new Canvas(b);
 
 
@@ -220,7 +220,6 @@ public class MienActivity extends BaseActivity {
                 page.setTexture(b, CurlPage.SIDE_BOTH);
                 page.setColor(Color.argb(127, 255, 255, 255),
                         CurlPage.SIDE_BACK);
-                mCurlView.invalidate();
                 mCurlView.requestRender();
             }
 
