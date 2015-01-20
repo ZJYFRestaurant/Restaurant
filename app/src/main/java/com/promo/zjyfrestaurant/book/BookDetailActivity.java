@@ -105,7 +105,7 @@ public class BookDetailActivity extends BaseActivity {
     private void initData() {
 
         if (orderBean != null) {
-            bookdetailmoney.setText(String.valueOf(orderBean.getPrice()));
+            bookdetailmoney.setText(String.valueOf((int) orderBean.getPrice()));
             bookdetailcontact.setText(orderBean.getContact());
             bookdetailphone.setText(orderBean.getTel());
 
@@ -165,7 +165,7 @@ public class BookDetailActivity extends BaseActivity {
         bookdetailnumtr.setVisibility(View.GONE);
         bookdetailtimetitle.setText(R.string.send_time_);
         bookdetailtimetv.setText(orderBean.getUse_time().trim());
-        sendAddrTv.setText(orderBean.getAddress().trim() == null ? "" : orderBean.getAddress().trim());
+        sendAddrTv.setText(orderBean.getAddress() == null ? "" : orderBean.getAddress().trim());
     }
 
 

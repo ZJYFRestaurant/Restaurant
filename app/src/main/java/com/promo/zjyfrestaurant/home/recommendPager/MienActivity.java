@@ -9,6 +9,8 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewTreeObserver;
+import android.widget.TextView;
 
 import com.jch.lib.util.DialogUtil;
 import com.jch.lib.view.CurlView.CurlPage;
@@ -31,8 +33,10 @@ import java.util.ArrayList;
 public class MienActivity extends BaseActivity {
 
     private CurlView mCurlView;
+    private TextView loadAgainTv;
     private ArrayList<String> photoes = new ArrayList<String>();
-    private int color = 0xFF202830;
+
+    private Drawable bgD;
 
     /**
      * adapter. *
@@ -44,9 +48,37 @@ public class MienActivity extends BaseActivity {
 
         View view = View.inflate(getApplicationContext(), R.layout.activity_mien, null);
         mCurlView = (CurlView) view.findViewById(R.id.curl);
+        mCurlView.setPageProvider(new PageProvider());
+        mCurlView.setSizeChangedObserver(new SizeChangedObserver());
+        mCurlView.setBackgroundColor(getResources().getColor(R.color.div_gray));
+        loadAgainTv = (TextView) view.findViewById(R.id.mien_load_agin_tv);
+
+        ViewTreeObserver vto = mCurlView.getViewTreeObserver();
+        vto.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+
+                mCurlView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+
+            }
+        });
+
+        loadAgainTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getData();
+            }
+        });
 
         getData();
         return view;
+    }
+
+    private void initBgDraw(int widht, int height) {
+
+        Bitmap bitmap = Bitmap.createBitmap(new int[]{getResources().getColor(R.color.div_gray)}, widht, height, Bitmap.Config.ARGB_8888);
+
+
     }
 
     @Override
@@ -58,28 +90,42 @@ public class MienActivity extends BaseActivity {
             @Override
             public void onfailed(String msg) {
                 DialogUtil.toastMsg(getApplicationContext(), msg);
+                noData();
             }
 
             @Override
             public void onSuccess(ArrayList<String> data) {
+                hasData();
                 photoes.clear();
                 photoes.addAll(data);
                 initCrulPager();
-
             }
         });
     }
 
+    private void hasData() {
+
+        mCurlView.setVisibility(View.VISIBLE);
+        loadAgainTv.setVisibility(View.GONE);
+    }
+
+    private void noData() {
+
+        mCurlView.setVisibility(View.GONE);
+        loadAgainTv.setVisibility(View.VISIBLE);
+
+    }
+
     private void initCrulPager() {
-        mCurlView.setPageProvider(new PageProvider());
-        mCurlView.setSizeChangedObserver(new SizeChangedObserver());
+
+
         int index = 0;
         if (getLastNonConfigurationInstance() != null) {
             index = (Integer) getLastNonConfigurationInstance();
         }
 
         mCurlView.setCurrentIndex(index);
-        mCurlView.setBackgroundColor(color);
+
 
     }
 
@@ -88,10 +134,6 @@ public class MienActivity extends BaseActivity {
      * Bitmap provider.
      */
     private class PageProvider implements CurlView.PageProvider {
-
-        // Bitmap resources.
-//        private int[] mBitmapIds = {R.drawable.obama, R.drawable.world, R.drawable.road_rage,
-//                R.drawable.taipei_101};
 
         @Override
         public int getPageCount() {
@@ -102,11 +144,13 @@ public class MienActivity extends BaseActivity {
         private Bitmap loadBitmap(int width, int height, int index, CurlPage page) {
             Bitmap b = Bitmap.createBitmap(width, height,
                     Bitmap.Config.ARGB_8888);
-            b.eraseColor(0xFFFFFFFF);
+            b.eraseColor(getResources().getColor(R.color.gray3));
             Canvas c = new Canvas(b);
-            Drawable d = getResources().getDrawable(R.drawable.loading);
+
+
             loadfromUrl(photoes.get(index), b, c, page, width, height);
-            resizeBitmap(d, c, width, height);
+//            resizeBitmap(d, c, width, height);
+
             return b;
         }
 
@@ -150,7 +194,6 @@ public class MienActivity extends BaseActivity {
         r.right -= border;
         r.top += border;
         r.bottom -= border;
-
         d.setBounds(r);
         d.draw(c);
     }
@@ -170,12 +213,15 @@ public class MienActivity extends BaseActivity {
 
             @Override
             public void onLoadingComplete(String s, View view, Bitmap bitmap) {
+                Log.i("CurActivity", " page index loadimg:");
                 bitmap.prepareToDraw();
                 BitmapDrawable bitmapDrawable = new BitmapDrawable(getResources(), bitmap);
                 resizeBitmap(bitmapDrawable, c, width, height);
                 page.setTexture(b, CurlPage.SIDE_BOTH);
                 page.setColor(Color.argb(127, 255, 255, 255),
                         CurlPage.SIDE_BACK);
+                mCurlView.invalidate();
+                mCurlView.requestRender();
             }
 
             @Override
@@ -202,4 +248,22 @@ public class MienActivity extends BaseActivity {
         }
     }
 
+    @Override
+    protected void onPause() {
+        mCurlView.onPause();
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        mCurlView.onResume();
+        super.onResume();
+    }
+
+    @Override
+    protected void onDestroy() {
+        mCurlView.destroyDrawingCache();
+        super.onDestroy();
+    }
 }
+

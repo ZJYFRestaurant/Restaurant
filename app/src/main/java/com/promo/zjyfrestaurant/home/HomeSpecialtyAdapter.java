@@ -22,7 +22,7 @@ import java.util.ArrayList;
 public class HomeSpecialtyAdapter extends BaseAdapter {
 
     private Activity mContext;
-    private static final float IMGWIDTHPERCENT = 0.55f;
+    private static final float IMGWIDTHPERCENT = 0.48f;
 
     private final static int BASEINDEX = 0x1000;
 

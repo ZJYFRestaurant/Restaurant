@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:background="@drawable/loading"
+    android:background="@color/gray2"
     android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/mien_load_agin_tv"
+        style="@style/font_black_15"
+        android:text="@string/load_again"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <com.jch.lib.view.CurlView.CurlView
         android:layout_width="fill_parent"

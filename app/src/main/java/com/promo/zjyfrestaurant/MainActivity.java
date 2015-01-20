@@ -24,7 +24,7 @@ public class MainActivity extends FragmentActivity implements RadioGroup.OnCheck
 
     private FrameLayout contentfl;
     private RadioButton mainrb;
-    private RadioButton findrb;
+    private RadioButton bookRb;
     private RadioButton publishrb;
     private RadioButton centerrb;
     private RadioGroup mainrg;
@@ -56,7 +56,7 @@ public class MainActivity extends FragmentActivity implements RadioGroup.OnCheck
 
         contentfl = (FrameLayout) findViewById(R.id.content_fl);
         mainrb = (RadioButton) findViewById(R.id.home_rb);
-        findrb = (RadioButton) findViewById(R.id.book_rb);
+        bookRb = (RadioButton) findViewById(R.id.book_rb);
         publishrb = (RadioButton) findViewById(R.id.map_rb);
         centerrb = (RadioButton) findViewById(R.id.personal_rb);
         mainrg = (RadioGroup) findViewById(R.id.main_rg);
@@ -162,7 +162,7 @@ public class MainActivity extends FragmentActivity implements RadioGroup.OnCheck
         //判断购买成功后返回的intent是从BookActivity还是MainActivity.
         int fromActivityCode = getIntent().getIntExtra(AddressActivity.FROM_ACIVITY_KEY, FROM_DEFAULT);
         if (fromActivityCode == AddressActivity.FROM_BOOK_CODE) {
-            mainrb.setChecked(true);
+            bookRb.setChecked(true);
         }
 
 

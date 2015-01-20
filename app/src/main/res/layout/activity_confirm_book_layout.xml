@@ -183,6 +183,7 @@
 
             <TextView
                 android:layout_marginTop="@dimen/book_detail_between_line"
+                android:id="@+id/book_detail_tr"
                 style="@style/font_gray2_14"
                 android:text="@string/book_detail_prompt"
                 android:layout_width="match_parent"

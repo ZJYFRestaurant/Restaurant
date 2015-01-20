@@ -56,6 +56,7 @@ public class ConfirmBookActivity extends BaseActivity {
     private TableRow addrTr;
     private TextView addrTitleTv;
     private TextView sendAddrTv;
+    private TextView bookDetailTr;
 
 
     @Override
@@ -94,6 +95,7 @@ public class ConfirmBookActivity extends BaseActivity {
         addrTitleTv = (TextView) containerView.findViewById(R.id.book_detail_addr_title);
         sendAddrTv = (TextView) containerView.findViewById(R.id.book_detail_send_addr_tv);
         otherTr = (TableRow) containerView.findViewById(R.id.confirm_other_tr);
+        bookDetailTr = (TextView) containerView.findViewById(R.id.book_detail_tr);
 
         subBtn = (Button) containerView.findViewById(R.id.confirm_sub_btn);
 
@@ -148,7 +150,8 @@ public class ConfirmBookActivity extends BaseActivity {
         bookdetailtimetitle.setText(getString(R.string.get_dish_time));
         bookdetailtimetv.setText(orderBean.getUse_time());
         addrTr.setVisibility(View.GONE);
-        bookdetailgv.setVisibility(View.GONE);
+        bookDetailTr.setVisibility(View.GONE);
+
     }
 
     /**
@@ -162,7 +165,7 @@ public class ConfirmBookActivity extends BaseActivity {
         bookdetailnumtv.setText(String.valueOf(orderBean.getPeople_num()));
         bookdetailtimetv.setText(orderBean.getUse_time());
         addrTr.setVisibility(View.GONE);
-        bookdetailgv.setVisibility(View.GONE);
+
     }
 
     /**
@@ -174,6 +177,7 @@ public class ConfirmBookActivity extends BaseActivity {
         bookdetailtimetitle.setText(R.string.send_time_);
         bookdetailtimetv.setText(orderBean.getUse_time());
         sendAddrTv.setText(orderBean.getAddress_content());
+        bookDetailTr.setVisibility(View.GONE);
     }
 
 

@@ -130,4 +130,5 @@
     <string name="feedback_warn">请输入您对我们的宝贵意见！</string>
     <string name="order_warn">你还没有选择下单的菜品哦，亲！</string>
     <string name="exit_warn">再次点击退出</string>
+    <string name="load_again">数据加载失败，点击再次加载</string>
 </resources>

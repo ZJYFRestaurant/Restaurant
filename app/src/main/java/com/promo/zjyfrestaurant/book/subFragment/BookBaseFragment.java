@@ -248,7 +248,7 @@ public class BookBaseFragment extends Fragment implements View.OnFocusChangeList
             e.printStackTrace();
         }
 
-        long time = date.getTime() - 1800000l;     //推迟半个小时。
+        long time = date.getTime();     //推迟半个小时。
         date.setTime(time);
 
         Date nowDate = new Date();

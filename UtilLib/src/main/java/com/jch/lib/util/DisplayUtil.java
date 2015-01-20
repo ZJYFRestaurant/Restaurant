@@ -231,6 +231,7 @@ public class DisplayUtil {
                 .getWindowManager(), baseHeight, baseWidth, exceptWidth) * widthPer);
         params.width = (int) ((int) getScaledWidth(activity
                 .getWindowManager(), baseHeight, baseWidth, exceptWidth) * widthPer);
+
         view.setLayoutParams(params);
     }
 
