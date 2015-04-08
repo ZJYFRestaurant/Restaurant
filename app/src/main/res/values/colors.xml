@@ -2,6 +2,7 @@
 <resources>
 
     <color name="black">#0E0E0F</color>
+    <color name="tb_bg">#2a2a2a</color>
     <color name="white">#ffffff</color>
     <color name="bg_gray">#EEEEEE</color>
     <color name="div_gray">#CACACA</color>

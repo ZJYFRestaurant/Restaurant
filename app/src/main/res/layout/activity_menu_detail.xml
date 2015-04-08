@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_gray"
-    tools:context="com.promo.zjyfrestaurant.home.MenuDetailActivity">
+    tools:context="com.promote.zjyfrestaurant.home.MenuDetailActivity">
 
     <LinearLayout
         android:orientation="vertical"
@@ -35,7 +35,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.promo.zjyfrestaurant.view.AddDealPicker
+                <com.promote.zjyfrestaurant.view.AddDealPicker
                     android:id="@+id/menu_detail_picker"
                     style="@style/deal_picker_style"
                     android:layout_marginTop="5dp"
@@ -47,7 +47,7 @@
                     app:text_color="@color/gray2"
                     app:text="0"
                     app:img_size="35dp"
-                    app:drawable_padding="3dp"></com.promo.zjyfrestaurant.view.AddDealPicker>
+                    app:drawable_padding="3dp"></com.promote.zjyfrestaurant.view.AddDealPicker>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -61,7 +61,7 @@
                         android:text="泡椒凤爪"
                         android:layout_height="wrap_content" />
 
-                    <com.promo.zjyfrestaurant.home.HomeStartView
+                    <com.promote.zjyfrestaurant.home.HomeStartView
                         android:id="@+id/menu_detail_star"
                         style="@style/star_stlye"
                         app:start_drawable="@drawable/home_stars"

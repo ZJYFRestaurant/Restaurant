@@ -5,7 +5,7 @@
     android:focusable="true"
     android:focusableInTouchMode="true"
     android:layout_height="match_parent"
-    tools:context="com.promo.zjyfrestaurant.book.subFragment.SendFragment">
+    tools:context="com.promote.zjyfrestaurant.book.subFragment.SendFragment">
 
     <LinearLayout style="@style/book_content_style">
 
@@ -17,7 +17,7 @@
                 style="@style/book_tr_style"
                 android:visibility="gone">
 
-                <com.promo.zjyfrestaurant.view.NumberView
+                <com.promote.zjyfrestaurant.view.NumberView
                     android:id="@+id/book_contact_num"
                     style="@style/book_input_num_style"
                     app:num_line_color="@color/gray1"
@@ -43,7 +43,7 @@
                 android:visibility="gone"
                 android:id="@+id/book_phone_tr">
 
-                <com.promo.zjyfrestaurant.view.NumberView
+                <com.promote.zjyfrestaurant.view.NumberView
                     android:id="@+id/book_phone_num"
                     style="@style/book_input_num_style"
                     app:num_line_color="@color/gray1"
@@ -67,7 +67,7 @@
 
             <TableRow style="@style/book_tr_style">
 
-                <com.promo.zjyfrestaurant.view.NumberView
+                <com.promote.zjyfrestaurant.view.NumberView
                     android:id="@+id/book_addr_num"
                     style="@style/book_input_num_style"
                     app:num_line_color="@color/gray1"
@@ -120,7 +120,7 @@
 
             <TableRow style="@style/book_tr_style">
 
-                <com.promo.zjyfrestaurant.view.NumberView
+                <com.promote.zjyfrestaurant.view.NumberView
                     android:id="@+id/book_time_num"
                     style="@style/book_input_num_style"
                     app:num_line_color="@color/gray1"
@@ -143,7 +143,7 @@
 
             <TableRow style="@style/book_tr_style">
 
-                <com.promo.zjyfrestaurant.view.NumberView
+                <com.promote.zjyfrestaurant.view.NumberView
                     android:id="@+id/book_other_num"
                     style="@style/book_input_num_style"
                     app:num_line_color="@color/gray1"

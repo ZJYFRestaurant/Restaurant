@@ -4,10 +4,10 @@
     android:background="@color/bg_gray"
     android:layout_height="match_parent">
 
-    <com.promo.zjyfrestaurant.view.RadioListView
+    <com.promote.zjyfrestaurant.view.RadioListView
         android:id="@+id/menu_cat_lv"
         android:layout_width="100dp"
-        android:layout_height="wrap_content"></com.promo.zjyfrestaurant.view.RadioListView>
+        android:layout_height="wrap_content"></com.promote.zjyfrestaurant.view.RadioListView>
 
     <ListView
         android:id="@+id/menu_lv"

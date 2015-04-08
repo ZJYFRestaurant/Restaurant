@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.promo.zjyfrestaurant"
+    package="com.promote.zjyfrestaurant"
     android:versionCode="2"
     android:versionName="1.1.0">
 
@@ -47,7 +47,7 @@
         android:smallScreens="true" />
 
     <application
-        android:name=".application.ZjyfApplication"
+        android:name="com.promote.zjyfrestaurant.application.ZjyfApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
@@ -59,93 +59,93 @@
 
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="4SyuEli2Cyd00051nrnOkcCx" />
+            android:value="BsO6GL1p7clzNSPAKm1tuyDA" />
 
         <activity
-            android:name=".MainActivity"
+            android:name="com.promote.zjyfrestaurant.MainActivity"
             android:label="@string/app_name"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".personal.MyBookActivity"
+            android:name="com.promote.zjyfrestaurant.personal.MyBookActivity"
             android:label="@string/app_name"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".personal.AboutUsActivity"
+            android:name="com.promote.zjyfrestaurant.personal.AboutUsActivity"
             android:label="@string/app_name"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".personal.AddAddressActivity"
+            android:name="com.promote.zjyfrestaurant.personal.AddAddressActivity"
             android:label="@string/app_name"
             android:launchMode="standard"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".personal.ModifyAddrActivity"
+            android:name="com.promote.zjyfrestaurant.personal.ModifyAddrActivity"
             android:label="@string/app_name"
             android:launchMode="standard"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".personal.AddressActivity"
+            android:name="com.promote.zjyfrestaurant.personal.AddressActivity"
             android:label="@string/app_name"
             android:launchMode="standard"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".personal.FeedBackActivity"
+            android:name="com.promote.zjyfrestaurant.personal.FeedBackActivity"
             android:label="@string/app_name"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".home.recommendPager.RecommendActivity"
+            android:name="com.promote.zjyfrestaurant.home.recommendPager.RecommendActivity"
             android:label="@string/app_name"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".home.recommendPager.PrivilegeActivity"
+            android:name="com.promote.zjyfrestaurant.home.recommendPager.PrivilegeActivity"
             android:label="@string/app_name"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".home.recommendPager.MenuActivity"
+            android:name="com.promote.zjyfrestaurant.home.recommendPager.MenuActivity"
             android:label="@string/app_name"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".home.recommendPager.MienActivity"
+            android:name="com.promote.zjyfrestaurant.home.recommendPager.MienActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".shoppingcart.ShoppingCartActivity"
+            android:name="com.promote.zjyfrestaurant.shoppingcart.ShoppingCartActivity"
             android:label="@string/app_name"
             android:launchMode="singleInstance"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".book.ConfirmBookActivity"
+            android:name="com.promote.zjyfrestaurant.book.ConfirmBookActivity"
             android:label="@string/app_name"
             android:launchMode="standard"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".home.MenuDetailActivity"
+            android:name="com.promote.zjyfrestaurant.home.MenuDetailActivity"
             android:label="@string/app_name"
             android:launchMode="singleTask" />
         <activity
-            android:name=".home.recommendPager.PrivilegeDetailActivity"
+            android:name="com.promote.zjyfrestaurant.home.recommendPager.PrivilegeDetailActivity"
             android:label="@string/app_name"
             android:launchMode="singleTask" />
         <activity
-            android:name=".book.bookActivity.BookActivity"
+            android:name="com.promote.zjyfrestaurant.book.bookActivity.BookActivity"
             android:label="@string/app_name"
             android:launchMode="standard" />
         <activity
-            android:name=".personal.MyOrderActivity"
+            android:name="com.promote.zjyfrestaurant.personal.MyOrderActivity"
             android:label="@string/app_name"
             android:launchMode="singleTask" />
         <activity
-            android:name=".loading.LoadingActivity"
+            android:name="com.promote.zjyfrestaurant.loading.LoadingActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -155,7 +155,7 @@
 
         <activity
             android:launchMode="standard"
-            android:name=".book.BookDetailActivity"
+            android:name="com.promote.zjyfrestaurant.book.BookDetailActivity"
             android:label="@string/app_name"></activity>
     </application>
 

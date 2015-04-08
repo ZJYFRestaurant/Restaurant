@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_gray"
-    tools:context="com.promo.zjyfrestaurant.personal.MyOrderActivity">
+    tools:context="com.promote.zjyfrestaurant.personal.MyOrderActivity">
 
     <LinearLayout
         android:orientation="vertical"

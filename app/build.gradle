@@ -4,7 +4,7 @@ android {
     compileSdkVersion 21
     buildToolsVersion "21.1.1"
     defaultConfig {
-        applicationId "com.jch.zjyfrestaurant"
+        applicationId "com.promote.zjyfrestaurant"
         minSdkVersion 8
         targetSdkVersion 21
         versionCode 1
@@ -13,7 +13,8 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles 'proguard-android-optimize.txt', 'proguard-rules.pro'
         }
     }
     productFlavors {

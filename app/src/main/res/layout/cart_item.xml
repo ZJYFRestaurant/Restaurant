@@ -24,7 +24,7 @@
         android:layout_weight="1"
         android:layout_height="wrap_content">
 
-        <com.promo.zjyfrestaurant.view.AddDealPicker
+        <com.promote.zjyfrestaurant.view.AddDealPicker
             android:id="@+id/cart_item_addpick"
             style="@style/deal_picker_style"
             android:layout_marginRight="5dp"
@@ -35,7 +35,7 @@
             app:text_color="@color/gray3"
             app:text="0"
             app:img_size="35dp"
-            app:drawable_padding="3dp"></com.promo.zjyfrestaurant.view.AddDealPicker>
+            app:drawable_padding="3dp"></com.promote.zjyfrestaurant.view.AddDealPicker>
 
         <LinearLayout
             android:layout_toLeftOf="@id/cart_item_addpick"

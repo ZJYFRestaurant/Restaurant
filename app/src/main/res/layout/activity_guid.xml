@@ -1,8 +1,8 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.promo.zjyfrestaurant.loading.LoadingActivity">
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context="com.promote.zjyfrestaurant.loading.LoadingActivity">
 
     <android.support.v4.view.ViewPager
         android:id="@+id/loading_vp"
@@ -15,6 +15,6 @@
         android:padding="5dp"
         android:layout_marginBottom="20dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"/>
 
 </FrameLayout>

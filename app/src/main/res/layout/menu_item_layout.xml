@@ -26,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-        <com.promo.zjyfrestaurant.home.HomeStartView
+        <com.promote.zjyfrestaurant.home.HomeStartView
             android:id="@+id/menu_item_star"
             style="@style/star_stlye"
             app:start_drawable="@drawable/home_stars"
@@ -66,7 +66,7 @@
 
             </LinearLayout>
 
-            <com.promo.zjyfrestaurant.view.AddDealPicker
+            <com.promote.zjyfrestaurant.view.AddDealPicker
                 android:id="@+id/menu_deal_picker"
                 style="@style/deal_picker_style"
                 android:layout_marginTop="5dp"
@@ -78,7 +78,7 @@
                 app:text_color="@color/gray2"
                 app:text="0"
                 app:img_size="30dp"
-                app:drawable_padding="1dp"></com.promo.zjyfrestaurant.view.AddDealPicker>
+                app:drawable_padding="1dp"></com.promote.zjyfrestaurant.view.AddDealPicker>
 
         </RelativeLayout>
 
